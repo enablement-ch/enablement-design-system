@@ -1,0 +1,2011 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Enablement.ch — Design System v0.4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============ TOKENS ============ */
+:root {
+  /* Semantic surface tokens — swap on theme */
+  --color-canvas: #F2F4F8;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FAFBFD;
+  --color-border: #E1E5EC;
+  --color-border-strong: #C9CFD9;
+  --color-heading: #0F1217;
+  --color-body: #4A5360;
+  --color-muted: #7C8390;
+  --color-inverse: #FFFFFF;
+
+  /* Accent (constant across themes) */
+  --color-accent: #E11E48;
+  --color-accent-hover: #BE123C;
+  --color-accent-on: #FFFFFF;
+
+  /* Workflow-only flow color (not a brand color) */
+  --color-flow: #6FA8DC;
+  --color-flow-strong: #4A89C7;
+
+  /* System signals */
+  --color-positive: #2E8F54;
+  --color-warning: #C77B0E;
+  --color-critical: #B43A2A;
+
+  /* Type families */
+  --font-sans: "Sofia Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  /* Type scale (1.25 modular, 16px base) */
+  --font-size-eyebrow: 0.75rem;
+  --font-size-caption: 0.8125rem;
+  --font-size-body: 1rem;
+  --font-size-lead: 1.25rem;
+  --font-size-h6: 1.25rem;
+  --font-size-h5: 1.5625rem;
+  --font-size-h4: 1.9375rem;
+  --font-size-h3: 2.4375rem;
+  --font-size-h2: 3.0625rem;
+  --font-size-h1: 3.8125rem;
+  --font-size-display: clamp(3.5rem, 8vw, 6rem);
+
+  /* Spacing (8pt linear) */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
+  --space-4: 16px; --space-5: 24px; --space-6: 32px;
+  --space-7: 48px; --space-8: 64px; --space-9: 96px;
+  --space-10: 128px; --space-11: 192px;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* Shadow (light theme) */
+  --shadow-xs: 0 1px 2px rgba(15, 18, 23, 0.04);
+  --shadow-sm: 0 4px 12px rgba(15, 18, 23, 0.06);
+  --shadow-md: 0 12px 32px rgba(15, 18, 23, 0.08);
+  --shadow-lg: 0 24px 64px rgba(15, 18, 23, 0.10);
+
+  /* Motion */
+  --motion-duration-instant: 100ms;
+  --motion-duration-fast: 200ms;
+  --motion-duration-base: 320ms;
+  --motion-duration-slow: 600ms;
+  --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --motion-ease-entrance: cubic-bezier(0, 0, 0.2, 1);
+  --motion-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Layout */
+  --container-content: 1120px;
+  --container-wide: 1280px;
+  --container-prose: 720px;
+}
+
+[data-theme="dark"] {
+  --color-canvas: #0F1217;
+  --color-surface: #181C23;
+  --color-surface-raised: #232830;
+  --color-border: #2E343F;
+  --color-border-strong: #404754;
+  --color-heading: #E5E9F0;
+  --color-body: #A0A8B5;
+  --color-muted: #6B7280;
+  --color-inverse: #0F1217;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.6);
+}
+
+/* ============ BASE ============ */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--color-canvas);
+  color: var(--color-body);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background var(--motion-duration-base) var(--motion-ease-standard),
+              color var(--motion-duration-base) var(--motion-ease-standard);
+}
+a { color: inherit; }
+
+.container {
+  max-width: var(--container-content);
+  margin: 0 auto;
+  padding-inline: var(--space-5);
+}
+@media (min-width: 1024px) {
+  .container { padding-inline: var(--space-7); }
+}
+
+section.section {
+  padding-block: var(--space-9);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+}
+@media (min-width: 1024px) {
+  section.section { padding-block: var(--space-10); }
+}
+
+/* Vertical frame lines bracketing the page content (Attio / AirOps / ColdIQ pattern) */
+section.section::before,
+header.hero::before,
+section.logo-wall-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: min(100%, var(--container-content));
+  transform: translateX(-50%);
+  padding: 0 var(--space-5);
+  box-sizing: border-box;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  pointer-events: none;
+  z-index: 0;
+}
+@media (min-width: 1024px) {
+  section.section::before,
+  header.hero::before,
+  section.logo-wall-section::before {
+    padding: 0 var(--space-7);
+  }
+}
+section.section > .container,
+header.hero > .container,
+header.hero > .hero-visual,
+section.logo-wall-section > .container { position: relative; z-index: 1; }
+.inverted::before { border-color: rgba(255, 255, 255, 0.08); }
+
+/* ============ TYPOGRAPHY ============ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--color-heading);
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.15;
+}
+h1 { font-size: var(--font-size-h1); letter-spacing: -0.03em; line-height: 1.1; }
+h2 { font-size: var(--font-size-h2); letter-spacing: -0.025em; }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-h4); letter-spacing: -0.015em; }
+h5 { font-size: var(--font-size-h5); letter-spacing: -0.01em; }
+h6 { font-size: var(--font-size-h6); letter-spacing: -0.01em; }
+
+p { margin: 0; max-width: 64ch; }
+.lead { font-size: var(--font-size-lead); line-height: 1.5; color: var(--color-heading); letter-spacing: -0.005em; }
+
+/* The signature emphasis — sans italic + accent color */
+.italic-accent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent);
+  letter-spacing: -0.01em;
+}
+
+/* Mono eyebrow with numbered ordinal */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--font-size-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.eyebrow .num {
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+.eyebrow .sep { color: var(--color-border-strong); }
+
+.mono { font-family: var(--font-mono); font-size: var(--font-size-caption); color: var(--color-muted); font-variant-numeric: tabular-nums; }
+
+/* ============ NAV ============ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--color-canvas) 80%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-border);
+}
+.nav-inner {
+  max-width: var(--container-content);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--color-heading);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.nav-logo .dot { color: var(--color-accent); }
+.nav-menu {
+  display: none;
+  gap: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+.nav-menu a {
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color var(--motion-duration-fast) var(--motion-ease-standard);
+}
+.nav-menu a:hover { color: var(--color-heading); }
+@media (min-width: 768px) {
+  .nav-menu { display: flex; }
+}
+.nav-actions { display: flex; align-items: center; gap: var(--space-3); }
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-heading);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--motion-duration-fast) var(--motion-ease-standard),
+              background var(--motion-duration-fast) var(--motion-ease-standard);
+}
+.theme-toggle:hover { border-color: var(--color-border-strong); }
+.theme-toggle svg { width: 18px; height: 18px; }
+[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+/* ============ BUTTONS ============ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--font-size-body);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--motion-duration-fast) var(--motion-ease-standard),
+              color var(--motion-duration-fast) var(--motion-ease-standard),
+              border-color var(--motion-duration-fast) var(--motion-ease-standard),
+              transform var(--motion-duration-fast) var(--motion-ease-standard);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--color-heading); color: var(--color-canvas); }
+.btn-primary:hover { background: var(--color-body); }
+.btn-accent { background: var(--color-accent); color: var(--color-accent-on); }
+.btn-accent:hover { background: var(--color-accent-hover); }
+.btn-secondary { background: var(--color-surface); color: var(--color-heading); border-color: var(--color-border); }
+.btn-secondary:hover { border-color: var(--color-border-strong); background: var(--color-surface-raised); }
+.btn-tertiary { background: transparent; color: var(--color-heading); padding-inline: 0; border-radius: 0; }
+.btn-tertiary:hover { color: var(--color-accent); }
+.btn-tertiary .arrow { transition: transform var(--motion-duration-fast) var(--motion-ease-standard); }
+.btn-tertiary:hover .arrow { transform: translateX(3px); }
+.btn-disabled { opacity: 0.4; pointer-events: none; }
+.btn-md { padding: var(--space-4) var(--space-6); }
+.btn-lg { padding: var(--space-5) var(--space-7); font-size: var(--font-size-lead); }
+
+/* ============ HERO ============ */
+.hero {
+  padding-block: var(--space-10) var(--space-9);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+@media (min-width: 1024px) {
+  .hero { padding-block: var(--space-11) var(--space-10); }
+}
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-6);
+  max-width: 880px;
+  margin: 0 auto;
+}
+.display {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-display);
+  font-weight: 600;
+  color: var(--color-heading);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  margin: 0;
+}
+.hero-lead { max-width: 56ch; }
+.hero-actions { display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap; justify-content: center; margin-top: var(--space-2); }
+
+/* Video / visual placeholder under the hero */
+.hero-visual {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-wide);
+  margin: var(--space-9) auto 0;
+  padding-inline: var(--space-5);
+}
+@media (min-width: 1024px) {
+  .hero-visual { padding-inline: var(--space-7); }
+}
+.hero-visual-frame {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-visual-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--color-border-strong) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+}
+.hero-visual-play {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+.hero-visual-play .play-btn {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 40px color-mix(in srgb, var(--color-accent) 35%, transparent);
+  transition: transform var(--motion-duration-fast) var(--motion-ease-standard);
+}
+.hero-visual-play .play-btn:hover { transform: scale(1.05); }
+.hero-visual-play .play-btn svg { width: 24px; height: 24px; margin-left: 4px; }
+.hero-visual-play .label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-muted);
+}
+
+/* ============ STAT STRIP ============ */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.stat {
+  padding: var(--space-7) var(--space-5);
+  border-right: 1px solid var(--color-border);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--font-sans);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--color-heading);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: var(--space-3);
+}
+.stat-num em { font-style: italic; color: var(--color-accent); font-weight: 400; }
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-muted);
+  max-width: 28ch;
+}
+
+/* ============ CARDS ============ */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  transition: border-color var(--motion-duration-fast) var(--motion-ease-standard),
+              transform var(--motion-duration-fast) var(--motion-ease-standard),
+              box-shadow var(--motion-duration-fast) var(--motion-ease-standard);
+}
+.card-hoverable { cursor: pointer; }
+.card-hoverable:hover {
+  border-color: var(--color-border-strong);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.card-featured {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-accent);
+}
+.card h4 { margin-bottom: var(--space-3); }
+.card-stack > * + * { margin-top: var(--space-4); }
+
+/* Numbered card (Cal.com style) */
+.numbered-card { position: relative; }
+.numbered-card .num-badge {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--color-muted);
+  margin-bottom: var(--space-5);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.numbered-card .num-badge .num {
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============ FORM ============ */
+.field { display: flex; flex-direction: column; gap: var(--space-2); max-width: 360px; }
+.field-label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-muted);
+}
+.input, .textarea {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-heading);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body);
+  transition: border-color var(--motion-duration-fast) var(--motion-ease-standard),
+              box-shadow var(--motion-duration-fast) var(--motion-ease-standard);
+}
+.input::placeholder, .textarea::placeholder { color: var(--color-muted); opacity: 0.7; }
+.input:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 24%, transparent);
+}
+.input.error { border-color: var(--color-critical); }
+.help { font-size: var(--font-size-caption); color: var(--color-muted); }
+.help.error { color: var(--color-critical); }
+
+/* ============ SWATCHES ============ */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-4);
+}
+.swatch {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.swatch-color { height: 96px; }
+.swatch-meta { padding: var(--space-3) var(--space-4); }
+.swatch-name { font-family: var(--font-mono); font-size: var(--font-size-caption); color: var(--color-heading); }
+.swatch-hex { font-family: var(--font-mono); font-size: var(--font-size-eyebrow); color: var(--color-muted); margin-top: 2px; }
+
+/* ============ TYPE DEMO ============ */
+.type-row {
+  display: grid;
+  grid-template-columns: 100px 80px 1fr;
+  gap: var(--space-5);
+  align-items: baseline;
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+.type-row:last-child { border-bottom: none; }
+.type-row .meta { font-family: var(--font-mono); font-size: var(--font-size-eyebrow); color: var(--color-muted); }
+.type-row .sample { color: var(--color-heading); line-height: 1.15; letter-spacing: -0.025em; }
+
+/* ============ SPACING ============ */
+.spacing-row {
+  display: grid;
+  grid-template-columns: 80px 90px 1fr;
+  gap: var(--space-5);
+  align-items: center;
+  padding-block: var(--space-3);
+}
+.spacing-bar { background: var(--color-accent); height: 16px; border-radius: var(--radius-xs); }
+.spacing-row .meta { font-family: var(--font-mono); font-size: var(--font-size-caption); color: var(--color-heading); }
+
+/* ============ DIVIDER GRID (column dividers, no card borders) ============ */
+.divider-grid {
+  display: grid;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.divider-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.divider-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.divider-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.divider-grid.cols-5 { grid-template-columns: repeat(5, 1fr); }
+.dg-cell {
+  padding: var(--space-6) var(--space-5);
+  border-right: 1px solid var(--color-border);
+}
+.dg-cell:last-child { border-right: none; }
+
+@media (max-width: 900px) {
+  .divider-grid.cols-3,
+  .divider-grid.cols-4,
+  .divider-grid.cols-5 { grid-template-columns: repeat(2, 1fr); }
+  .dg-cell { border-right: 1px solid var(--color-border); }
+  .divider-grid.cols-3 .dg-cell:nth-child(2n),
+  .divider-grid.cols-4 .dg-cell:nth-child(2n),
+  .divider-grid.cols-5 .dg-cell:nth-child(2n) { border-right: none; }
+  .divider-grid.cols-3 .dg-cell:nth-child(n+3),
+  .divider-grid.cols-4 .dg-cell:nth-child(n+3),
+  .divider-grid.cols-5 .dg-cell:nth-child(n+3) { border-top: 1px solid var(--color-border); }
+}
+@media (max-width: 540px) {
+  .divider-grid.cols-3,
+  .divider-grid.cols-4,
+  .divider-grid.cols-5 { grid-template-columns: 1fr; }
+  .dg-cell { border-right: none; }
+  .divider-grid > .dg-cell + .dg-cell { border-top: 1px solid var(--color-border); }
+}
+
+/* ============ DEMO TILES ============ */
+.demo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--space-4); }
+.demo-tile {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-caption);
+  color: var(--color-muted);
+}
+
+/* ============ DO / DON'T ============ */
+.dd-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
+@media (min-width: 768px) { .dd-grid { grid-template-columns: 1fr 1fr; } }
+.dd {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  background: var(--color-surface);
+}
+.dd-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-4);
+}
+.dd-do { color: var(--color-positive); border: 1px solid color-mix(in srgb, var(--color-positive) 30%, transparent); background: color-mix(in srgb, var(--color-positive) 8%, var(--color-surface)); }
+.dd-dont { color: var(--color-critical); border: 1px solid color-mix(in srgb, var(--color-critical) 30%, transparent); background: color-mix(in srgb, var(--color-critical) 8%, var(--color-surface)); }
+.dd-sample {
+  padding: var(--space-5);
+  border-radius: var(--radius-sm);
+  background: var(--color-canvas);
+  border: 1px solid var(--color-border);
+  margin-bottom: var(--space-4);
+}
+.dd-note { font-size: var(--font-size-caption); color: var(--color-muted); }
+
+/* ============ DARK INVERSION SECTION ============ */
+.inverted {
+  background: #0F1217;
+  color: #A0A8B5;
+}
+.inverted h2, .inverted h3, .inverted h4, .inverted h5 { color: #E5E9F0; }
+.inverted .lead { color: #E5E9F0; }
+.inverted .eyebrow { color: #6B7280; }
+.inverted .card {
+  background: #181C23;
+  border-color: #2E343F;
+  color: #A0A8B5;
+}
+.inverted .card h4 { color: #E5E9F0; }
+.inverted .btn-primary { background: #E5E9F0; color: #0F1217; }
+.inverted .btn-secondary { background: transparent; color: #E5E9F0; border-color: #2E343F; }
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-9);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-7);
+}
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+.footer-tagline { color: var(--color-body); margin-top: var(--space-3); max-width: 32ch; font-size: var(--font-size-caption); }
+.footer-group h6 {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+  margin-bottom: var(--space-4);
+  color: var(--color-muted);
+}
+.footer-group a {
+  display: block;
+  color: var(--color-heading);
+  text-decoration: none;
+  font-size: var(--font-size-caption);
+  padding-block: var(--space-1);
+}
+.footer-group a:hover { color: var(--color-accent); }
+.footer-bottom {
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-eyebrow);
+  color: var(--color-muted);
+}
+
+/* ============ MISC ============ */
+.gap-2 { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.gap-4 { display: flex; gap: var(--space-5); flex-wrap: wrap; align-items: center; }
+.stack-3 > * + * { margin-top: var(--space-3); }
+.stack-4 > * + * { margin-top: var(--space-4); }
+.stack-5 > * + * { margin-top: var(--space-5); }
+.stack-6 > * + * { margin-top: var(--space-6); }
+
+/* Logo wall (ColdIQ-style grid with optional Case Study pill) */
+.logo-wall-section { padding-block: var(--space-9); }
+.logo-wall {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+@media (min-width: 640px) { .logo-wall { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .logo-wall { grid-template-columns: repeat(6, 1fr); } }
+.logo-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-7) var(--space-4);
+  min-height: 120px;
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--motion-duration-fast) var(--motion-ease-standard);
+}
+.logo-cell:hover { background: var(--color-surface-raised); }
+/* Trim outer borders to avoid double-line with the wrapper */
+.logo-cell:nth-child(6n) { border-right: none; }
+@media (max-width: 1023px) and (min-width: 640px) {
+  .logo-cell { border-right: 1px solid var(--color-border); }
+  .logo-cell:nth-child(6n) { border-right: 1px solid var(--color-border); }
+  .logo-cell:nth-child(3n) { border-right: none; }
+}
+@media (max-width: 639px) {
+  .logo-cell:nth-child(6n) { border-right: 1px solid var(--color-border); }
+  .logo-cell:nth-child(2n) { border-right: none; }
+}
+.logo-mark {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--color-body);
+  letter-spacing: -0.01em;
+  opacity: 0.85;
+  transition: opacity var(--motion-duration-fast) var(--motion-ease-standard), color var(--motion-duration-fast) var(--motion-ease-standard);
+}
+.logo-cell:hover .logo-mark { opacity: 1; color: var(--color-heading); }
+.logo-cs {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
+  text-decoration: none;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  transition: color var(--motion-duration-fast) var(--motion-ease-standard),
+              border-color var(--motion-duration-fast) var(--motion-ease-standard);
+}
+.logo-cs:hover { color: var(--color-accent); border-color: var(--color-accent); }
+
+/* Motion demo */
+.motion-tile {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  height: 80px;
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+}
+.motion-tile i {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 24px;
+  background: var(--color-accent);
+  animation: slide var(--dur, 320ms) var(--motion-ease-standard) infinite alternate;
+}
+@keyframes slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(100% + 130px)); }
+}
+
+/* Token blocks */
+.token-block {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.token-block-head {
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-muted);
+}
+.token-block pre {
+  margin: 0;
+  padding: var(--space-5);
+  background: var(--color-canvas);
+  color: var(--color-heading);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+/* ============ ICONOGRAPHY ============ */
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-3);
+}
+.icon-tile {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  aspect-ratio: 1;
+  color: var(--color-heading);
+  cursor: default;
+  transition: border-color var(--motion-duration-fast) var(--motion-ease-standard),
+              color var(--motion-duration-fast) var(--motion-ease-standard);
+}
+.icon-tile:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.icon-tile svg { width: 22px; height: 22px; stroke-width: 1.5; }
+.icon-tile-name {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+}
+.icon-size-row {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-7);
+  flex-wrap: wrap;
+}
+.icon-size-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-heading);
+}
+.icon-size-cell .label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-muted);
+}
+
+/* ============ DIAGRAMS & ILLUSTRATION ============ */
+/* Tighter dot-grid backdrop (Attio-style) */
+.dot-grid {
+  background-color: var(--color-surface-raised);
+  background-image: radial-gradient(color-mix(in srgb, var(--color-heading) 14%, transparent) 1px, transparent 1px);
+  background-size: 16px 16px;
+  background-position: 8px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-9) var(--space-5);
+  position: relative;
+  overflow: hidden;
+}
+.dot-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 90% at 50% 50%, transparent 40%, var(--color-surface-raised) 100%);
+  pointer-events: none;
+}
+.dot-grid > * { position: relative; z-index: 1; }
+
+/* Workflow node */
+.flow-node {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  width: 320px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+  z-index: 2;
+  box-shadow: var(--shadow-xs);
+  transition: border-color var(--motion-duration-fast) var(--motion-ease-standard),
+              box-shadow var(--motion-duration-fast) var(--motion-ease-standard);
+}
+.flow-node:hover {
+  border-color: var(--color-border-strong);
+}
+.flow-node-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+.flow-node-icon {
+  width: 28px; height: 28px;
+  background: var(--color-canvas);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--color-heading);
+  flex-shrink: 0;
+}
+.flow-node-icon svg { width: 14px; height: 14px; }
+.flow-node-title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-heading);
+  line-height: 1.2;
+}
+.flow-node-body {
+  font-size: var(--font-size-caption);
+  color: var(--color-body);
+  line-height: 1.45;
+}
+.flow-node.active {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1.5px var(--color-accent);
+}
+.flow-node.active .flow-node-icon {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+/* Type pill (small mono label inside node head — "Leads", "Condition", "Sequences") */
+.type-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-canvas);
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* Status pill (floats beside a node — Triggered / Completed / AI) */
+.status-pill {
+  position: absolute;
+  top: 12px;
+  left: calc(100% + 14px);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  z-index: 3;
+}
+.status-pill::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-pill);
+}
+.status-pill.flow {
+  color: var(--color-flow-strong);
+  background: color-mix(in srgb, var(--color-flow) 15%, var(--color-surface));
+  border: 1px solid color-mix(in srgb, var(--color-flow) 40%, transparent);
+}
+.status-pill.flow::before { background: var(--color-flow-strong); }
+.status-pill.positive {
+  color: var(--color-positive);
+  background: color-mix(in srgb, var(--color-positive) 12%, var(--color-surface));
+  border: 1px solid color-mix(in srgb, var(--color-positive) 35%, transparent);
+}
+.status-pill.positive::before { background: var(--color-positive); }
+.status-pill.ai {
+  color: #7C5BCF;
+  background: color-mix(in srgb, #7C5BCF 12%, var(--color-surface));
+  border: 1px solid color-mix(in srgb, #7C5BCF 35%, transparent);
+}
+.status-pill.ai::before { background: #7C5BCF; }
+@media (max-width: 900px) {
+  .status-pill { position: static; margin-top: 6px; align-self: flex-start; left: auto; top: auto; }
+}
+
+/* Vertical workflow */
+.flow-v {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Vertical connector */
+.v-conn {
+  width: 320px;
+  max-width: 100%;
+  height: 56px;
+  position: relative;
+}
+.v-conn svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.v-conn .line { stroke: var(--color-flow); stroke-width: 1.5; fill: none; }
+.v-conn .arrow { fill: var(--color-flow); }
+.v-conn.muted .line { stroke: var(--color-border-strong); }
+.v-conn.muted .arrow { fill: var(--color-border-strong); }
+.v-conn.live .dot { fill: var(--color-flow-strong); animation: v-dot-flow 1.6s linear infinite; }
+@keyframes v-dot-flow {
+  0%   { transform: translateY(0); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateY(54px); opacity: 0; }
+}
+
+/* Branching connector — one source, two children */
+.branch-fan {
+  width: 680px;
+  max-width: 100%;
+  height: 80px;
+  position: relative;
+}
+.branch-fan svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.branch-fan .line { stroke: var(--color-flow); stroke-width: 1.5; fill: none; }
+.branch-fan .arrow { fill: var(--color-flow); }
+.branch-fan .line.muted { stroke: var(--color-border-strong); stroke-dasharray: 4 3; }
+.branch-fan .arrow.muted { fill: var(--color-border-strong); }
+.branch-label {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  background: var(--color-surface);
+  border: 1px solid var(--color-flow);
+  color: var(--color-flow-strong);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  white-space: nowrap;
+}
+.branch-label.muted {
+  border-color: var(--color-border-strong);
+  color: var(--color-muted);
+}
+
+/* Two-child row after a branch */
+.branch-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+  width: 680px;
+  max-width: 100%;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .branch-row { grid-template-columns: 1fr; gap: var(--space-5); width: 320px; }
+}
+.branch-row .flow-node { width: auto; max-width: 100%; }
+
+/* + Add button at the end of an active path */
+.flow-add {
+  margin-top: var(--space-5);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-accent);
+  color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+.flow-add svg { width: 16px; height: 16px; }
+.flow-add::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  border: 1.5px solid var(--color-accent);
+  animation: pulse-ring 2.4s ease-out infinite;
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(0.85); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow-add::after { animation: none; }
+  .v-conn.live .dot { animation: none; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Enablement<span class="dot">.</span>ch</a>
+    <div class="nav-menu">
+      <a href="#foundations">Foundations</a>
+      <a href="#components">Components</a>
+      <a href="#diagrams">Diagrams</a>
+      <a href="#patterns">Patterns</a>
+      <a href="#tokens">Tokens</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a href="#" class="btn btn-accent">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <span class="eyebrow"><span class="num">v0.4</span><span class="sep">/</span> Design system</span>
+      <h1 class="display">
+        Scale your pipeline,<br>
+        <span class="italic-accent">not your headcount.</span>
+      </h1>
+      <p class="lead hero-lead">Fractional GTM engineering for B2B teams in DACH. We design and run the systems that move your revenue, then hand them over or operate them ourselves.</p>
+      <div class="hero-actions">
+        <a href="#foundations" class="btn btn-accent btn-md">Book a call</a>
+        <a href="#tokens" class="btn btn-tertiary">See the work <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero visual: video placeholder under the headline -->
+  <div class="hero-visual">
+    <div class="hero-visual-frame" aria-label="Intro video">
+      <div class="hero-visual-play">
+        <button class="play-btn" aria-label="Play intro video">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div class="label">Watch · 90 sec intro</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- LOGO WALL -->
+<section class="section logo-wall-section">
+  <div class="container stack-5">
+    <div style="text-align:center">
+      <span class="eyebrow"><span class="num">01</span><span class="sep">/</span> GTM teams that trust Enablement.ch to grow their pipeline</span>
+    </div>
+    <div class="logo-wall">
+      <div class="logo-cell"><span class="logo-mark">scrypt</span><a href="#" class="logo-cs">Case Study</a></div>
+      <div class="logo-cell"><span class="logo-mark">HUBSPOT</span></div>
+      <div class="logo-cell"><span class="logo-mark">Skribble</span><a href="#" class="logo-cs">Case Study</a></div>
+      <div class="logo-cell"><span class="logo-mark">linkup</span></div>
+      <div class="logo-cell"><span class="logo-mark">Pillar</span><a href="#" class="logo-cs">Case Study</a></div>
+      <div class="logo-cell"><span class="logo-mark">forto.</span></div>
+      <div class="logo-cell"><span class="logo-mark">Beekeeper</span></div>
+      <div class="logo-cell"><span class="logo-mark">Smallpdf</span><a href="#" class="logo-cs">Case Study</a></div>
+      <div class="logo-cell"><span class="logo-mark">Numarics</span></div>
+      <div class="logo-cell"><span class="logo-mark">Tinybird</span></div>
+      <div class="logo-cell"><span class="logo-mark">Bonusly</span><a href="#" class="logo-cs">Case Study</a></div>
+      <div class="logo-cell"><span class="logo-mark">Aerleum</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="container" style="padding-top:var(--space-6)">
+  <div class="stats">
+    <div class="stat"><div class="stat-num">2<em>×</em></div><div class="stat-label">Pipeline in 3 months</div></div>
+    <div class="stat"><div class="stat-num">4–6 wk</div><div class="stat-label">Brief to production</div></div>
+    <div class="stat"><div class="stat-num">93+</div><div class="stat-label">B2B GTM teams enabled</div></div>
+  </div>
+</div>
+
+<!-- BRAND VOICE -->
+<section class="section" id="voice">
+  <div class="container stack-6">
+    <span class="eyebrow"><span class="num">02</span><span class="sep">/</span> Brand voice</span>
+    <h2><span class="italic-accent">Built.</span> Composed. Operative. Crisp. Confident.</h2>
+    <p class="lead">Every page reads like a brief, not a brochure. Restraint is the move — one accent color, one display family, one motion language. The volume comes from contrast, not from layering effects.</p>
+    <div class="divider-grid cols-5" style="margin-top:24px">
+      <div class="dg-cell stack-3"><span class="eyebrow"><span class="num">A</span></span><h5>Built</h5><p style="font-size:var(--font-size-caption)">We ship systems, not slide decks.</p></div>
+      <div class="dg-cell stack-3"><span class="eyebrow"><span class="num">B</span></span><h5>Composed</h5><p style="font-size:var(--font-size-caption)">One accent, one display, one motion.</p></div>
+      <div class="dg-cell stack-3"><span class="eyebrow"><span class="num">C</span></span><h5>Operative</h5><p style="font-size:var(--font-size-caption)">Live infrastructure, not a deck.</p></div>
+      <div class="dg-cell stack-3"><span class="eyebrow"><span class="num">D</span></span><h5>Crisp</h5><p style="font-size:var(--font-size-caption)">Cool palette, sharp grid, no fog.</p></div>
+      <div class="dg-cell stack-3"><span class="eyebrow"><span class="num">E</span></span><h5>Confident</h5><p style="font-size:var(--font-size-caption)">Headlines make claims. Buttons say what happens.</p></div>
+    </div>
+
+    <div class="card" style="margin-top:32px">
+      <span class="eyebrow"><span class="num">★</span><span class="sep">/</span> Words we don't use</span>
+      <p style="margin-top:12px; font-family:var(--font-mono); font-size:13px; line-height:1.9; color:var(--color-muted); max-width:none">
+        <s>leverage</s> &middot; <s>potentially</s> &middot; <s>world-class</s> &middot; <s>best-in-class</s> &middot; <s>best practices</s> &middot; <s>innovative</s> &middot; <s>cutting-edge</s> &middot; <s>robust solutions</s> &middot; <s>we are excited to announce</s>
+      </p>
+      <p style="margin-top:12px; font-size:var(--font-size-caption); color:var(--color-body)">Hedges and category buzzwords. They signal to the wrong cluster, and they hide what we actually do behind language we'd never use in a discovery call.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COLOR -->
+<section class="section" id="foundations">
+  <div class="container stack-6">
+    <span class="eyebrow"><span class="num">03</span><span class="sep">/</span> Foundations &mdash; Color</span>
+    <h2>Cool canvas. <span class="italic-accent">Warm accent.</span></h2>
+    <p>The palette is built on cool semantic tokens that swap between light and dark. The amber accent is constant across both modes &mdash; warmth-on-cool is the deliberate temperature tension. No pure white, no pure black.</p>
+
+    <h5 style="margin-top:32px">Surface (semantic — flips on theme)</h5>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-canvas)"></div><div class="swatch-meta"><div class="swatch-name">color.canvas</div><div class="swatch-hex">page background</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-surface)"></div><div class="swatch-meta"><div class="swatch-name">color.surface</div><div class="swatch-hex">cards, panels</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-surface-raised)"></div><div class="swatch-meta"><div class="swatch-name">color.surface-raised</div><div class="swatch-hex">hover, hover</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-border)"></div><div class="swatch-meta"><div class="swatch-name">color.border</div><div class="swatch-hex">hairlines</div></div></div>
+    </div>
+
+    <h5 style="margin-top:32px">Text (semantic — flips on theme)</h5>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-heading)"></div><div class="swatch-meta"><div class="swatch-name">color.heading</div><div class="swatch-hex">H1–H6, primary</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-body)"></div><div class="swatch-meta"><div class="swatch-name">color.body</div><div class="swatch-hex">paragraph text</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-muted)"></div><div class="swatch-meta"><div class="swatch-name">color.muted</div><div class="swatch-hex">eyebrows, captions</div></div></div>
+    </div>
+
+    <h5 style="margin-top:32px">Accent (constant across themes)</h5>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-color" style="background:#E11E48"></div><div class="swatch-meta"><div class="swatch-name">color.accent</div><div class="swatch-hex">#E11E48 &middot; primary accent</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#BE123C"></div><div class="swatch-meta"><div class="swatch-name">color.accent.hover</div><div class="swatch-hex">#BE123C &middot; hover state</div></div></div>
+    </div>
+
+    <h5 style="margin-top:32px">System signals</h5>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-color" style="background:#2E8F54"></div><div class="swatch-meta"><div class="swatch-name">signal.positive</div><div class="swatch-hex">#2E8F54</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#C77B0E"></div><div class="swatch-meta"><div class="swatch-name">signal.warning</div><div class="swatch-hex">#C77B0E</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#B43A2A"></div><div class="swatch-meta"><div class="swatch-name">signal.critical</div><div class="swatch-hex">#B43A2A</div></div></div>
+    </div>
+
+    <h5 style="margin-top:32px">Workflow-only (not a brand color)</h5>
+    <p style="font-size:var(--font-size-caption); color:var(--color-muted); margin-top:-8px">Soft blue used inside workflow diagrams for connectors, status pills, and branch labels. Never used as a brand accent on the rest of the site.</p>
+    <div class="swatch-grid" style="margin-top:16px">
+      <div class="swatch"><div class="swatch-color" style="background:#6FA8DC"></div><div class="swatch-meta"><div class="swatch-name">color.flow</div><div class="swatch-hex">#6FA8DC &middot; connector lines</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#4A89C7"></div><div class="swatch-meta"><div class="swatch-name">color.flow-strong</div><div class="swatch-hex">#4A89C7 &middot; arrowheads, dots</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section class="section">
+  <div class="container stack-6">
+    <span class="eyebrow"><span class="num">04</span><span class="sep">/</span> Foundations &mdash; Typography</span>
+    <h2>Sofia Sans. JetBrains Mono. <span class="italic-accent">That's it.</span></h2>
+    <p>Two families, three roles. Sofia Sans 600 for headings, 400 for body, 400 italic for emphasis. JetBrains Mono 500 for eyebrows, labels, and tabular numerals only. Modular ratio 1.25 on a 16&nbsp;px base.</p>
+
+    <div style="margin-top:32px">
+      <div class="type-row"><span class="meta">display</span><span class="meta">96px</span><span class="sample" style="font-size:var(--font-size-display); line-height:1.05; font-weight:600">Tomorrow's GTM, <span class="italic-accent">built today.</span></span></div>
+      <div class="type-row"><span class="meta">h1</span><span class="meta">61px</span><span class="sample" style="font-size:var(--font-size-h1); font-weight:600">Pages that <span class="italic-accent">read themselves.</span></span></div>
+      <div class="type-row"><span class="meta">h2</span><span class="meta">49px</span><span class="sample" style="font-size:var(--font-size-h2); font-weight:600">Section headline</span></div>
+      <div class="type-row"><span class="meta">h3</span><span class="meta">39px</span><span class="sample" style="font-size:var(--font-size-h3); font-weight:600">Subsection</span></div>
+      <div class="type-row"><span class="meta">h4</span><span class="meta">31px</span><span class="sample" style="font-size:var(--font-size-h4); font-weight:600">Card title</span></div>
+      <div class="type-row"><span class="meta">h5</span><span class="meta">25px</span><span class="sample" style="font-size:var(--font-size-h5); font-weight:600">Small heading</span></div>
+      <div class="type-row"><span class="meta">lead</span><span class="meta">20px</span><span class="sample" style="font-size:var(--font-size-lead); line-height:1.5; font-weight:400">Lead paragraph — sits below H1, never longer than two sentences.</span></div>
+      <div class="type-row"><span class="meta">body</span><span class="meta">16px</span><span class="sample" style="font-size:var(--font-size-body); line-height:1.6; font-weight:400">Default body text in Sofia Sans 400. Line length is held at 60–72ch. Paragraphs do not run full-bleed.</span></div>
+      <div class="type-row"><span class="meta">caption</span><span class="meta">13px</span><span class="sample" style="font-size:var(--font-size-caption); line-height:1.5; font-weight:400">Footnote, helper text, dense data labels.</span></div>
+      <div class="type-row"><span class="meta">eyebrow</span><span class="meta">12px</span><span class="sample" style="font-family:var(--font-mono); font-size:var(--font-size-eyebrow); text-transform:uppercase; letter-spacing:0.14em; font-weight:500">JetBrains mono caps — 0.14em tracking</span></div>
+    </div>
+
+    <div class="card" style="margin-top:32px">
+      <span class="eyebrow"><span class="num">★</span><span class="sep">/</span> The signature</span>
+      <h4 style="margin-top:16px">Sofia Sans 600 + Sofia Sans 400 italic + accent color</h4>
+      <p style="margin-top:12px">The brand's verbal-visual hook. One italic phrase per section, max. The italic + accent color carries the emphasis without needing a second display family.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPACING -->
+<section class="section">
+  <div class="container stack-6">
+    <span class="eyebrow"><span class="num">05</span><span class="sep">/</span> Foundations &mdash; Spacing</span>
+    <h2>An 8&nbsp;pt rhythm. <span class="italic-accent">Held to it.</span></h2>
+    <p>Every margin, padding, and gap traces back to this scale. Section padding is space.10 desktop, space.9 mobile. Card internal padding is space.6.</p>
+
+    <div style="margin-top:24px; max-width:680px">
+      <div class="spacing-row"><span class="meta">space.1</span><span class="meta">4px</span><div class="spacing-bar" style="width:4px"></div></div>
+      <div class="spacing-row"><span class="meta">space.2</span><span class="meta">8px</span><div class="spacing-bar" style="width:8px"></div></div>
+      <div class="spacing-row"><span class="meta">space.3</span><span class="meta">12px</span><div class="spacing-bar" style="width:12px"></div></div>
+      <div class="spacing-row"><span class="meta">space.4</span><span class="meta">16px</span><div class="spacing-bar" style="width:16px"></div></div>
+      <div class="spacing-row"><span class="meta">space.5</span><span class="meta">24px</span><div class="spacing-bar" style="width:24px"></div></div>
+      <div class="spacing-row"><span class="meta">space.6</span><span class="meta">32px</span><div class="spacing-bar" style="width:32px"></div></div>
+      <div class="spacing-row"><span class="meta">space.7</span><span class="meta">48px</span><div class="spacing-bar" style="width:48px"></div></div>
+      <div class="spacing-row"><span class="meta">space.8</span><span class="meta">64px</span><div class="spacing-bar" style="width:64px"></div></div>
+      <div class="spacing-row"><span class="meta">space.9</span><span class="meta">96px</span><div class="spacing-bar" style="width:96px"></div></div>
+      <div class="spacing-row"><span class="meta">space.10</span><span class="meta">128px</span><div class="spacing-bar" style="width:128px"></div></div>
+      <div class="spacing-row"><span class="meta">space.11</span><span class="meta">192px</span><div class="spacing-bar" style="width:192px"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ICONOGRAPHY -->
+<section class="section">
+  <div class="container stack-6">
+    <span class="eyebrow"><span class="num">06</span><span class="sep">/</span> Foundations &mdash; Iconography</span>
+    <h2>Lucide. <span class="italic-accent">1.5 px stroke.</span></h2>
+    <p>One open-source icon family. Three sizes — 16, 20, 24&nbsp;px. Stroke 1.5&nbsp;px, color follows surrounding text. No filled icons, no two-tone, no gradients. Accent color appears on hover or active state only.</p>
+
+    <h5 style="margin-top:32px">Sizes</h5>
+    <div class="icon-size-row">
+      <div class="icon-size-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px"><circle cx="12" cy="12" r="10"/><path d="M22 4 12 14.01l-3-3"/></svg>
+        <span class="label">16</span>
+      </div>
+      <div class="icon-size-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px; height:20px"><circle cx="12" cy="12" r="10"/><path d="M22 4 12 14.01l-3-3"/></svg>
+        <span class="label">20</span>
+      </div>
+      <div class="icon-size-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:24px; height:24px"><circle cx="12" cy="12" r="10"/><path d="M22 4 12 14.01l-3-3"/></svg>
+        <span class="label">24</span>
+      </div>
+    </div>
+
+    <h5 style="margin-top:48px">Library — common GTM icons</h5>
+    <div class="icon-grid" style="margin-top:16px">
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        <span class="icon-tile-name">target</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span class="icon-tile-name">zap</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+        <span class="icon-tile-name">send</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <span class="icon-tile-name">calendar</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+        <span class="icon-tile-name">mail</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <span class="icon-tile-name">search</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        <span class="icon-tile-name">trending</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+        <span class="icon-tile-name">filter</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="3" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M6 5v14a3 3 0 0 0 3 3h7"/><path d="M18 8a3 3 0 0 1-3 3H9"/></svg>
+        <span class="icon-tile-name">workflow</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.08a2 2 0 0 1 1 1.74v.5a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2"/><circle cx="12" cy="12" r="3"/></svg>
+        <span class="icon-tile-name">settings</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span class="icon-tile-name">message</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg>
+        <span class="icon-tile-name">cpu</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+        <span class="icon-tile-name">sparkle</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        <span class="icon-tile-name">plus</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span class="icon-tile-name">check</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 18l6-6-6-6"/></svg>
+        <span class="icon-tile-name">arrow-right</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <span class="icon-tile-name">link</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+        <span class="icon-tile-name">document</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 12l4-4 4 4 5-5"/></svg>
+        <span class="icon-tile-name">chart</span>
+      </div>
+      <div class="icon-tile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h12"/></svg>
+        <span class="icon-tile-name">list</span>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:32px">
+      <span class="eyebrow"><span class="num">★</span><span class="sep">/</span> ICONOGRAPHY RULES</span>
+      <ul style="margin-top:16px; padding-left:20px; color:var(--color-body); font-size:var(--font-size-caption); line-height:1.7">
+        <li><strong style="color:var(--color-heading)">Lucide only.</strong> One open-source icon set across the brand. No mixing with Tabler, Heroicons, etc.</li>
+        <li><strong style="color:var(--color-heading)">Stroke 1.5&nbsp;px.</strong> Never filled. Never two-tone. Color follows currentColor — heading by default, accent on hover/active.</li>
+        <li><strong style="color:var(--color-heading)">Three sizes.</strong> 16&nbsp;px (inline-text), 20&nbsp;px (button / nav), 24&nbsp;px (feature / hero block). Nothing in-between.</li>
+        <li><strong style="color:var(--color-heading)">Inline SVG.</strong> Embedded directly, not loaded as &lt;img&gt;. Lets currentColor cascade and scale crisply.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- RADIUS / SHADOW -->
+<section class="section">
+  <div class="container stack-6">
+    <span class="eyebrow"><span class="num">07</span><span class="sep">/</span> Foundations &mdash; Radius &amp; depth</span>
+    <h2>Soft corners. <span class="italic-accent">Quiet shadows.</span></h2>
+    <p>Default component radius is md (12&nbsp;px). Buttons are pill. On a light canvas, depth is subtle — shadows never exceed shadow.md unless lifting a modal.</p>
+
+    <h5 style="margin-top:32px">Radius</h5>
+    <div class="demo-grid">
+      <div class="demo-tile" style="border-radius:var(--radius-xs)">xs &middot; 4px</div>
+      <div class="demo-tile" style="border-radius:var(--radius-sm)">sm &middot; 8px</div>
+      <div class="demo-tile" style="border-radius:var(--radius-md)">md &middot; 12px</div>
+      <div class="demo-tile" style="border-radius:var(--radius-lg)">lg &middot; 20px</div>
+      <div class="demo-tile" style="border-radius:var(--radius-pill)">pill</div>
+    </div>
+
+    <h5 style="margin-top:32px">Shadow</h5>
+    <div class="demo-grid">
+      <div class="demo-tile" style="border-radius:var(--radius-md); box-shadow:var(--shadow-xs)">shadow.xs</div>
+      <div class="demo-tile" style="border-radius:var(--radius-md); box-shadow:var(--shadow-sm)">shadow.sm</div>
+      <div class="demo-tile" style="border-radius:var(--radius-md); box-shadow:var(--shadow-md)">shadow.md</div>
+      <div class="demo-tile" style="border-radius:var(--radius-md); box-shadow:var(--shadow-lg)">shadow.lg</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section class="section" id="components">
+  <div class="container stack-6">
+    <span class="eyebrow"><span class="num">08</span><span class="sep">/</span> Components</span>
+    <h2>Buttons. Cards. <span class="italic-accent">Forms.</span></h2>
+    <p>Every component below renders with the same tokens. Tab through to see focus states. Toggle the theme to see the system flip.</p>
+
+    <h5 style="margin-top:32px">Buttons</h5>
+    <div class="gap-4">
+      <button class="btn btn-accent btn-md">Book a call</button>
+      <button class="btn btn-primary btn-md">Read case study</button>
+      <button class="btn btn-secondary btn-md">See services</button>
+      <a href="#" class="btn btn-tertiary">Learn more <span class="arrow">→</span></a>
+      <button class="btn btn-accent btn-md btn-disabled">Disabled</button>
+    </div>
+    <p class="mono" style="margin-top:8px">accent &middot; primary &middot; secondary &middot; tertiary &middot; disabled. Tab to see focus ring.</p>
+
+    <h5 style="margin-top:32px">Form fields</h5>
+    <div class="gap-4" style="align-items:flex-start">
+      <div class="field">
+        <label class="field-label" for="email">Work email</label>
+        <input class="input" id="email" type="email" placeholder="you@company.com">
+        <span class="help">We'll only use this for the brief.</span>
+      </div>
+      <div class="field">
+        <label class="field-label" for="domain">Domain</label>
+        <input class="input error" id="domain" type="text" value="acme">
+        <span class="help error">Domain must include a TLD (e.g., acme.com).</span>
+      </div>
+      <div class="field" style="max-width:420px">
+        <label class="field-label" for="brief">Brief</label>
+        <textarea class="textarea" id="brief" rows="3" placeholder="What system are you trying to build?"></textarea>
+      </div>
+    </div>
+
+    <h5 style="margin-top:32px">Cards (Cal.com-style numbered process)</h5>
+    <div class="demo-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
+      <div class="card numbered-card card-hoverable">
+        <div class="num-badge"><span class="num">01</span><span>—</span><span>DISCOVER</span></div>
+        <h4>Connect your stack</h4>
+        <p style="margin-top:12px">We map your current pipeline, identify where AI infrastructure creates the highest leverage, and recommend which system to build first.</p>
+      </div>
+      <div class="card numbered-card card-hoverable">
+        <div class="num-badge"><span class="num">02</span><span>—</span><span>BUILD</span></div>
+        <h4>Set the rhythm</h4>
+        <p style="margin-top:12px">Voice calibration, workflow configuration, integration setup, production testing — all in 4 to 6 weeks.</p>
+      </div>
+      <div class="card numbered-card card-featured">
+        <div class="num-badge"><span class="num" style="color:var(--color-accent-hover)">03</span><span>—</span><span style="color:var(--color-accent-hover)">SHIP</span></div>
+        <h4>Choose your op model</h4>
+        <p style="margin-top:12px">Build + Own, or We Run It For You. Same infrastructure. Different operating model.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGRAMS & ILLUSTRATION -->
+<section class="section" id="diagrams">
+  <div class="container stack-6">
+    <span class="eyebrow"><span class="num">09</span><span class="sep">/</span> Diagrams &amp; illustration</span>
+    <h2>The work <span class="italic-accent">is</span> the visual.</h2>
+    <p>We design and run go-to-market workflows &mdash; so we draw them. Workflow diagrams are the brand's primary illustration. Crimson marks the active path. Soft blue carries the data flow. Gray is everything dormant.</p>
+
+    <!-- Workflow legend -->
+    <div class="gap-4" style="margin-top:24px">
+      <span class="status-pill flow" style="position:static; left:auto; top:auto;">Triggered</span>
+      <span class="status-pill positive" style="position:static; left:auto; top:auto;">Completed</span>
+      <span class="status-pill ai" style="position:static; left:auto; top:auto;">AI</span>
+      <span class="type-pill">Leads</span>
+      <span class="type-pill">Condition</span>
+      <span class="type-pill">Sequences</span>
+    </div>
+
+    <!-- Workflow diagram -->
+    <h5 style="margin-top:48px">Workflow</h5>
+    <p>Vertical pipeline with branching. The active path carries the crimson ring; the inactive branch goes dashed gray. Status pills float beside nodes; branch labels sit on the connector lines.</p>
+
+    <div class="dot-grid" style="margin-top:16px">
+      <div class="flow-v">
+        <!-- Trigger node -->
+        <div class="flow-node active">
+          <div class="flow-node-head">
+            <div class="flow-node-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M3 12h6M15 12h6M12 3v6M12 15v6"/></svg></div>
+            <div class="flow-node-title">When new lead found</div>
+            <span class="type-pill">Leads</span>
+          </div>
+          <div class="flow-node-body">Triggers when a person is added to the Q2 outbound list and matches the ICP filters.</div>
+          <span class="status-pill flow">Triggered</span>
+        </div>
+
+        <!-- Vertical connector (live) -->
+        <div class="v-conn live">
+          <svg viewBox="0 0 320 56" preserveAspectRatio="none">
+            <line class="line" x1="160" y1="0" x2="160" y2="48"/>
+            <polygon class="arrow" points="155,48 160,56 165,48"/>
+            <circle class="dot" cx="160" cy="0" r="3"/>
+          </svg>
+        </div>
+
+        <!-- Switch node -->
+        <div class="flow-node active">
+          <div class="flow-node-head">
+            <div class="flow-node-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h13M16 6l3 3-3 3M21 18H8M8 18l-3-3 3-3"/></svg></div>
+            <div class="flow-node-title">Score &amp; route</div>
+            <span class="type-pill">Condition</span>
+          </div>
+          <div class="flow-node-body">Routes to a sequence based on ICP score, intent signal, and territory.</div>
+          <span class="status-pill positive">Completed</span>
+        </div>
+
+        <!-- Branching fan (cornered, slight rounding via stroke-linejoin) -->
+        <div class="branch-fan">
+          <svg viewBox="0 0 680 80" preserveAspectRatio="none">
+            <!-- Shared trunk drop -->
+            <path class="line" d="M340,0 V36" stroke-linejoin="round" stroke-linecap="round"/>
+            <!-- Active branch (left): horizontal then vertical -->
+            <path class="line" d="M340,36 H170 V72" stroke-linejoin="round" stroke-linecap="round"/>
+            <polygon class="arrow" points="165,72 170,80 175,72"/>
+            <!-- Inactive branch (right, dashed) -->
+            <path class="line muted" d="M340,36 H510 V72" stroke-linejoin="round" stroke-linecap="round"/>
+            <polygon class="arrow muted" points="505,72 510,80 515,72"/>
+          </svg>
+          <span class="branch-label" style="left:25%; top:48%">Hot &middot; score ≥ 80</span>
+          <span class="branch-label muted" style="left:75%; top:48%">Cold &middot; score &lt; 80</span>
+        </div>
+
+        <!-- Branch row (two children) -->
+        <div class="branch-row">
+          <div class="flow-node active">
+            <div class="flow-node-head">
+              <div class="flow-node-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></div>
+              <div class="flow-node-title">Add to Q2 sequence</div>
+              <span class="type-pill">Sequences</span>
+            </div>
+            <div class="flow-node-body">Enrolls the person in the high-intent Q2 outbound sequence with day-1 send.</div>
+            <span class="status-pill positive">Completed</span>
+          </div>
+          <div class="flow-node">
+            <div class="flow-node-head">
+              <div class="flow-node-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+              <div class="flow-node-title">Park in nurture</div>
+              <span class="type-pill">Sequences</span>
+            </div>
+            <div class="flow-node-body">Re-evaluates in 90 days when score crosses the threshold or a new signal fires.</div>
+          </div>
+        </div>
+
+        <!-- + add button below the active path -->
+        <button class="flow-add" aria-label="Add step">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Illustration rules -->
+    <div class="card" style="margin-top:48px">
+      <span class="eyebrow"><span class="num">★</span><span class="sep">/</span> ILLUSTRATION RULES</span>
+      <ul style="margin-top:16px; padding-left:20px; color:var(--color-body); font-size:var(--font-size-caption); line-height:1.7">
+        <li><strong style="color:var(--color-heading)">Workflow diagrams are the primary illustration.</strong> They represent the work we do. No painted illustrations, no isometric mockups, no laptop frames, no stock.</li>
+        <li><strong style="color:var(--color-heading)">Crimson marks the active path.</strong> Inactive branches use muted gray with a dashed connector. One active path per diagram.</li>
+        <li><strong style="color:var(--color-heading)">Soft blue is the data flow color.</strong> Used only inside diagrams (connectors, status pills, branch labels). Never as a brand accent.</li>
+        <li><strong style="color:var(--color-heading)">Type pills are mono-only.</strong> Subtle gray labels in node headers (Leads, Condition, Sequences). Don't tint them.</li>
+        <li><strong style="color:var(--color-heading)">Status pills carry local state colors.</strong> Triggered (blue), Completed (green), AI (violet). State indicators, not brand colors.</li>
+        <li><strong style="color:var(--color-heading)">Dot grid is for diagram backdrops only.</strong> Never as a page background.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HERO PATTERNS -->
+<section class="section" id="patterns">
+  <div class="container stack-6">
+    <span class="eyebrow"><span class="num">10</span><span class="sep">/</span> Patterns &mdash; Section anatomy</span>
+    <h2>Eyebrow → headline → <span class="italic-accent">lead → content.</span></h2>
+    <p>Every section repeats the same skeleton. Italic emphasis appears once per section, never in body copy.</p>
+
+    <div class="card" style="margin-top:48px; padding:48px">
+      <span class="eyebrow"><span class="num">A</span><span class="sep">/</span> Services</span>
+      <h3 style="margin-top:16px">Two operators. <span class="italic-accent">One system.</span></h3>
+      <p class="lead" style="margin-top:24px">Everything we build is shipped, instrumented, and handed off — or operated for you. Choose your involvement.</p>
+      <div class="hero-actions" style="margin-top:24px">
+        <a href="#" class="btn btn-accent btn-md">Book a call</a>
+        <a href="#" class="btn btn-secondary btn-md">See managed services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK INVERTED SECTION -->
+<section class="section inverted">
+  <div class="container stack-6">
+    <span class="eyebrow"><span class="num">11</span><span class="sep">/</span> Patterns &mdash; Inverted section</span>
+    <h2>Dark sections invert. <span class="italic-accent">Same system.</span></h2>
+    <p>Inverted sections are reserved for case-study deep dives, hero overlays, or quote pulls. Every other rule still holds — same type, same rhythm, same accent.</p>
+
+    <div class="demo-grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); margin-top:32px">
+      <div class="card numbered-card">
+        <div class="num-badge"><span class="num">01</span><span>—</span><span>OUTBOUND</span></div>
+        <h4>+162% reply lift</h4>
+        <p style="margin-top:12px">Voice-calibrated sequences with intent-aware qualification.</p>
+      </div>
+      <div class="card numbered-card">
+        <div class="num-badge"><span class="num">02</span><span>—</span><span>INBOUND</span></div>
+        <h4>+88% MQL volume</h4>
+        <p style="margin-top:12px">Programmatic SEO + content engine wired to HubSpot.</p>
+      </div>
+      <div class="card numbered-card">
+        <div class="num-badge"><span class="num">03</span><span>—</span><span>PARTNER</span></div>
+        <h4>+42% sourced</h4>
+        <p style="margin-top:12px">Co-marketing and referral plays surfaced from CRM signal.</p>
+      </div>
+    </div>
+
+    <div class="hero-actions" style="margin-top:32px">
+      <a href="#" class="btn btn-accent btn-md">Book a call</a>
+      <a href="#" class="btn btn-secondary btn-md">Read the case study</a>
+    </div>
+  </div>
+</section>
+
+<!-- MOTION -->
+<section class="section">
+  <div class="container stack-6">
+    <span class="eyebrow"><span class="num">12</span><span class="sep">/</span> Motion</span>
+    <h2>Restrained. <span class="italic-accent">Information only.</span></h2>
+    <p>Motion is reserved for state feedback and small reveals. No parallax, no elastic bounces. prefers-reduced-motion is honored globally — animations cut, they do not slow.</p>
+
+    <div class="demo-grid" style="margin-top:24px">
+      <div class="stack-3">
+        <span class="mono">duration.fast 200ms</span>
+        <div class="motion-tile" style="--dur:200ms"><i></i></div>
+      </div>
+      <div class="stack-3">
+        <span class="mono">duration.base 320ms</span>
+        <div class="motion-tile" style="--dur:320ms"><i></i></div>
+      </div>
+      <div class="stack-3">
+        <span class="mono">duration.slow 600ms</span>
+        <div class="motion-tile" style="--dur:600ms"><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DO / DONT -->
+<section class="section">
+  <div class="container stack-6">
+    <span class="eyebrow"><span class="num">13</span><span class="sep">/</span> Do &amp; Don't</span>
+    <h2>Six rules. <span class="italic-accent">Held tightly.</span></h2>
+
+    <div class="dd-grid" style="margin-top:32px">
+      <!-- visual 1 -->
+      <div class="dd">
+        <span class="dd-tag dd-do">✓ DO</span>
+        <div class="dd-sample">
+          <div style="font-family:var(--font-sans); font-size:2rem; font-weight:600; color:var(--color-heading); letter-spacing:-0.02em; line-height:1.15">Scale your pipeline, <span class="italic-accent">not your headcount.</span></div>
+        </div>
+        <div class="dd-note">Mix Sofia Sans 600 with Sofia Sans 400 italic + accent color for the emphasis phrase. The italic does the lifting; the color does the drama.</div>
+      </div>
+      <div class="dd">
+        <span class="dd-tag dd-dont">✗ DON'T</span>
+        <div class="dd-sample">
+          <div style="font-family:var(--font-sans); font-style:italic; font-size:2rem; line-height:1.15; color:var(--color-accent); font-weight:400">Scale your pipeline not your headcount.</div>
+        </div>
+        <div class="dd-note">Set entire headlines in italic + accent. Loses the emphasis signature; reads as decoration, not as claim.</div>
+      </div>
+
+      <!-- visual 2 -->
+      <div class="dd">
+        <span class="dd-tag dd-do">✓ DO</span>
+        <div class="dd-sample" style="display:flex; gap:16px; align-items:center; flex-wrap:wrap">
+          <a href="#" class="btn btn-accent">Book a call</a>
+          <a href="#" class="btn btn-tertiary">See case studies <span class="arrow">→</span></a>
+        </div>
+        <div class="dd-note">One amber CTA per viewport. Secondary action is a quiet text-link with arrow.</div>
+      </div>
+      <div class="dd">
+        <span class="dd-tag dd-dont">✗ DON'T</span>
+        <div class="dd-sample" style="display:flex; gap:16px; align-items:center; flex-wrap:wrap">
+          <a href="#" class="btn btn-accent">Book a call</a>
+          <a href="#" class="btn" style="background:var(--color-positive); color:#fff">Get the playbook</a>
+          <a href="#" class="btn" style="background:var(--color-critical); color:#fff">Hot deal</a>
+        </div>
+        <div class="dd-note">Stack accent uses or introduce extra hues. The brand uses one chromatic against the canvas.</div>
+      </div>
+
+      <!-- visual 3 -->
+      <div class="dd">
+        <span class="dd-tag dd-do">✓ DO</span>
+        <div class="dd-sample" style="display:flex; justify-content:center; padding:32px">
+          <div class="flow-node active" style="width:220px; box-shadow:none">
+            <div class="flow-node-head">
+              <div class="flow-node-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h13M16 6l3 3-3 3"/></svg></div>
+              <div class="flow-node-title">Score &amp; route</div>
+              <span class="type-pill">Cond</span>
+            </div>
+            <div class="flow-node-body" style="font-size:12px">Routes leads by ICP score and intent.</div>
+          </div>
+        </div>
+        <div class="dd-note">When the page needs a visual, draw the work. A workflow fragment with real labels is the brand.</div>
+      </div>
+      <div class="dd">
+        <span class="dd-tag dd-dont">✗ DON'T</span>
+        <div class="dd-sample" style="text-align:center">
+          <div style="display:inline-block; padding:24px; background:linear-gradient(135deg,#ff6b6b,#feca57,#48dbfb); border-radius:32px; transform:perspective(800px) rotateY(-15deg) rotateX(5deg); box-shadow:0 30px 60px rgba(0,0,0,0.4)">
+            <div style="background:#fff; padding:16px; border-radius:12px; color:var(--color-heading); font-family:var(--font-mono); font-size:13px">Reply rate: 11.4%</div>
+          </div>
+        </div>
+        <div class="dd-note">Tilt mockups, layer gradients, or wrap fragments in fake laptop frames. Reads as agency stock.</div>
+      </div>
+
+      <!-- voice 1 -->
+      <div class="dd">
+        <span class="dd-tag dd-do">✓ DO</span>
+        <div class="dd-sample">
+          <div style="font-family:var(--font-sans); font-size:1.5rem; color:var(--color-heading); line-height:1.3; letter-spacing:-0.01em; font-weight:600">Two operators. One system. <span class="italic-accent">Look at the case studies.</span></div>
+        </div>
+        <div class="dd-note">Make a claim. Back it with a number, name, or screenshot. Sentence-case throughout.</div>
+      </div>
+      <div class="dd">
+        <span class="dd-tag dd-dont">✗ DON'T</span>
+        <div class="dd-sample">
+          <div style="font-family:var(--font-sans); font-size:1.5rem; color:var(--color-heading); line-height:1.3; letter-spacing:-0.01em; font-weight:600">Our World-Class Team Of Experts Delivers Best-In-Class Strategy!</div>
+        </div>
+        <div class="dd-note">Title Case + filler adjectives + exclamation. Hedges instead of claims.</div>
+      </div>
+
+      <!-- voice 2 -->
+      <div class="dd">
+        <span class="dd-tag dd-do">✓ DO</span>
+        <div class="dd-sample">
+          <div style="color:var(--color-heading); font-size:1.125rem; line-height:1.5; font-weight:400">8–12% reply rates. 4–6 weeks brief to production. 15–50 meetings booked per system.</div>
+        </div>
+        <div class="dd-note">Specifics over abstractions. Numbers replace adjectives wherever possible.</div>
+      </div>
+      <div class="dd">
+        <span class="dd-tag dd-dont">✗ DON'T</span>
+        <div class="dd-sample">
+          <div style="color:var(--color-heading); font-size:1.125rem; line-height:1.5; font-weight:400">We help businesses leverage AI to potentially drive better outbound outcomes through robust, end-to-end solutions.</div>
+        </div>
+        <div class="dd-note">Hedging language: "leverage," "potentially," "robust." Cut the deflection. Make the claim.</div>
+      </div>
+
+      <!-- voice 3 -->
+      <div class="dd">
+        <span class="dd-tag dd-do">✓ DO</span>
+        <div class="dd-sample">
+          <div style="font-family:var(--font-sans); font-size:1.25rem; color:var(--color-heading); line-height:1.4; font-weight:400">The system is <span class="italic-accent">yours.</span> Self-operates with optional maintenance, or stays in our hands.</div>
+        </div>
+        <div class="dd-note">One italic phrase per section. The italic does the lifting because it's rationed.</div>
+      </div>
+      <div class="dd">
+        <span class="dd-tag dd-dont">✗ DON'T</span>
+        <div class="dd-sample">
+          <div style="font-family:var(--font-sans); font-size:1.25rem; color:var(--color-heading); line-height:1.4; font-weight:400"><span class="italic-accent">The</span> system <span class="italic-accent">is</span> yours. <span class="italic-accent">Self-operates</span> with <span class="italic-accent">optional</span> maintenance.</div>
+        </div>
+        <div class="dd-note">Italics scattered across the line. Reads as shouting; loses the signature pattern.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESSIBILITY -->
+<section class="section">
+  <div class="container stack-6">
+    <span class="eyebrow"><span class="num">14</span><span class="sep">/</span> Accessibility</span>
+    <h2>WCAG 2.2 AA. <span class="italic-accent">No exceptions.</span></h2>
+    <div class="demo-grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); margin-top:32px">
+      <div class="card card-stack"><span class="eyebrow"><span class="num">A</span><span class="sep">/</span> Contrast</span><h5>4.5:1 body / 3:1 UI</h5><p style="font-size:var(--font-size-caption)">All semantic pairs verified in light + dark. Body text never carries the accent color.</p></div>
+      <div class="card card-stack"><span class="eyebrow"><span class="num">B</span><span class="sep">/</span> Focus</span><h5>2px ring at 2px offset</h5><p style="font-size:var(--font-size-caption)">Outline never removed without replacement. Tab through this page.</p></div>
+      <div class="card card-stack"><span class="eyebrow"><span class="num">C</span><span class="sep">/</span> Reduced motion</span><h5>Cut, don't slow</h5><p style="font-size:var(--font-size-caption)">prefers-reduced-motion is honored globally. Animations disable; they do not lengthen.</p></div>
+      <div class="card card-stack"><span class="eyebrow"><span class="num">D</span><span class="sep">/</span> Touch</span><h5>44px minimum</h5><p style="font-size:var(--font-size-caption)">All interactive surfaces meet the AA touch target on mobile.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOKENS -->
+<section class="section" id="tokens">
+  <div class="container stack-6">
+    <span class="eyebrow"><span class="num">15</span><span class="sep">/</span> Tokens</span>
+    <h2>Same system. <span class="italic-accent">Two formats.</span></h2>
+    <p>CSS custom properties for the implementation. JSON for the design pipeline. Names are identical across both. Surface and text tokens are semantic — they swap on theme.</p>
+
+    <div style="display:grid; grid-template-columns:1fr; gap:24px; margin-top:32px">
+      <div class="token-block">
+        <div class="token-block-head">tokens.css</div>
+<pre>:root {
+  /* Surface (light) */
+  --color-canvas: #F2F4F8;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FAFBFD;
+  --color-border: #E1E5EC;
+  --color-heading: #0F1217;
+  --color-body: #4A5360;
+  --color-muted: #7C8390;
+
+  /* Accent — constant */
+  --color-accent: #E11E48;
+  --color-accent-hover: #BE123C;
+
+  /* Workflow-only (not a brand color) */
+  --color-flow: #6FA8DC;
+  --color-flow-strong: #4A89C7;
+
+  /* Type */
+  --font-sans: "Sofia Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Scale */
+  --space-4: 16px; --space-6: 32px; --space-10: 128px;
+  --radius-md: 12px; --radius-pill: 999px;
+  --motion-duration-base: 320ms;
+  --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+[data-theme="dark"] {
+  --color-canvas: #0F1217;
+  --color-surface: #181C23;
+  --color-surface-raised: #232830;
+  --color-border: #2E343F;
+  --color-heading: #E5E9F0;
+  --color-body: #A0A8B5;
+  --color-muted: #6B7280;
+}</pre>
+      </div>
+
+      <div class="token-block">
+        <div class="token-block-head">tokens.json</div>
+<pre>{
+  "color": {
+    "canvas":         { "light": "#F2F4F8", "dark": "#0F1217" },
+    "surface":        { "light": "#FFFFFF", "dark": "#181C23" },
+    "surface-raised": { "light": "#FAFBFD", "dark": "#232830" },
+    "border":         { "light": "#E1E5EC", "dark": "#2E343F" },
+    "heading":        { "light": "#0F1217", "dark": "#E5E9F0" },
+    "body":           { "light": "#4A5360", "dark": "#A0A8B5" },
+    "muted":          { "light": "#7C8390", "dark": "#6B7280" },
+    "accent":         { "value": "#E11E48" },
+    "accent-hover":   { "value": "#BE123C" },
+    "_workflow-only": "below tokens are scoped to workflow diagrams, not brand",
+    "flow":           { "value": "#6FA8DC" },
+    "flow-strong":    { "value": "#4A89C7" }
+  },
+  "font": {
+    "family": {
+      "sans": { "value": "Sofia Sans, system-ui, sans-serif" },
+      "mono": { "value": "JetBrains Mono, ui-monospace, monospace" }
+    }
+  },
+  "space":  { "4": "16px", "6": "32px", "10": "128px" },
+  "radius": { "md": "12px", "pill": "999px" },
+  "motion": {
+    "duration": { "base": "320ms" },
+    "ease":     { "standard": "cubic-bezier(0.2, 0, 0, 1)" }
+  }
+}</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="nav-logo">Enablement<span class="dot">.</span>ch</a>
+        <p class="footer-tagline">Fractional GTM engineering for B2B teams in DACH.</p>
+      </div>
+      <div class="footer-group">
+        <h6>System</h6>
+        <a href="#">Outbound Engine</a>
+        <a href="#">Content Engine</a>
+        <a href="#">RevOps Stack</a>
+      </div>
+      <div class="footer-group">
+        <h6>Work</h6>
+        <a href="#">Case studies</a>
+        <a href="#">How it works</a>
+        <a href="#">Team</a>
+      </div>
+      <div class="footer-group">
+        <h6>Contact</h6>
+        <a href="#">Book a call</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">hello@enablement.ch</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Enablement.ch</span>
+      <span>v0.4 &middot; Design system</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme() {
+    const root = document.documentElement;
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  }
+  // Restore saved theme
+  try {
+    const saved = localStorage.getItem('theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch (e) {}
+</script>
+
+</body>
+</html>
