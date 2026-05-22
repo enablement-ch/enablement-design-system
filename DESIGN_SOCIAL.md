@@ -11,7 +11,7 @@
 | Animated process GIF / flywheel (4:5) | secondary format - 1 production reference |
 | Carousel (multi-slide 4:5) | de-emphasised - use only when content is narratively sequential and cannot fit one canvas |
 | Single image post (1080x1080) | situational - for one-line takes / single-stat posts |
-| LinkedIn personal banner (1584x396) | **pre-redesign, to be rebuilt** - existing 4 variants in `social-examples/archive/` retained for reference only |
+| LinkedIn personal banner (1584x396) | **pre-redesign, to be rebuilt** - current banners live on Lanny's profile; rebuild brief will follow the same cheat-sheet primitives |
 
 ## How this doc relates to the rest of the system
 
@@ -20,7 +20,6 @@
 | `~/enablement-site/src/styles/global.css` | Production color/type/spacing tokens | All canonical hex values, font stack, scale |
 | `~/enablement-design-system/site-plan.md` | Website composition rules | Voice, italic-emphasis pattern, hierarchy |
 | `~/enablement-design-system/social-examples/inspiration/README.md` | **Calibration references and rules they teach** | Every rule in this doc traces back to a reference |
-| `~/enablement-design-system/social-examples/archive/README.md` | Pre-redesign artefacts (4 LinkedIn banners) | Historical only, do not treat as canonical |
 | `~/enablement-design-system/templates/brief-template.md` | Brief contract for designer | What every brief must contain |
 | `~/enablement-design-system/templates/figma-file-spec.md` | Designer's Figma file structure | Required frames, layers, variable names |
 | **This file** | Social-specific rules | Format specs, voice-to-visual translation, primitives |
@@ -322,11 +321,9 @@ Default to 1080 x 1080 px when the post hinges on a single stat, quote, or contr
 
 ### 5.5 LinkedIn personal banner (1584x396) - pre-redesign
 
-**Status:** the 4 existing banner variants in `social-examples/archive/` predate the website redesign. They will be rebuilt to match the new visual register.
+**Status:** the current LinkedIn banners on Lanny's profile predate the website redesign and will be rebuilt.
 
-**Existing banners are not canonical.** They are retained in `archive/` as historical reference only.
-
-**Rebuild brief (parked):** apply gradient background + grid texture + glassmorphic pillar pills + Sofia Sans display headline + bottom trust strip + optional photo treatment. Designer to propose v2 of the banners as a separate task.
+**Rebuild brief (parked):** when the time comes, write a banner brief using the same primitives as the cheat-sheet format (gradient + grid texture canvas, glassmorphic surfaces). Banner rebuild is not blocking the cheat-sheet trial.
 
 ---
 

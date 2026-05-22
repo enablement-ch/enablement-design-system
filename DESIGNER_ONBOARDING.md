@@ -122,7 +122,6 @@ Claude knows the repo. No need to upload anything or copy-paste spec sections.
 - **Don't optimise tiles for text density.** Tiles need visualised artefacts (mockups, mini-tables, workflow snippets), not paragraphs. See DESIGN_SOCIAL.md Section 3.3.
 - **Don't tighten padding to fit more content.** If content doesn't fit, extend the canvas vertically. Cramped padding is the #1 documented failure mode (per the GTM Orchestration critique in inspiration/README.md).
 - **Don't introduce serif typefaces anywhere.** Sofia Sans + JetBrains Mono only. Lanny called this out specifically.
-- **Don't use the existing 4 LinkedIn banners as visual reference.** They predate the website redesign and are scheduled for rebuild. The canonical references are in `social-examples/inspiration/`, not `social-examples/banner-*`.
 
 ---
 
