@@ -12,8 +12,8 @@ A snapshot of where the Enablement.ch website rebuild stands. This is the source
 
 | Repo | Purpose | URL |
 |---|---|---|
-| `enablement-design-system` | Standalone styleguide + this site plan | https://github.com/MarcusAurelian/enablement-design-system |
-| `enablement-site` | The actual marketing site (Astro) | https://github.com/MarcusAurelian/enablement-site |
+| `enablement-design-system` | Standalone styleguide + this site plan | https://github.com/enablement-ch/enablement-design-system |
+| `enablement-site` | The actual marketing site (Astro) | https://github.com/enablement-ch/enablement-site |
 
 ### Local working copies
 
@@ -26,10 +26,10 @@ A snapshot of where the Enablement.ch website rebuild stands. This is the source
 
 | Site | Where | URL |
 |---|---|---|
-| Styleguide | GitHub Pages | https://marcusaurelian.github.io/enablement-design-system/ |
+| Styleguide | GitHub Pages | https://enablement-ch.github.io/enablement-design-system/ |
 | Marketing site | **Vercel — needs manual connection** | Pending (not yet wired) |
 
-**Vercel is not connected.** I push to GitHub but Vercel will only deploy if Lanny imports the repo at https://vercel.com/new → select `MarcusAurelian/enablement-site` → click Deploy. One-time setup. After that, every git push auto-deploys.
+**Vercel is not connected.** I push to GitHub but Vercel will only deploy if Lanny imports the repo at https://vercel.com/new → select `enablement-ch/enablement-site` → click Deploy. One-time setup. After that, every git push auto-deploys.
 
 ---
 
@@ -131,7 +131,7 @@ These are the blockers between "structurally complete staging" and "production-r
 
 ### Infrastructure
 
-- [ ] **Vercel connection** — Lanny needs to import `MarcusAurelian/enablement-site` at https://vercel.com/new
+- [ ] **Vercel connection** — Lanny needs to import `enablement-ch/enablement-site` at https://vercel.com/new
 - [ ] **Custom domain** — once Vercel is connected, point enablement.ch DNS at Vercel for production cutover
 - [ ] **Analytics** — currently none. Could add Plausible / Fathom / Vercel Analytics once live
 

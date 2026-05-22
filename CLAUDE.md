@@ -84,7 +84,7 @@ See [briefs/README.md](briefs/README.md) for the full workflow detail.
 
 ## What's deployed from this repo
 
-- The live styleguide at https://marcusaurelian.github.io/enablement-design-system/ (GitHub Pages, served from `index.html`)
+- The live styleguide at https://enablement-ch.github.io/enablement-design-system/ (GitHub Pages, served from `index.html`)
 - Nothing else. Briefs, social specs, and inspiration are read by humans + Claude, not deployed.
 
 ## Relationship to other Enablement repos

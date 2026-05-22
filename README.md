@@ -2,7 +2,7 @@
 
 Live styleguide for Enablement.ch. Single self-contained HTML page; every token, component, and rule renders with the same CSS the site will ship.
 
-**Live:** https://marcusaurelian.github.io/enablement-design-system/
+**Live:** https://enablement-ch.github.io/enablement-design-system/
 
 ## Stack
 - Sofia Sans (Google Fonts) + JetBrains Mono
