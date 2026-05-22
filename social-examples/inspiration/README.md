@@ -5,22 +5,19 @@
 >
 > **These are not external competitor references.** They are Enablement's own work, used as the calibration set for `DESIGN_SOCIAL.md`.
 
-Source: [Drive folder "Inspo & training for AI"](https://drive.google.com/drive/folders/1byZdSCnIpUDbUXIMjHfJFMggK4Ja5qMK)
+**Files are local in this folder.** Listed below in the same order as the annotations:
 
-To copy locally (recommended for version control):
-```bash
-# After downloading from Drive, save into this folder:
-# inspiration/01_allbound-flow-2026.gif
-# inspiration/02_gtm-orchestration-framework.png
-# inspiration/03_cold-email-cheatsheet.jpg
-```
+- `01_allbound-flow-2026.gif` (4.6MB)
+- `02_gtm-orchestration-framework.png` (663KB)
+- `03_cold-email-cheatsheet.jpg` (160KB)
+
+Drive backup: [Inspo & training for AI](https://drive.google.com/drive/folders/1byZdSCnIpUDbUXIMjHfJFMggK4Ja5qMK)
 
 ---
 
 ## Reference 01 - Allbound Flow 2026 (animated GIF)
 
-**Format:** Animated GIF, ~4.6MB, depicts a self-reinforcing flywheel motion
-**[Drive link](https://drive.google.com/file/d/1aoTakaTLfaL8vCnbKRkqpYvDkk1Rw8pc/view)**
+**File:** [`01_allbound-flow-2026.gif`](01_allbound-flow-2026.gif) (4.6MB, animated, depicts a self-reinforcing flywheel motion)
 **Direction this teaches us:** how Enablement does animated process / flywheel content.
 
 ### What works (per Lanny)
@@ -44,9 +41,8 @@ To copy locally (recommended for version control):
 
 ## Reference 02 - GTM Orchestration Framework (cheat sheet)
 
-**Format:** Vertical single-image cheat sheet, PNG, 663KB
+**File:** [`02_gtm-orchestration-framework.png`](02_gtm-orchestration-framework.png) (663KB, vertical single image)
 **Structure:** 8 steps from Signal → Track → Validate → Enrich → Choose Play → Personalise → Message → Feedback
-**[Drive link](https://drive.google.com/file/d/1VqkVnyStT3TPsIZMYLCt3uqWoM2y81CK/view)**
 **Direction this teaches us:** the cheat-sheet format, with bento-style sections.
 
 ### What works (per Lanny)
@@ -74,9 +70,8 @@ To copy locally (recommended for version control):
 
 ## Reference 03 - Cold Email Cheatsheet (cheat sheet)
 
-**Format:** Vertical single-image cheat sheet, JPG, 160KB
+**File:** [`03_cold-email-cheatsheet.jpg`](03_cold-email-cheatsheet.jpg) (160KB, vertical single image)
 **Structure:** 7 steps from First Email Performance → Relevance Framework → Strategic Follow-up → Weekly Send Patterns → Deliverability Hygiene → The Gap Where Replies Live → Benchmark Your Outbound
-**[Drive link](https://drive.google.com/file/d/1g5BasLk5E50OSwizQg45qkgjhMwhyTcY/view)**
 **Direction this teaches us:** the most polished cheat-sheet execution to date. The premium feel target.
 
 ### What works (per Lanny)

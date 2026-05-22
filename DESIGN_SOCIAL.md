@@ -11,7 +11,7 @@
 | Animated process GIF / flywheel (4:5) | secondary format - 1 production reference |
 | Carousel (multi-slide 4:5) | de-emphasised - use only when content is narratively sequential and cannot fit one canvas |
 | Single image post (1080x1080) | situational - for one-line takes / single-stat posts |
-| LinkedIn personal banner (1584x396) | **pre-redesign, to be rebuilt** - existing 4 variants in `social-examples/` retained for reference only |
+| LinkedIn personal banner (1584x396) | **pre-redesign, to be rebuilt** - existing 4 variants in `social-examples/archive/` retained for reference only |
 
 ## How this doc relates to the rest of the system
 
@@ -20,7 +20,7 @@
 | `~/enablement-site/src/styles/global.css` | Production color/type/spacing tokens | All canonical hex values, font stack, scale |
 | `~/enablement-design-system/site-plan.md` | Website composition rules | Voice, italic-emphasis pattern, hierarchy |
 | `~/enablement-design-system/social-examples/inspiration/README.md` | **Calibration references and rules they teach** | Every rule in this doc traces back to a reference |
-| `~/enablement-design-system/social-examples/README.md` | Annotated examples (current state, pre-redesign) | Historical only, do not treat as canonical |
+| `~/enablement-design-system/social-examples/archive/README.md` | Pre-redesign artefacts (4 LinkedIn banners) | Historical only, do not treat as canonical |
 | `~/enablement-design-system/templates/brief-template.md` | Brief contract for designer | What every brief must contain |
 | `~/enablement-design-system/templates/figma-file-spec.md` | Designer's Figma file structure | Required frames, layers, variable names |
 | **This file** | Social-specific rules | Format specs, voice-to-visual translation, primitives |
@@ -322,9 +322,9 @@ Default to 1080 x 1080 px when the post hinges on a single stat, quote, or contr
 
 ### 5.5 LinkedIn personal banner (1584x396) - pre-redesign
 
-**Status:** the 4 existing banner variants in `social-examples/` predate the website redesign. They will be rebuilt to match the new visual register.
+**Status:** the 4 existing banner variants in `social-examples/archive/` predate the website redesign. They will be rebuilt to match the new visual register.
 
-**Existing banners are not canonical.** They are retained as historical reference only.
+**Existing banners are not canonical.** They are retained in `archive/` as historical reference only.
 
 **Rebuild brief (parked):** apply gradient background + grid texture + glassmorphic pillar pills + Sofia Sans display headline + bottom trust strip + optional photo treatment. Designer to propose v2 of the banners as a separate task.
 
