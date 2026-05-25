@@ -148,16 +148,19 @@ Both layers are part of the canvas template, not per-tile.
 
 ### 3.2 Bento tile (the main primitive)
 
-The unit of information in cheat sheets.
+The unit of information in cheat sheets. The glassmorphic read comes from four layered details working together - none of them on its own is sufficient.
 
-- **Background:** `--color-surface` (`#FFFFFF`) base, with a **subtle gradient overlay** (light-grey → white, or white → very-light-grey) to sustain the premium glass feel. The Cold Email Cheatsheet does this explicitly.
-- **Border:** 1px solid `--color-border` (`#E1E5EC`). Always present. The border is part of the glassmorphic read.
-- **Radius:** `--radius-md` (12px).
+- **Surface:** linear gradient from `--color-surface` (`#FFFFFF`) at the top to `--color-surface-raised` (`#FAFBFD`) at the bottom. Never flat white. The gradient sustains the "glass under light" feel.
+- **Refractive edge** (the most important detail): a 1px gradient border at 135°. Bright white at the upper-left corner, fading through translucent mid-tones to a deeper cool-grey near the lower-right corner. Simulates how light catches the edge of glass. **A flat 1px solid border kills the glass read entirely** - it feels like a div with a stroke, not like a panel of glass refracting light. Approximate stops: `rgba(255,255,255,1) → rgba(255,255,255,0.55) @ 35% → rgba(201,207,217,0.50) @ 65% → rgba(201,207,217,0.95)`.
+- **Inset top highlight:** `inset 0 1px 0 rgba(255, 255, 255, 0.9)` - a subtle line of bright white just inside the top edge. This is the "shine" of light hitting the front face of the glass. Without it, the tile feels matte.
+- **Radius:** `--radius-md` (12px). Not 8px (too flat), not 20px (too rounded-marketing).
 - **Padding:** minimum `--space-5` (24px), more is acceptable. Never less.
-- **Shadow:** `--shadow-sm`.
-- **Optional left-accent stripe:** 4px wide vertical bar on the left edge in `--color-accent`, `--color-positive`, `--color-warning`, or `--color-critical` for semantic state.
+- **Drop shadow:** `--shadow-sm` (`0 4px 12px rgba(15, 18, 23, 0.06)`). Soft, barely visible, lifts the tile off the canvas without announcing itself.
+- **Optional left-accent stripe:** 4px wide vertical bar on the left edge in `--color-positive`, `--color-warning`, `--color-critical`, or `--color-accent` for semantic state. Sits above the refractive edge in z-order.
 
-**Glassmorphic effect spec:** the subtle gradient overlay + the always-present 1px border + the soft shadow together create the glassmorphism. Do not use `backdrop-filter` blur on static exports - the effect is achieved with gradient + border + shadow on white.
+**Glassmorphic effect recipe:** gradient surface + refractive edge + inset top highlight + soft drop shadow. All four. Drop any one and the read collapses.
+
+**Implementation note:** the refractive edge is implemented in CSS via a pseudo-element with a `linear-gradient` background and `mask-composite: exclude`. In Figma, replicate by applying a **1px gradient stroke** (white at 100% on the upper-left → cool grey `#C9CFD9` at ~95% on the lower-right) instead of a solid stroke. Do not use `backdrop-filter: blur` on static exports - the effect is achieved entirely with gradient stops and shadows, never with backdrop blur (which doesn't survive PNG export anyway).
 
 ### 3.3 Mockup tile (the show-don't-tell unit)
 

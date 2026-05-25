@@ -162,6 +162,19 @@ a:hover { text-decoration-color: var(--color-accent); }
 .bg-spec-card .key { font-family: var(--font-mono); font-size: var(--font-size-caption); color: var(--color-muted); margin-bottom: var(--space-2); }
 .bg-spec-card .value { font-family: var(--font-mono); font-size: var(--font-size-body); color: var(--color-heading); }
 
+/* ============ SPACING + RADIUS ============ */
+.spacing-stack { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-5) var(--space-6); }
+.spacing-row { display: grid; grid-template-columns: 110px 50px 1fr; align-items: center; gap: var(--space-4); padding: var(--space-2) 0; }
+.spacing-row .meta { font-family: var(--font-mono); font-size: var(--font-size-eyebrow); color: var(--color-muted); }
+.spacing-row .bar { height: 14px; background: linear-gradient(90deg, var(--color-flow) 0%, var(--color-flow-strong) 100%); border-radius: var(--radius-xs); }
+.radius-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-4); margin-top: var(--space-5); }
+.radius-item { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-5); display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+.radius-box { width: 72px; height: 72px; background: linear-gradient(135deg, #FFFFFF 0%, #E1E5EC 100%); border: 1px solid var(--color-border); }
+.radius-item .meta { font-family: var(--font-mono); font-size: var(--font-size-eyebrow); color: var(--color-muted); text-align: center; line-height: 1.4; }
+.rules-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); margin-top: var(--space-6); }
+.rule { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-4) var(--space-5); font-family: var(--font-mono); font-size: var(--font-size-caption); color: var(--color-muted); }
+.rule .key { color: var(--color-heading); display: block; margin-bottom: 2px; }
+
 /* ============ BENTO TILE PRIMITIVE ============ */
 .bento-demo-canvas {
   position: relative;
@@ -174,28 +187,49 @@ a:hover { text-decoration-color: var(--color-accent); }
   background-size: 24px 24px, 100% 100%;
 }
 .bento {
-  background:
-    linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(250,251,253,1) 100%),
-    var(--color-surface);
-  border: 1px solid var(--color-border);
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(250,251,253,1) 100%);
   border-radius: var(--radius-md);
   padding: var(--space-5);
-  box-shadow: var(--shadow-sm);
-  position: relative;
+  box-shadow:
+    var(--shadow-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9); /* specular highlight on top edge */
 }
-.bento.with-stripe-positive::before,
-.bento.with-stripe-warning::before,
-.bento.with-stripe-critical::before,
-.bento.with-stripe-accent::before {
+/* refractive edge: 1px gradient border that simulates light catching glass.
+   bright white at upper-left, fading to a deeper tint at lower-right. */
+.bento::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.55) 35%,
+    rgba(201, 207, 217, 0.50) 65%,
+    rgba(201, 207, 217, 0.95) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+.bento.with-stripe-positive::after,
+.bento.with-stripe-warning::after,
+.bento.with-stripe-critical::after,
+.bento.with-stripe-accent::after {
   content: "";
   position: absolute;
   top: var(--space-3); bottom: var(--space-3); left: 0;
-  width: 4px; border-top-left-radius: 0; border-bottom-left-radius: 0;
+  width: 4px;
+  z-index: 1;
 }
-.bento.with-stripe-positive::before { background: var(--color-positive); }
-.bento.with-stripe-warning::before { background: var(--color-warning); }
-.bento.with-stripe-critical::before { background: var(--color-critical); }
-.bento.with-stripe-accent::before { background: var(--color-accent); }
+.bento.with-stripe-positive::after { background: var(--color-positive); }
+.bento.with-stripe-warning::after { background: var(--color-warning); }
+.bento.with-stripe-critical::after { background: var(--color-critical); }
+.bento.with-stripe-accent::after { background: var(--color-accent); }
 .bento .bento-eyebrow { font-family: var(--font-mono); font-size: var(--font-size-eyebrow); color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-2); }
 .bento .bento-heading { font-family: var(--font-sans); font-size: var(--font-size-h5); font-weight: 600; color: var(--color-heading); margin-bottom: var(--space-3); }
 .bento .bento-body { font-size: var(--font-size-body); color: var(--color-body); }
@@ -357,7 +391,41 @@ a:hover { text-decoration-color: var(--color-accent); }
 <section class="section">
   <div class="wrap">
     <div class="section-header">
-      <span class="eyebrow">04 / Background</span>
+      <span class="eyebrow">04 / Spacing + radius</span>
+      <h2>Generous padding. <span class="italic-accent">Soft corners.</span></h2>
+      <p class="lead">Spacing is part of the premium register. Cramped padding is the #1 documented failure mode (called out explicitly on the GTM Orchestration cheat sheet). When unsure, pad more. Corners are always rounded - never sharp.</p>
+    </div>
+    <div class="subhead">Spacing scale (px)</div>
+    <div class="spacing-stack">
+      <div class="spacing-row"><span class="meta">--space-2</span><span class="meta">8</span><div class="bar" style="width:8px"></div></div>
+      <div class="spacing-row"><span class="meta">--space-3</span><span class="meta">12</span><div class="bar" style="width:12px"></div></div>
+      <div class="spacing-row"><span class="meta">--space-4</span><span class="meta">16</span><div class="bar" style="width:16px"></div></div>
+      <div class="spacing-row"><span class="meta">--space-5</span><span class="meta">24</span><div class="bar" style="width:24px"></div></div>
+      <div class="spacing-row"><span class="meta">--space-6</span><span class="meta">32</span><div class="bar" style="width:32px"></div></div>
+      <div class="spacing-row"><span class="meta">--space-7</span><span class="meta">48</span><div class="bar" style="width:48px"></div></div>
+      <div class="spacing-row"><span class="meta">--space-8</span><span class="meta">64</span><div class="bar" style="width:64px"></div></div>
+    </div>
+    <div class="subhead">Radius scale</div>
+    <div class="radius-row">
+      <div class="radius-item"><div class="radius-box" style="border-radius:4px"></div><div class="meta">--radius-xs<br>4px</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:8px"></div><div class="meta">--radius-sm<br>8px</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:12px"></div><div class="meta">--radius-md<br>12px · bento default</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:20px"></div><div class="meta">--radius-lg<br>20px</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:999px; width:96px; height:36px"></div><div class="meta">--radius-pill<br>full pill</div></div>
+    </div>
+    <div class="rules-grid">
+      <div class="rule"><span class="key">Bento padding</span>Minimum 24px (--space-5) on all sides. Tighter is a defect.</div>
+      <div class="rule"><span class="key">Section gaps</span>32px (--space-6) between bento tiles minimum. Never touching.</div>
+      <div class="rule"><span class="key">Tile radius</span>12px (--radius-md). 8px feels flat. 20px feels rounded-marketing.</div>
+      <div class="rule"><span class="key">No sharp corners</span>Everything rounded somewhere on the scale. Never a 90° corner.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">05 / Background</span>
       <h2>Gradient plus grid. <span class="italic-accent">Never flat.</span></h2>
       <p class="lead">Two stacked layers. Subtle gradient from <code>--color-canvas</code> top-left to a flow-blue tint bottom-right, plus a dot grid for depth. Should be barely perceptible at first glance, visible on close inspection.</p>
     </div>
@@ -384,9 +452,9 @@ a:hover { text-decoration-color: var(--color-accent); }
 <section class="section">
   <div class="wrap">
     <div class="section-header">
-      <span class="eyebrow">05 / Bento tile</span>
-      <h2>The main primitive. <span class="italic-accent">Always glassmorphic.</span></h2>
-      <p class="lead">The unit of information in cheat sheets. White fill with a subtle vertical gradient overlay, 1px border (always present), 12px radius, soft shadow, minimum 24px internal padding. Optional 4px left-accent stripe for semantic state.</p>
+      <span class="eyebrow">06 / Bento tile</span>
+      <h2>The main primitive. <span class="italic-accent">Glass with a beam of light.</span></h2>
+      <p class="lead">White surface with a subtle vertical gradient. The edge is not a flat 1px border - it's a gradient that simulates light catching glass: bright at the upper-left, fading to a deeper tint at the lower-right. An inset top highlight adds the "shine" that sells the glass read. 12px radius, soft drop shadow, minimum 24px padding. Optional 4px left-accent stripe for semantic state.</p>
     </div>
     <div class="bento-demo-canvas">
       <div class="bento-grid">
@@ -413,12 +481,13 @@ a:hover { text-decoration-color: var(--color-accent); }
       </div>
     </div>
     <div class="annotations">
-      <div class="ann"><span class="key">background:</span><span>linear-gradient(180°, #FFFFFF → #FAFBFD)</span></div>
-      <div class="ann"><span class="key">border:</span><span>1px solid #E1E5EC</span></div>
+      <div class="ann"><span class="key">surface:</span><span>linear-gradient(180°, #FFFFFF → #FAFBFD)</span></div>
+      <div class="ann"><span class="key">refractive edge:</span><span>1px gradient border, 135° · white@100% → cool grey@95%</span></div>
+      <div class="ann"><span class="key">top highlight:</span><span>inset 0 1px rgba(255,255,255,0.9) · the shine</span></div>
+      <div class="ann"><span class="key">drop shadow:</span><span>--shadow-sm · 0 4px 12px rgba(15,18,23,0.06)</span></div>
       <div class="ann"><span class="key">radius:</span><span>12px (--radius-md)</span></div>
       <div class="ann"><span class="key">padding:</span><span>min 24px (--space-5), more is fine</span></div>
-      <div class="ann"><span class="key">shadow:</span><span>--shadow-sm · 0 4px 12px rgba(15,18,23,0.06)</span></div>
-      <div class="ann"><span class="key">stripe:</span><span>4px vertical, semantic color</span></div>
+      <div class="ann"><span class="key">stripe:</span><span>4px vertical, semantic color, sits above the edge</span></div>
     </div>
   </div>
 </section>
@@ -426,7 +495,7 @@ a:hover { text-decoration-color: var(--color-accent); }
 <section class="section">
   <div class="wrap">
     <div class="section-header">
-      <span class="eyebrow">06 / Pills + chips</span>
+      <span class="eyebrow">07 / Pills + chips</span>
       <h2>Mono eyebrows. <span class="italic-accent">Sans chips.</span></h2>
       <p class="lead">Pills carry category labels (mono uppercase). Chips carry tactical labels (sans regular). Both use the pill radius. Backgrounds use subtle gradients to sustain the premium feel.</p>
     </div>
@@ -448,7 +517,7 @@ a:hover { text-decoration-color: var(--color-accent); }
 <section class="section">
   <div class="wrap">
     <div class="section-header">
-      <span class="eyebrow">07 / Stat callout</span>
+      <span class="eyebrow">08 / Stat callout</span>
       <h2>Numbers carry the post. <span class="italic-accent">Let them.</span></h2>
       <p class="lead">When a post hinges on one number, lead with the stat. Sofia Sans bold display size, mono caption label. For before/after pairs, use the arrow form. All numerics tabular for vertical alignment.</p>
     </div>
@@ -468,7 +537,7 @@ a:hover { text-decoration-color: var(--color-accent); }
 <section class="section">
   <div class="wrap">
     <div class="section-header">
-      <span class="eyebrow">08 / Reference gallery</span>
+      <span class="eyebrow">09 / Reference gallery</span>
       <h2>The calibration set. <span class="italic-accent">Look hard.</span></h2>
       <p class="lead">Every rule above traces back to one of these three references. Read them with the annotations in <code>social-examples/inspiration/README.md</code> for what works, what could be improved, and what each one teaches.</p>
     </div>
