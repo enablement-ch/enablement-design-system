@@ -67,13 +67,14 @@ Hex values come from production `global.css`. When you see a color in this doc, 
 | `--color-muted` | `#7C8390` | Captions, legends, mono labels |
 | `--color-accent` | `#E11E48` | **Enablement Red.** Used sparingly. One element per graphic. |
 | `--color-accent-hover` | `#BE123C` | Pressed-state red (rarely used in static) |
-| `--color-flow` | `#6FA8DC` | Diagram flow lines, neutral connectors, gradient endpoints |
+| `--color-flow` | `#6FA8DC` | Diagram flow lines, neutral connectors |
 | `--color-flow-strong` | `#4A89C7` | Emphasised flow lines |
+| `--color-canvas-tint` | `#D7EBFE` | Background gradient endpoint (pale blue). Named explicitly so the rendered color is documented, not derived from opacity math. |
 | `--color-positive` | `#2E8F54` | Success state |
 | `--color-warning` | `#C77B0E` | Caution state |
 | `--color-critical` | `#B43A2A` | Failure state |
 
-**Background gradient (locked):** linear gradient from `--color-canvas` (`#F2F4F8`) at top-left toward a tint of `--color-flow` (`#6FA8DC` at ~8% opacity) at bottom-right. Subtle. Should be barely perceptible at first glance; visible on close inspection.
+**Background gradient (locked):** linear gradient at 135° from `--color-canvas` (`#F2F4F8`) at top-left to `--color-canvas-tint` (`#D7EBFE`) at bottom-right. Subtle. Both colors are named tokens - no opacity math. Should be barely perceptible at first glance; visible on close inspection.
 
 **Tool-brand accents** are allowed inside individual bento tiles when a specific tool is being illustrated (e.g. Slack purple inside a Slack mockup tile). Outside of tool-specific tiles, only the Enablement palette applies.
 
