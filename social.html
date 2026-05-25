@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enablement - Social Design System v1.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS (mirror of production global.css) ============ */
+:root {
+  --color-canvas: #F2F4F8;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FAFBFD;
+  --color-border: #E1E5EC;
+  --color-border-strong: #C9CFD9;
+  --color-heading: #0F1217;
+  --color-body: #4A5360;
+  --color-muted: #7C8390;
+  --color-inverse: #FFFFFF;
+
+  --color-accent: #E11E48;
+  --color-accent-hover: #BE123C;
+  --color-accent-on: #FFFFFF;
+
+  --color-flow: #6FA8DC;
+  --color-flow-strong: #4A89C7;
+
+  --color-positive: #2E8F54;
+  --color-warning: #C77B0E;
+  --color-critical: #B43A2A;
+
+  --font-sans: "Sofia Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  --font-size-eyebrow: 0.75rem;
+  --font-size-caption: 0.8125rem;
+  --font-size-body: 1rem;
+  --font-size-lead: 1.25rem;
+  --font-size-h6: 1.25rem;
+  --font-size-h5: 1.5625rem;
+  --font-size-h4: 1.9375rem;
+  --font-size-h3: 2.4375rem;
+  --font-size-h2: 3.0625rem;
+  --font-size-h1: 3.8125rem;
+  --font-size-display: clamp(2.75rem, 6vw, 5rem);
+
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
+  --space-4: 16px; --space-5: 24px; --space-6: 32px;
+  --space-7: 48px; --space-8: 64px; --space-9: 96px;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --shadow-xs: 0 1px 2px rgba(15, 18, 23, 0.04);
+  --shadow-sm: 0 4px 12px rgba(15, 18, 23, 0.06);
+  --shadow-md: 0 12px 32px rgba(15, 18, 23, 0.08);
+}
+
+/* ============ BASE ============ */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body);
+  color: var(--color-body);
+  background: var(--color-canvas);
+  line-height: 1.55;
+  font-weight: 400;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--color-heading);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--space-4);
+  line-height: 1.15;
+}
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-h4); }
+h5 { font-size: var(--font-size-h5); }
+p { margin: 0 0 var(--space-4); }
+code { font-family: var(--font-mono); font-size: 0.9em; background: var(--color-surface-raised); padding: 2px 6px; border-radius: var(--radius-xs); border: 1px solid var(--color-border); }
+a { color: var(--color-heading); text-decoration: underline; text-decoration-color: var(--color-border-strong); text-underline-offset: 4px; }
+a:hover { text-decoration-color: var(--color-accent); }
+
+.italic-accent { font-style: italic; color: var(--color-accent); font-weight: 600; }
+.eyebrow { font-family: var(--font-mono); font-size: var(--font-size-eyebrow); color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* ============ LAYOUT ============ */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 var(--space-6); }
+.section { padding: var(--space-9) 0; border-top: 1px solid var(--color-border); }
+.section:first-of-type { border-top: 0; }
+.section-header { margin-bottom: var(--space-7); }
+.section-header .eyebrow { display: block; margin-bottom: var(--space-3); }
+.section-header h2 { margin-bottom: var(--space-3); }
+.section-header .lead { font-size: var(--font-size-lead); color: var(--color-body); max-width: 760px; }
+
+/* ============ HERO ============ */
+.hero { padding: var(--space-9) 0 var(--space-8); border-bottom: 1px solid var(--color-border); }
+.hero-nav { display: flex; gap: var(--space-5); margin-bottom: var(--space-7); }
+.hero-nav a { font-family: var(--font-mono); font-size: var(--font-size-caption); color: var(--color-muted); text-decoration: none; }
+.hero-nav a:hover { color: var(--color-heading); }
+.hero-nav a.current { color: var(--color-heading); }
+.hero h1 { font-size: var(--font-size-display); font-weight: 600; max-width: 900px; }
+.hero .lead { font-size: var(--font-size-lead); color: var(--color-body); max-width: 760px; margin-top: var(--space-5); }
+.hero-meta { display: inline-flex; align-items: center; gap: var(--space-3); margin-top: var(--space-6); font-family: var(--font-mono); font-size: var(--font-size-caption); color: var(--color-muted); }
+.hero-meta .dot { width: 6px; height: 6px; border-radius: var(--radius-pill); background: var(--color-positive); }
+
+/* ============ THREE-WORD INTRO ============ */
+.triad { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin-top: var(--space-6); }
+.triad-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-6); }
+.triad-card .word { font-family: var(--font-sans); font-size: var(--font-size-h4); font-weight: 600; color: var(--color-heading); margin-bottom: var(--space-3); }
+.triad-card .word-meta { font-family: var(--font-mono); font-size: var(--font-size-eyebrow); color: var(--color-muted); text-transform: uppercase; margin-bottom: var(--space-2); }
+.triad-card .word-body { font-size: var(--font-size-body); color: var(--color-body); }
+
+/* ============ SWATCHES ============ */
+.swatch-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin-top: var(--space-5); }
+.swatch { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); overflow: hidden; }
+.swatch-color { height: 80px; }
+.swatch-meta { padding: var(--space-3) var(--space-4); border-top: 1px solid var(--color-border); }
+.swatch-name { font-family: var(--font-mono); font-size: var(--font-size-caption); color: var(--color-heading); }
+.swatch-hex { font-family: var(--font-mono); font-size: var(--font-size-eyebrow); color: var(--color-muted); margin-top: 2px; }
+.subhead { font-family: var(--font-mono); font-size: var(--font-size-eyebrow); color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.08em; margin: var(--space-7) 0 var(--space-3); }
+
+/* ============ TYPE ROWS ============ */
+.type-stack { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-4) var(--space-6); }
+.type-row { display: grid; grid-template-columns: 80px 80px 1fr; align-items: center; gap: var(--space-5); padding: var(--space-4) 0; border-bottom: 1px dashed var(--color-border); }
+.type-row:last-child { border-bottom: 0; }
+.type-row .meta { font-family: var(--font-mono); font-size: var(--font-size-eyebrow); color: var(--color-muted); }
+.type-row .sample { font-family: var(--font-sans); color: var(--color-heading); }
+.type-row .sample-mono { font-family: var(--font-mono); }
+
+/* ============ BACKGROUND SPEC ============ */
+.bg-canvas {
+  position: relative;
+  height: 380px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  background-image:
+    radial-gradient(circle, rgba(225, 229, 236, 0.8) 1px, transparent 1.5px),
+    linear-gradient(135deg, #F2F4F8 0%, rgba(111, 168, 220, 0.16) 100%);
+  background-size: 24px 24px, 100% 100%;
+}
+.bg-canvas-label {
+  position: absolute; top: var(--space-5); left: var(--space-5);
+  font-family: var(--font-mono); font-size: var(--font-size-caption); color: var(--color-muted);
+  background: rgba(255,255,255,0.85); padding: 4px 10px; border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+}
+.bg-spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-top: var(--space-5); }
+.bg-spec-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-5); }
+.bg-spec-card .key { font-family: var(--font-mono); font-size: var(--font-size-caption); color: var(--color-muted); margin-bottom: var(--space-2); }
+.bg-spec-card .value { font-family: var(--font-mono); font-size: var(--font-size-body); color: var(--color-heading); }
+
+/* ============ BENTO TILE PRIMITIVE ============ */
+.bento-demo-canvas {
+  position: relative;
+  padding: var(--space-7);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-image:
+    radial-gradient(circle, rgba(225, 229, 236, 0.8) 1px, transparent 1.5px),
+    linear-gradient(135deg, #F2F4F8 0%, rgba(111, 168, 220, 0.16) 100%);
+  background-size: 24px 24px, 100% 100%;
+}
+.bento {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(250,251,253,1) 100%),
+    var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+.bento.with-stripe-positive::before,
+.bento.with-stripe-warning::before,
+.bento.with-stripe-critical::before,
+.bento.with-stripe-accent::before {
+  content: "";
+  position: absolute;
+  top: var(--space-3); bottom: var(--space-3); left: 0;
+  width: 4px; border-top-left-radius: 0; border-bottom-left-radius: 0;
+}
+.bento.with-stripe-positive::before { background: var(--color-positive); }
+.bento.with-stripe-warning::before { background: var(--color-warning); }
+.bento.with-stripe-critical::before { background: var(--color-critical); }
+.bento.with-stripe-accent::before { background: var(--color-accent); }
+.bento .bento-eyebrow { font-family: var(--font-mono); font-size: var(--font-size-eyebrow); color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-2); }
+.bento .bento-heading { font-family: var(--font-sans); font-size: var(--font-size-h5); font-weight: 600; color: var(--color-heading); margin-bottom: var(--space-3); }
+.bento .bento-body { font-size: var(--font-size-body); color: var(--color-body); }
+
+.bento-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+.annotations { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); margin-top: var(--space-6); }
+.annotations .ann { font-family: var(--font-mono); font-size: var(--font-size-caption); color: var(--color-muted); display: flex; gap: var(--space-2); }
+.annotations .ann .key { color: var(--color-heading); }
+
+/* ============ PILLS ============ */
+.pill-row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
+.pill { display: inline-flex; align-items: center; padding: var(--space-2) var(--space-3); border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: var(--font-size-eyebrow); text-transform: uppercase; letter-spacing: 0.06em; }
+.pill.eyebrow-pill { background: linear-gradient(180deg, #FFFFFF 0%, #F2F4F8 100%); color: var(--color-heading); border: 1px solid var(--color-border); }
+.pill.accent-pill { background: var(--color-accent); color: var(--color-accent-on); }
+.pill.positive-pill { background: var(--color-positive); color: var(--color-inverse); }
+.pill.warning-pill { background: var(--color-warning); color: var(--color-inverse); }
+.pill.critical-pill { background: var(--color-critical); color: var(--color-inverse); }
+.pill.chip { font-family: var(--font-sans); text-transform: none; letter-spacing: 0; font-weight: 500; padding: var(--space-2) var(--space-4); font-size: var(--font-size-caption); }
+
+/* ============ STAT CALLOUT ============ */
+.stat { display: inline-flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); padding: var(--space-6) var(--space-7); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+.stat .num { font-family: var(--font-sans); font-weight: 700; font-size: var(--font-size-display); color: var(--color-heading); line-height: 1; font-variant-numeric: tabular-nums; }
+.stat .label { font-family: var(--font-mono); font-size: var(--font-size-eyebrow); color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.stat-row { display: flex; gap: var(--space-5); flex-wrap: wrap; }
+.stat-arrow { display: inline-flex; align-items: baseline; gap: var(--space-3); font-family: var(--font-sans); font-weight: 700; font-size: var(--font-size-h2); color: var(--color-heading); font-variant-numeric: tabular-nums; }
+.stat-arrow .sep { color: var(--color-muted); font-weight: 400; }
+
+/* ============ REFERENCE GALLERY ============ */
+.ref-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-7); margin-top: var(--space-5); }
+.ref { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; }
+.ref-img { display: block; width: 100%; height: auto; background: var(--color-canvas); }
+.ref-meta { padding: var(--space-5) var(--space-6); border-top: 1px solid var(--color-border); }
+.ref-meta h3 { font-size: var(--font-size-h4); margin-bottom: var(--space-3); }
+.ref-meta .ref-eyebrow { font-family: var(--font-mono); font-size: var(--font-size-eyebrow); color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-2); display: block; }
+.ref-meta .ref-body { font-size: var(--font-size-body); color: var(--color-body); margin-bottom: var(--space-4); }
+.ref-meta .ref-link { font-family: var(--font-mono); font-size: var(--font-size-caption); color: var(--color-muted); }
+
+/* ============ FOOTER ============ */
+.foot { padding: var(--space-7) 0; border-top: 1px solid var(--color-border); font-family: var(--font-mono); font-size: var(--font-size-caption); color: var(--color-muted); }
+.foot a { color: var(--color-muted); }
+.foot a:hover { color: var(--color-heading); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 800px) {
+  .swatch-grid, .triad, .bento-grid, .bg-spec-grid, .annotations { grid-template-columns: 1fr 1fr; }
+  .hero h1 { font-size: var(--font-size-h1); }
+  .type-row { grid-template-columns: 60px 60px 1fr; }
+}
+@media (max-width: 520px) {
+  .swatch-grid, .triad, .bento-grid, .bg-spec-grid, .annotations { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="hero-nav">
+      <a href="index.html">← Website styleguide</a>
+      <a href="#" class="current">Social design system</a>
+      <a href="https://github.com/enablement-ch/enablement-design-system">GitHub</a>
+    </nav>
+    <span class="eyebrow">v1.0 · 2026-05-25</span>
+    <h1>Information-dense <span class="italic-accent">cheat sheet.</span></h1>
+    <p class="lead">Visual rules for everything Enablement ships on LinkedIn. Cheat sheets, animated process GIFs, banners. Every primitive and token below mirrors what's locked in <code>DESIGN_SOCIAL.md</code>.</p>
+    <div class="hero-meta"><span class="dot"></span> Mirrors production global.css tokens · serves DESIGN_SOCIAL.md visually</div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">01 / The register</span>
+      <h2>Dense. Visualised. <span class="italic-accent">Premium.</span></h2>
+      <p class="lead">Three words that must apply to every output. If a draft violates one of them, it's not done.</p>
+    </div>
+    <div class="triad">
+      <div class="triad-card">
+        <div class="word-meta">01</div>
+        <div class="word">Dense</div>
+        <div class="word-body">Every tile carries information. Empty space exists to let tiles breathe, never as filler.</div>
+      </div>
+      <div class="triad-card">
+        <div class="word-meta">02</div>
+        <div class="word">Visualised</div>
+        <div class="word-body">No tile is text-only. Each contains a mockup, mini-table, workflow snippet, or chart fragment that makes the concept legible without reading.</div>
+      </div>
+      <div class="triad-card">
+        <div class="word-meta">03</div>
+        <div class="word">Premium</div>
+        <div class="word-body">Subtle gradients, glassmorphic surfaces, soft drop shadows, faint grid textures. The graphic should look like a dashboard component, not a marketing poster.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">02 / Color tokens</span>
+      <h2>One palette. <span class="italic-accent">One red.</span></h2>
+      <p class="lead">Pulled directly from production <code>global.css</code>. When tokens drift, production wins.</p>
+    </div>
+
+    <div class="subhead">Canvas + surfaces</div>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-color" style="background:#F2F4F8"></div><div class="swatch-meta"><div class="swatch-name">color.canvas</div><div class="swatch-hex">#F2F4F8 · page base</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#FFFFFF;border-bottom:1px solid var(--color-border)"></div><div class="swatch-meta"><div class="swatch-name">color.surface</div><div class="swatch-hex">#FFFFFF · tile fill</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#FAFBFD"></div><div class="swatch-meta"><div class="swatch-name">color.surface-raised</div><div class="swatch-hex">#FAFBFD · chip fill</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#E1E5EC"></div><div class="swatch-meta"><div class="swatch-name">color.border</div><div class="swatch-hex">#E1E5EC · hairlines</div></div></div>
+    </div>
+
+    <div class="subhead">Text</div>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-color" style="background:#0F1217"></div><div class="swatch-meta"><div class="swatch-name">color.heading</div><div class="swatch-hex">#0F1217 · headings, primary</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#4A5360"></div><div class="swatch-meta"><div class="swatch-name">color.body</div><div class="swatch-hex">#4A5360 · paragraphs</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#7C8390"></div><div class="swatch-meta"><div class="swatch-name">color.muted</div><div class="swatch-hex">#7C8390 · captions</div></div></div>
+    </div>
+
+    <div class="subhead">Accent · used sparingly</div>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-color" style="background:#E11E48"></div><div class="swatch-meta"><div class="swatch-name">color.accent</div><div class="swatch-hex">#E11E48 · Enablement Red</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#BE123C"></div><div class="swatch-meta"><div class="swatch-name">color.accent-hover</div><div class="swatch-hex">#BE123C</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#6FA8DC"></div><div class="swatch-meta"><div class="swatch-name">color.flow</div><div class="swatch-hex">#6FA8DC · connectors</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#4A89C7"></div><div class="swatch-meta"><div class="swatch-name">color.flow-strong</div><div class="swatch-hex">#4A89C7</div></div></div>
+    </div>
+
+    <div class="subhead">Semantic state · paired contrasts</div>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-color" style="background:#2E8F54"></div><div class="swatch-meta"><div class="swatch-name">color.positive</div><div class="swatch-hex">#2E8F54 · success</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#C77B0E"></div><div class="swatch-meta"><div class="swatch-name">color.warning</div><div class="swatch-hex">#C77B0E · caution</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#B43A2A"></div><div class="swatch-meta"><div class="swatch-name">color.critical</div><div class="swatch-hex">#B43A2A · failure</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">03 / Typography</span>
+      <h2>Sofia Sans. JetBrains Mono. <span class="italic-accent">That's it.</span></h2>
+      <p class="lead">No serif typefaces anywhere. One italic-emphasis word per headline max. Mono eyebrows above section headings. Tabular numerics on all stats.</p>
+    </div>
+    <div class="type-stack">
+      <div class="type-row"><span class="meta">display</span><span class="meta">80px</span><span class="sample" style="font-size: clamp(2rem, 5vw, 4rem); font-weight:600">Tomorrow's GTM, <span class="italic-accent">built today.</span></span></div>
+      <div class="type-row"><span class="meta">h1</span><span class="meta">61px</span><span class="sample" style="font-size:var(--font-size-h1); font-weight:600">Headline that <span class="italic-accent">lands.</span></span></div>
+      <div class="type-row"><span class="meta">h2</span><span class="meta">49px</span><span class="sample" style="font-size:var(--font-size-h2); font-weight:600">Section headline</span></div>
+      <div class="type-row"><span class="meta">h4</span><span class="meta">31px</span><span class="sample" style="font-size:var(--font-size-h4); font-weight:600">Bento section heading</span></div>
+      <div class="type-row"><span class="meta">h5</span><span class="meta">25px</span><span class="sample" style="font-size:var(--font-size-h5); font-weight:600">Bento sub-heading</span></div>
+      <div class="type-row"><span class="meta">lead</span><span class="meta">20px</span><span class="sample" style="font-size:var(--font-size-lead)">Lead paragraph or pull quote.</span></div>
+      <div class="type-row"><span class="meta">body</span><span class="meta">16px</span><span class="sample" style="font-size:var(--font-size-body)">Body copy inside bento tiles. Max ~35 words per tile.</span></div>
+      <div class="type-row"><span class="meta">caption</span><span class="meta">13px</span><span class="sample sample-mono" style="font-size:var(--font-size-caption); color:var(--color-muted)">jetbrains mono caption · 13px regular</span></div>
+      <div class="type-row"><span class="meta">eyebrow</span><span class="meta">12px</span><span class="sample sample-mono" style="font-size:var(--font-size-eyebrow); color:var(--color-muted); text-transform:uppercase; letter-spacing:0.08em">step 01 · mono eyebrow</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">04 / Background</span>
+      <h2>Gradient plus grid. <span class="italic-accent">Never flat.</span></h2>
+      <p class="lead">Two stacked layers. Subtle gradient from <code>--color-canvas</code> top-left to a flow-blue tint bottom-right, plus a dot grid for depth. Should be barely perceptible at first glance, visible on close inspection.</p>
+    </div>
+    <div class="bg-canvas">
+      <div class="bg-canvas-label">canvas spec · live render</div>
+    </div>
+    <div class="bg-spec-grid">
+      <div class="bg-spec-card">
+        <div class="key">gradient</div>
+        <div class="value">135° · #F2F4F8 → #6FA8DC @ 8%</div>
+      </div>
+      <div class="bg-spec-card">
+        <div class="key">grid texture</div>
+        <div class="value">24px dot spacing · #E1E5EC @ 40%</div>
+      </div>
+      <div class="bg-spec-card">
+        <div class="key">never</div>
+        <div class="value">flat-color backgrounds</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">05 / Bento tile</span>
+      <h2>The main primitive. <span class="italic-accent">Always glassmorphic.</span></h2>
+      <p class="lead">The unit of information in cheat sheets. White fill with a subtle vertical gradient overlay, 1px border (always present), 12px radius, soft shadow, minimum 24px internal padding. Optional 4px left-accent stripe for semantic state.</p>
+    </div>
+    <div class="bento-demo-canvas">
+      <div class="bento-grid">
+        <div class="bento">
+          <div class="bento-eyebrow">step 01</div>
+          <div class="bento-heading">Default bento</div>
+          <div class="bento-body">White fill with subtle gradient overlay. Border always present. Minimum 24px padding. No left stripe.</div>
+        </div>
+        <div class="bento with-stripe-accent">
+          <div class="bento-eyebrow">step 02</div>
+          <div class="bento-heading">Accent stripe</div>
+          <div class="bento-body">4px left stripe in Enablement Red. Use for the hero tile in a cheat sheet, one per graphic max.</div>
+        </div>
+        <div class="bento with-stripe-positive">
+          <div class="bento-eyebrow">outcome</div>
+          <div class="bento-heading">Positive state</div>
+          <div class="bento-body">Success-path tile. Use in comparisons or routing diagrams to mark the right-answer path.</div>
+        </div>
+        <div class="bento with-stripe-critical">
+          <div class="bento-eyebrow">outcome</div>
+          <div class="bento-heading">Critical state</div>
+          <div class="bento-body">Failure-path tile. Use in comparisons or routing diagrams to mark the dead-end path.</div>
+        </div>
+      </div>
+    </div>
+    <div class="annotations">
+      <div class="ann"><span class="key">background:</span><span>linear-gradient(180°, #FFFFFF → #FAFBFD)</span></div>
+      <div class="ann"><span class="key">border:</span><span>1px solid #E1E5EC</span></div>
+      <div class="ann"><span class="key">radius:</span><span>12px (--radius-md)</span></div>
+      <div class="ann"><span class="key">padding:</span><span>min 24px (--space-5), more is fine</span></div>
+      <div class="ann"><span class="key">shadow:</span><span>--shadow-sm · 0 4px 12px rgba(15,18,23,0.06)</span></div>
+      <div class="ann"><span class="key">stripe:</span><span>4px vertical, semantic color</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">06 / Pills + chips</span>
+      <h2>Mono eyebrows. <span class="italic-accent">Sans chips.</span></h2>
+      <p class="lead">Pills carry category labels (mono uppercase). Chips carry tactical labels (sans regular). Both use the pill radius. Backgrounds use subtle gradients to sustain the premium feel.</p>
+    </div>
+    <div class="pill-row">
+      <span class="pill eyebrow-pill">step 01</span>
+      <span class="pill eyebrow-pill">signal</span>
+      <span class="pill eyebrow-pill">outcome</span>
+      <span class="pill accent-pill">cta · book</span>
+      <span class="pill positive-pill">30% conversion</span>
+      <span class="pill warning-pill">at risk</span>
+      <span class="pill critical-pill">5% conversion</span>
+      <span class="pill eyebrow-pill chip" style="text-transform:none; letter-spacing:0">Bumping</span>
+      <span class="pill eyebrow-pill chip" style="text-transform:none; letter-spacing:0">Circling back</span>
+      <span class="pill eyebrow-pill chip" style="text-transform:none; letter-spacing:0">New Angle</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">07 / Stat callout</span>
+      <h2>Numbers carry the post. <span class="italic-accent">Let them.</span></h2>
+      <p class="lead">When a post hinges on one number, lead with the stat. Sofia Sans bold display size, mono caption label. For before/after pairs, use the arrow form. All numerics tabular for vertical alignment.</p>
+    </div>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="num">5% → 30%</div>
+        <div class="label">reply-to-meeting conversion</div>
+      </div>
+      <div class="stat">
+        <div class="num">4.3B</div>
+        <div class="label">emails analysed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="eyebrow">08 / Reference gallery</span>
+      <h2>The calibration set. <span class="italic-accent">Look hard.</span></h2>
+      <p class="lead">Every rule above traces back to one of these three references. Read them with the annotations in <code>social-examples/inspiration/README.md</code> for what works, what could be improved, and what each one teaches.</p>
+    </div>
+    <div class="ref-grid">
+      <div class="ref">
+        <img class="ref-img" src="social-examples/inspiration/03_cold-email-cheatsheet.jpg" alt="Cold Email Cheatsheet">
+        <div class="ref-meta">
+          <span class="ref-eyebrow">Reference 03 · cheat sheet</span>
+          <h3>Cold Email Cheatsheet</h3>
+          <p class="ref-body">The most polished cheat-sheet execution to date. Premium feel target. Subtle gradient shifts inside title boxes and pills. Strong show-don't-tell with mini mockups and tactic chips. Improvements: drop the serif subtitle, add more density via more bentos rather than more text per bento.</p>
+          <span class="ref-link">social-examples/inspiration/03_cold-email-cheatsheet.jpg · 160KB</span>
+        </div>
+      </div>
+      <div class="ref">
+        <img class="ref-img" src="social-examples/inspiration/02_gtm-orchestration-framework.png" alt="GTM Orchestration Framework">
+        <div class="ref-meta">
+          <span class="ref-eyebrow">Reference 02 · cheat sheet</span>
+          <h3>GTM Orchestration Framework</h3>
+          <p class="ref-body">8-step bento layout, glassmorphic surfaces, contextual tool-brand accents. Improvements: padding on steps 2/3/8 is cramped (the #1 documented failure mode), step names "Track / Track / Track" should be distinct verbs (Validate / Enrich / Route), and step 6 shouldn't be just a logo - show the personalisation moment.</p>
+          <span class="ref-link">social-examples/inspiration/02_gtm-orchestration-framework.png · 663KB</span>
+        </div>
+      </div>
+      <div class="ref">
+        <img class="ref-img" src="social-examples/inspiration/01_allbound-flow-2026.gif" alt="Allbound Flow 2026">
+        <div class="ref-meta">
+          <span class="ref-eyebrow">Reference 01 · animated GIF</span>
+          <h3>Allbound Flow 2026</h3>
+          <p class="ref-body">Self-reinforcing flywheel with orbital nodes. Gradient background, grid texture, drop-shadowed central composition. Improvements: push further into glassmorphism (frosted panels), add per-node explanatory text (not just logos), apply show-don't-tell to each step beyond the logo alone.</p>
+          <span class="ref-link">social-examples/inspiration/01_allbound-flow-2026.gif · 4.6MB</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    v1.0 · committed to <a href="https://github.com/enablement-ch/enablement-design-system">enablement-ch/enablement-design-system</a> · paired with <code>DESIGN_SOCIAL.md</code> · last updated 2026-05-25
+  </div>
+</footer>
+
+</body>
+</html>
