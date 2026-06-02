@@ -33,6 +33,17 @@ The site architecture for enablement.ch. This doc is the source of truth — cod
 
 ---
 
+## Visual System
+
+Brand-wide rules that apply to every page, every component, every asset. The full technical reference lives in [index.html](./index.html); this section is the short answer.
+
+- **Icon family:** **Lucide only.** 1.5px stroke. No mixing with Tabler, Heroicons, Phosphor, Font Awesome, or any other set.
+- **Fonts:** Sofia Sans (display + body), JetBrains Mono (code, labels, technical accents).
+- **Italic emphasis:** Italic is a tone modifier, not just typographic style. See `DESIGN_SOCIAL.md` and the styleguide for usage.
+- **Colors:** Use named tokens from the palette only. Never define colors via opacity math; promote any rendered color to a named token first.
+
+---
+
 ## `/` — Home
 
 Seven sections + footer. Order: hero → marquee logos → video testimonials → pain × 3 → FAQ → final CTA → footer.
