@@ -96,12 +96,12 @@ Drive backup: [Inspo & training for AI](https://drive.google.com/drive/folders/1
 
 ---
 
-## Reference 04 - Claude Code For GTM 2026 (animated GIF, framework diagram)
+## Reference 04 - Claude Code For GTM 2026 (animated GIF, one-off pattern under NEW)
 
-**File:** [`04_claude-code-for-gtm-2026.gif`](04_claude-code-for-gtm-2026.gif) (877KB, animated minimally - the underlying composition is a static framework diagram)
+**File:** [`04_claude-code-for-gtm-2026.gif`](04_claude-code-for-gtm-2026.gif) (877KB, animated minimally - the underlying composition is a static framework-style diagram)
 **Structure:** central radial Claude Code mark surrounded by 8 numbered bentos (Signal Layer, Account Intelligence, Contact + Enrichment, Scoring Logic, Copy Generation, QA + Safety Filter, Feedback Loop x2). Each bento is a self-contained module of the GTM motion.
-**Archetype:** Framework Diagram (DESIGN_SOCIAL.md §4.6) - though it also encodes a feedback-loop character via the two "Feedback Loop" bentos at the bottom.
-**Direction this teaches us:** how Enablement does centered framework diagrams. A single iconic mark anchors the composition; the surrounding bentos are the components of the named model.
+**Archetype:** NEW (DESIGN_SOCIAL.md §4.6) - centered-mark-with-orbital-components pattern. Filed under NEW because Lanny rarely reaches for framework-diagram-style layouts; not common enough to promote to its own named archetype.
+**Direction this teaches us:** when a one-off pattern earns its place, what it should look like at execution time. A single iconic mark anchors the composition; the surrounding bentos are the components.
 
 ### What works (draft - Lanny to validate)
 - **Central anchor primitive.** The radial Claude Code mark is large, deeply glassmorphic, and read first. Provides a focal point that the 8 surrounding bentos relate to.

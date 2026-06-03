@@ -249,25 +249,12 @@ When a comparison has more than ~5 deep rows, consider §4.5 Comparison Table in
 
 Multi-option grid (3+ columns) for structured choice. Row and column headers, Mockup Tiles (§3.3) or Pills (§3.4) inside cells, optional accent color on the recommended column. Used when comparing tools, tactics, or approaches.
 
-### 4.6 Framework diagram
-
-Named conceptual model encoded geometrically (pyramid, matrix, concentric circles, ladder, centered-mark-with-orbital-components). Framework name centered or top, N labeled components with 1-line definitions. Used when the post centers on a named model (e.g. "The 7 Backdoors", "The 3 levers of X"). Reference: [`04_claude-code-for-gtm-2026.gif`](social-examples/inspiration/04_claude-code-for-gtm-2026.gif) (centered-mark variant with 8 orbital component bentos).
-
-### 4.7 Iceberg / hidden depth
-
-Surface vs. depth reveal. Small visible element above a waterline; larger stacked tiles below showing what's hidden. Used for posts revealing what's beneath a surface claim ("what looks like X is actually Y", "the hidden cost of Y").
-
-### 4.8 Stat hero
-
-One large Stat Callout (§3.6) as the visual. Context label, optional supporting metric pills. Used for Specific Result posts where one number carries the argument.
-
-### 4.9 Pull quote card
-
-Single bold insight, no diagram. Pull Quote primitive (§3.7), attribution line, lots of negative space. Used for Personal Story or High-Velocity posts where the line itself is the visual.
-
-### 4.10 NEW (escape hatch)
+### 4.6 NEW (escape hatch)
 
 If no archetype above fits, document the new pattern in `social-examples/inspiration/` first (annotated reference image), then promote it here. Do not ship a one-off archetype without a reference image - that's how the design system drifts.
+
+**Current one-offs under NEW:**
+- [`04_claude-code-for-gtm-2026.gif`](social-examples/inspiration/04_claude-code-for-gtm-2026.gif) - centered-mark framework with 8 orbital component bentos. Pattern not common enough yet to promote to its own archetype.
 
 ---
 
