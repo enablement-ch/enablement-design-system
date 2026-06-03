@@ -137,6 +137,8 @@ Hex values come from production `global.css`. When you see a color in this doc, 
 
 The building blocks. Every social graphic is assembled from these.
 
+> **Tool logos** used inside primitives (mockup tiles, pill rows, ad-stack visualisations) live in `~/enablement-design-system/logos/`. See [`logos/README.md`](logos/README.md) for naming convention and current inventory. If a brief references a tool whose logo is not in the folder, flag it in `## Open Questions` - do not substitute.
+
 ### 3.1 Background (gradient + grid)
 
 The canvas itself is a primitive. Two layers:
