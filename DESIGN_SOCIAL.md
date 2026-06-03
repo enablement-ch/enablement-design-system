@@ -218,7 +218,55 @@ Allowed visualisation types inside a tile:
 
 ---
 
-## 4. Voice-to-visual translation
+## 4. Visual archetypes
+
+The macro-level visual recipes - "what is the whole visual?" Archetypes compose the primitives in §3 into a complete layout. Pick one before composing tiles.
+
+A post's archetype is usually decided by its rhetorical structure. The voice-to-visual table (§5) maps post types to default archetypes; this section defines each archetype.
+
+### 4.1 Cheat sheet grid
+
+Information-dense scannable reference. 5-10 bento tiles in a grid, optional grouping headers, designed to be screenshotted and re-referenced. Primary archetype for Framework Breakdown and Tool/Resource posts.
+
+### 4.2 Sequential workflow
+
+Linear process laid out left-to-right or top-to-bottom. Each stage is a Mockup Tile (§3.3) with optional tool-icon pills, Connectors (§3.5) between stages. Used for Process Visual posts when the process has a clear start and end.
+
+### 4.3 Flywheel (cyclical workflow)
+
+Self-reinforcing process arranged radially around a central concept. Bento Tiles (§3.2) on a circle, curved connectors. Dark-canvas (`#0F1217`) exception applies. Used for Process Visual posts when outputs feed back into inputs.
+
+### 4.4 Comparison split (before/after)
+
+Two parallel columns: wrong-way / right-way, old / new, common / contrarian. Same row structure on both sides. Semantic colors: Critical on the wrong side, Positive on the right side. Used for Contrarian Take posts.
+
+### 4.5 Comparison table
+
+Multi-option grid (3+ columns) for structured choice. Row and column headers, Mockup Tiles (§3.3) or Pills (§3.4) inside cells, optional accent color on the recommended column. Used when comparing tools, tactics, or approaches.
+
+### 4.6 Framework diagram
+
+Named conceptual model encoded geometrically (pyramid, matrix, concentric circles, ladder). Framework name centered or top, N labeled components with 1-line definitions. Used when the post centers on a named model (e.g. "The 7 Backdoors", "The 3 levers of X").
+
+### 4.7 Iceberg / hidden depth
+
+Surface vs. depth reveal. Small visible element above a waterline; larger stacked tiles below showing what's hidden. Used for posts revealing what's beneath a surface claim ("what looks like X is actually Y", "the hidden cost of Y").
+
+### 4.8 Stat hero
+
+One large Stat Callout (§3.6) as the visual. Context label, optional supporting metric pills. Used for Specific Result posts where one number carries the argument.
+
+### 4.9 Pull quote card
+
+Single bold insight, no diagram. Pull Quote primitive (§3.7), attribution line, lots of negative space. Used for Personal Story or High-Velocity posts where the line itself is the visual.
+
+### 4.10 NEW (escape hatch)
+
+If no archetype above fits, document the new pattern in `social-examples/inspiration/` first (annotated reference image), then promote it here. Do not ship a one-off archetype without a reference image - that's how the design system drifts.
+
+---
+
+## 5. Voice-to-visual translation
 
 The post tells you which format to reach for. This table is the lookup.
 
@@ -236,9 +284,9 @@ The post tells you which format to reach for. This table is the lookup.
 
 ---
 
-## 5. Format specs
+## 6. Format specs
 
-### 5.1 Cheat sheet (primary format)
+### 6.1 Cheat sheet (primary format)
 
 **Canvas:** 1080 x 1350 px (4:5) **minimum.** Longer is fine. Up to 1080 x 1920 (9:16) or even 1080 x 2160 acceptable when content density demands it. **Do not force content into a fixed grid that compresses padding.** Lanny called this out: rather extend the canvas vertically than cram tiles.
 
@@ -266,7 +314,7 @@ The post tells you which format to reach for. This table is the lookup.
 - **Every tile must show, not just tell.** Visualisation required (see Section 3.3 for allowed types).
 - **Tool logos require context.** A logo alone in a tile is incomplete - pair with a one-line label, a workflow snippet, or a mockup that contextualises the tool's role.
 
-### 5.2 Animated GIF (process / flywheel)
+### 6.2 Animated GIF (process / flywheel)
 
 **Canvas:** 1080 x 1350 px (4:5) default. 1:1 (1080x1080) acceptable for compact flywheels.
 **Frame rate:** 12-15 fps.
@@ -298,7 +346,7 @@ The post tells you which format to reach for. This table is the lookup.
 - Ease-out only. No bounce, no parallax, no spinning elements.
 - Motion is informational, not decorative.
 
-### 5.3 Carousel (de-emphasised)
+### 6.3 Carousel (de-emphasised)
 
 **Use when:** content is narratively sequential and cannot fit on one canvas. Otherwise prefer a cheat sheet.
 
@@ -313,7 +361,7 @@ The post tells you which format to reach for. This table is the lookup.
 
 **Slide indicator:** `01 / NN` in JetBrains Mono caption, `--color-muted`, top-right.
 
-### 5.4 Single image post (1:1 or 4:5)
+### 6.4 Single image post (1:1 or 4:5)
 
 Default to 1080 x 1080 px when the post hinges on a single stat, quote, or contrarian one-liner.
 
@@ -323,7 +371,7 @@ Default to 1080 x 1080 px when the post hinges on a single stat, quote, or contr
 - Background: same gradient + grid texture as cheat sheets.
 - Wordmark bottom-right.
 
-### 5.5 LinkedIn personal banner (1584x396) - pre-redesign
+### 6.5 LinkedIn personal banner (1584x396) - pre-redesign
 
 **Status:** the current LinkedIn banners on Lanny's profile predate the website redesign and will be rebuilt.
 
@@ -331,7 +379,7 @@ Default to 1080 x 1080 px when the post hinges on a single stat, quote, or contr
 
 ---
 
-## 6. The "do not" list
+## 7. The "do not" list
 
 These are the recurring failure modes from the references. Treat as inviolable.
 
@@ -351,7 +399,7 @@ These are the recurring failure modes from the references. Treat as inviolable.
 
 ---
 
-## 7. Workflow
+## 8. Workflow
 
 ```
 LinkedIn post (text)
@@ -393,7 +441,7 @@ Where `<post-slug>` is kebab-case, max 6 words.
 
 ---
 
-## 8. Versioning
+## 9. Versioning
 
 This doc is v1.0. Increment minor on additive changes (new format, new primitive). Increment major on positioning shifts or token changes.
 

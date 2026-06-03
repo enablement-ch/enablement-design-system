@@ -166,7 +166,7 @@ Build these frames. Frame names must be exact.
 
 ## 5. GIF storyboard - on page `03 - GIF Storyboard`
 
-For each animated GIF, the designer creates a **5-frame storyboard** on this page. Each frame is one beat from `DESIGN_SOCIAL.md` Section 5.4.
+For each animated GIF, the designer creates a **5-frame storyboard** on this page. Each frame is one beat from `DESIGN_SOCIAL.md` Section 6.4.
 
 ### Frame group: `GIF / Storyboard - [post-slug]`
 
