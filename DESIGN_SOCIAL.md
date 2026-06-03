@@ -236,9 +236,14 @@ Linear process laid out left-to-right or top-to-bottom. Each stage is a Mockup T
 
 Self-reinforcing process arranged radially around a central concept. Bento Tiles (§3.2) on a circle, curved connectors. Dark-canvas (`#0F1217`) exception applies. Used for Process Visual posts when outputs feed back into inputs.
 
-### 4.4 Comparison split (before/after)
+### 4.4 Comparison split
 
-Two parallel columns: wrong-way / right-way, old / new, common / contrarian. Same row structure on both sides. Semantic colors: Critical on the wrong side, Positive on the right side. Used for Contrarian Take posts.
+Two parallel columns showing a structured comparison. Same row structure on both sides. Two valid variants:
+
+- **Contrarian variant** - wrong/right, old/new, common/contrarian framing. Critical color on the wrong side, Positive color on the right side. Used for Contrarian Take posts.
+- **Neutral variant** - both columns are valid choices, framing is "when to use which". Each column may use its subject's brand-tinted accents (e.g. tool brand colors); Critical/Positive semantics do not apply. Used for Tool/Resource comparison posts where the answer is "use both".
+
+When a comparison has more than ~5 deep rows, consider §4.5 Comparison Table instead. Reference: [`05_clay-vs-claude-code.gif`](social-examples/inspiration/05_clay-vs-claude-code.gif) (neutral variant, 9 rows, brand-tinted columns).
 
 ### 4.5 Comparison table
 
@@ -246,7 +251,7 @@ Multi-option grid (3+ columns) for structured choice. Row and column headers, Mo
 
 ### 4.6 Framework diagram
 
-Named conceptual model encoded geometrically (pyramid, matrix, concentric circles, ladder). Framework name centered or top, N labeled components with 1-line definitions. Used when the post centers on a named model (e.g. "The 7 Backdoors", "The 3 levers of X").
+Named conceptual model encoded geometrically (pyramid, matrix, concentric circles, ladder, centered-mark-with-orbital-components). Framework name centered or top, N labeled components with 1-line definitions. Used when the post centers on a named model (e.g. "The 7 Backdoors", "The 3 levers of X"). Reference: [`04_claude-code-for-gtm-2026.gif`](social-examples/inspiration/04_claude-code-for-gtm-2026.gif) (centered-mark variant with 8 orbital component bentos).
 
 ### 4.7 Iceberg / hidden depth
 

@@ -10,6 +10,8 @@
 - `01_allbound-flow-2026.gif` (4.6MB)
 - `02_gtm-orchestration-framework.png` (663KB)
 - `03_cold-email-cheatsheet.jpg` (160KB)
+- `04_claude-code-for-gtm-2026.gif` (877KB)
+- `05_clay-vs-claude-code.gif` (160KB)
 
 Drive backup: [Inspo & training for AI](https://drive.google.com/drive/folders/1byZdSCnIpUDbUXIMjHfJFMggK4Ja5qMK)
 
@@ -94,7 +96,60 @@ Drive backup: [Inspo & training for AI](https://drive.google.com/drive/folders/1
 
 ---
 
-## Synthesis - the rules that show up across all three
+## Reference 04 - Claude Code For GTM 2026 (animated GIF, framework diagram)
+
+**File:** [`04_claude-code-for-gtm-2026.gif`](04_claude-code-for-gtm-2026.gif) (877KB, animated minimally - the underlying composition is a static framework diagram)
+**Structure:** central radial Claude Code mark surrounded by 8 numbered bentos (Signal Layer, Account Intelligence, Contact + Enrichment, Scoring Logic, Copy Generation, QA + Safety Filter, Feedback Loop x2). Each bento is a self-contained module of the GTM motion.
+**Archetype:** Framework Diagram (DESIGN_SOCIAL.md §4.6) - though it also encodes a feedback-loop character via the two "Feedback Loop" bentos at the bottom.
+**Direction this teaches us:** how Enablement does centered framework diagrams. A single iconic mark anchors the composition; the surrounding bentos are the components of the named model.
+
+### What works (draft - Lanny to validate)
+- **Central anchor primitive.** The radial Claude Code mark is large, deeply glassmorphic, and read first. Provides a focal point that the 8 surrounding bentos relate to.
+- **Numbered eyebrow pills on each bento.** `01 / Signal Layer`, `02 / Account Intelligence`, etc. - mono caps, clear hierarchy, supports scan-reading the framework left-to-right top-to-bottom.
+- **Per-bento content density.** Every bento shows real signals (tool logos, criteria lists, code snippets, mockup tables), not just text. Show-don't-tell executed at the framework-component level.
+- **Color discipline.** Crimson eyebrow pills as the only red accent; tool brand colors used contextually inside bentos.
+
+### What could be improved
+- **Two bentos both named "Feedback Loop".** Same issue as the GTM Orchestration Framework reference (steps 2-4 all named "Track"). Each component needs a distinct, accurate label.
+- **Per-bento padding varies.** Some bentos are tightly packed (Scoring Logic, QA Filter) while others have more breathing room. Tighten consistency.
+- **Connector lines could be more deliberate.** The lines from central mark to outer bentos exist but are quiet; consider whether they should carry more weight to reinforce the "everything orbits the center" read.
+
+### Design rules this teaches
+- **Framework Diagram archetype.** Center a single iconic primitive (logo, symbol, mark). Surround with N labeled component bentos. The center IS the framework's name; the bentos are its components.
+- **Numbered eyebrow pills enable scan-reading.** When a framework has ordered components, numbered eyebrows (`01 / X`, `02 / Y`) help the reader trace the sequence even when the layout is non-linear.
+- **Bentos can contain code/text/mockups simultaneously.** Mixing a code-snippet panel inside one bento and a logo-grid inside another is acceptable - the consistent bento border + padding holds it together.
+- **Distinct labels per component.** Repeated labels (two "Feedback Loop" bentos) read as a mistake even when conceptually correct.
+
+---
+
+## Reference 05 - Clay vs. Claude Code (animated GIF, comparison split)
+
+**File:** [`05_clay-vs-claude-code.gif`](05_clay-vs-claude-code.gif) (160KB, animated minimally - underlying composition is a static 2-column comparison)
+**Structure:** 2 columns (Clay / Claude Code) x 9 rows (Core purpose, Best for, Cost model, Integrations, Volume ceiling, AI personalisation, Data scraping, Challenges, Feels like). Bottom: 2 mini case-study panels showing real $ outcomes.
+**Archetype:** Comparison Split (DESIGN_SOCIAL.md §4.4) - **expands the archetype's valid use beyond binary contrarian framing.** Both columns are valid choices; the framing is "when to use each", not "wrong vs right".
+**Direction this teaches us:** how Enablement does neutral comparison content. Tools, tactics, or approaches where the answer is "use both, here's the heuristic."
+
+### What works (draft - Lanny to validate)
+- **Row labels with icons in a leftmost spine column.** Each row factor (Core purpose, Best for, etc.) has a small icon to its left. Helps row-wise scanning and breaks the table monotony.
+- **Per-column brand-tinted headers.** Clay's column uses Clay's blue mark; Claude Code's column uses Enablement's crimson. The brand-tinting reinforces "this is the X column" without needing repeated labels.
+- **Show-don't-tell inside cells.** Integrations row shows actual provider logos. Volume ceiling row has tiny bars showing 50k row limit. Cost model row has a mini chart. AI personalisation row has tool-flow snippets. Cells visualize wherever possible.
+- **Case-study panels at the bottom act as receipts.** Two real before/after scenarios with $ outcomes ($125/mo → $15/mo, 0 meetings → winning). Anchors the abstract comparison in concrete results.
+- **Lab → Factory framing pill** in the top-right ("Lab → Factory"). Tiny eyebrow phrase that names the heuristic; doesn't repeat the table content.
+
+### What could be improved
+- **High row count (9) approaches table territory.** At 9 rows the visual starts to feel more like a §4.5 Comparison Table than a §4.4 Comparison Split. Consider whether deeper comparisons should be classified as §4.5 with 2-column variant noted, or whether §4.4 expands to cover both depths.
+- **Critical/Positive semantic colors are absent.** Per the current §4.4 spec, the wrong side should use Critical color and the right side Positive. This visual uses neutral brand-tinting instead - which is correct for "use both" framing but means the spec needs to broaden.
+- **Case studies could be larger.** They carry the strongest persuasion weight on the canvas but get the smallest panels. Consider promoting them to full-width below the table.
+
+### Design rules this teaches
+- **Comparison Split has two variants.** Contrarian (wrong/right with Critical/Positive colors) AND Neutral (both valid, brand-tinted per column, "use both" framing). Update §4.4 accordingly.
+- **Row labels deserve icons.** When a comparison table has more than 5 rows, a leftmost spine column with row-label icons cuts cognitive load substantially.
+- **Brand-tint per column when subjects have their own brands.** Don't force Enablement Red onto both sides of a comparison when each subject has its own native accent. Reserve Enablement Red for Enablement's column (or the recommended option).
+- **Receipts beat assertions.** Mini case-study panels with real $ outcomes at the bottom of a comparison validate the heuristic the comparison teaches. Always pair structural comparison with at least one real-world receipt.
+
+---
+
+## Synthesis - the rules that show up across all five
 
 | Rule | Where it appears |
 |---|---|
