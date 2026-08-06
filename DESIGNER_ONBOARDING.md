@@ -143,6 +143,8 @@ Claude knows the repo. No need to upload anything or copy-paste spec sections.
   including labels, numbers, step IDs, and eyebrows.
 - **Don't introduce extra palette families.** Use the approved neutral, red,
   and blue tokens unless Lanny explicitly approves an exception.
+- **Don't introduce a body-copy gray.** Use `#0F1217` for every normal text role.
+  White is only for deliberately reversed text such as the red-capsule keyword.
 - **Don't shrink type to fit more content.** Extend the canvas vertically when
   the framework needs more space.
 - **Don't introduce additional typefaces.** The social system is Sofia Sans plus

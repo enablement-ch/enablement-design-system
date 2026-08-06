@@ -64,6 +64,8 @@ When writing or critiquing copy that appears in graphics (headlines, anchor line
 - Every infographic headline begins with `How to` and highlights one meaningful
   keyword in the canonical red gradient capsule.
 - LinkedIn infographic eyebrows use Sofia Sans Semibold caps with tracking.
+- LinkedIn infographics use `#0F1217` for every normal text role. Do not create a
+  second body-copy gray. White is reserved for deliberately reversed text.
 
 ## Workflow (social)
 

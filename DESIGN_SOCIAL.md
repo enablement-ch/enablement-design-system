@@ -1,4 +1,4 @@
-# Enablement - Social Design System v2.2
+# Enablement - Social Design System v2.3
 
 > Canonical visual rules for Enablement's LinkedIn infographics, GIFs, carousels,
 > single images, and banners. References, briefs, templates, and skills follow
@@ -81,8 +81,7 @@ The prior SaaS-glass direction is retired. Do not default to:
 
 | Token | Hex | Use |
 |---|---|---|
-| `--color-ink` | `#0F1217` | Headlines and primary text |
-| `--color-body` | `#4A5360` | Body copy, captions, and attribution |
+| `--color-ink` | `#0F1217` | All headlines, body copy, captions, labels, and attribution |
 | `--color-canvas-start` | `#F5FAFF` | Very pale blue canvas gradient start |
 | `--color-canvas-end` | `#E4F2FF` | Very pale blue canvas gradient end |
 | `--color-surface` | `#FFFFFF` | Primary paper and untinted panels |
@@ -93,10 +92,16 @@ The prior SaaS-glass direction is retired. Do not default to:
 |---|---|---|
 | `--color-accent-bright` | `#FF3762` | Headline-capsule gradient start |
 | `--color-accent` | `#E11E48` | Headline-capsule gradient end and brand mark |
-| `--color-accent-dark` | `#BE123C` | Dark red state, emphasis, or small contrast detail |
+| `--color-accent-dark` | `#BE123C` | Dark red state or small structural detail |
 
 The canonical headline capsule uses a left-to-right gradient from `#FF3762` to
 `#E11E48`. Do not use that gradient on body panels, text, or decorative shapes.
+
+**Text color lock:** use `#0F1217` for every normal text role. Do not introduce a
+second gray for body copy, captions, labels, or attribution. White is reserved
+for intentionally reversed text, including the highlighted keyword inside the
+red capsule. Do not color ordinary text red or blue; use those colors on fills,
+rules, connectors, and structural accents instead.
 
 #### Blue information family
 
@@ -106,7 +111,7 @@ The canonical headline capsule uses a left-to-right gradient from `#FF3762` to
 | `--color-blue-200` | `#B5D0FF` | Section band or secondary category |
 | `--color-blue-300` | `#86B0FF` | Stronger category or progression step |
 | `--color-blue-500` | `#4F7FEA` | Active connector, selected state, or key data |
-| `--color-blue-700` | `#315FAD` | Strong label, diagram block, or secondary outline |
+| `--color-blue-700` | `#315FAD` | Strong category fill, diagram block, or secondary outline |
 | `--color-blue-900` | `#17365F` | Primary panel outline, table rule, and connector |
 
 **Color discipline:** red stops the scroll; blue organizes the information.
@@ -399,6 +404,9 @@ executable brief.
 
 ## Changelog
 
+- `2026-08-06` - **v2.3 text color lock.** Removed `#4A5360` from the social
+  palette. `#0F1217` now handles every normal text role; white remains available
+  only for intentionally reversed text.
 - `2026-08-06` - **v2.2 editorial type lock.** Removed JetBrains Mono from the
   LinkedIn infographic system. Sofia Sans now handles every functional text
   role; DM Serif Display Italic is reserved for the highlighted headline word.

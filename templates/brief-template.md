@@ -108,6 +108,9 @@ blue paper tones beneath a white surface and faint document grid.
 **Headline capsule:** Gradient from `#FF3762` to `#E11E48`, white highlighted
 word, 10px radius, thin `#17365F` and white edge, restrained shadow.
 
+**Text color:** `#0F1217` for every normal text role. White only for deliberately
+reversed text. Do not introduce a second body-copy gray.
+
 **Blue information colors in use:** [list from `#D1E5FF`, `#B5D0FF`,
 `#86B0FF`, `#4F7FEA`, `#315FAD`, `#17365F`, and state what each encodes]
 

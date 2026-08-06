@@ -34,7 +34,6 @@ Create these pages in order:
 | `color/canvas-end` | `#E4F2FF` |
 | `color/surface` | `#FFFFFF` |
 | `color/ink` | `#0F1217` |
-| `color/body` | `#4A5360` |
 | `color/blue-100` | `#D1E5FF` |
 | `color/blue-200` | `#B5D0FF` |
 | `color/blue-300` | `#86B0FF` |
@@ -47,6 +46,11 @@ Create these pages in order:
 
 Create one paint style named `gradient/headline-accent`: linear left-to-right
 from `color/accent-bright` to `color/accent`.
+
+Apply `color/ink` to every normal text style. Do not create a separate body,
+caption, label, or attribution gray. Use white only for deliberately reversed
+text, including the editorial highlight inside `gradient/headline-accent`. Do
+not apply red or blue paint styles to ordinary text.
 
 ### 2.2 Text
 
