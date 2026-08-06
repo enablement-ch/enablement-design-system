@@ -1,445 +1,392 @@
-# Enablement - Social Design System v1.0
+# Enablement - Social Design System v2.0
 
-> Visual rules for everything Enablement ships on LinkedIn. Cheat sheets, animated process GIFs, banners.
-> This is the source of truth. Code, templates, briefs follow what's locked here.
+> Canonical visual rules for Enablement's LinkedIn infographics, GIFs, carousels,
+> single images, and banners. References, briefs, templates, and skills follow
+> this document.
 
 ## Status
 
 | Format | Status |
 |---|---|
-| Cheat sheet (vertical single image, 1080x1350 or taller) | **primary format** - 2 production references in `social-examples/inspiration/` |
-| Animated process GIF / flywheel (4:5) | secondary format - 1 production reference |
-| Carousel (multi-slide 4:5) | de-emphasised - use only when content is narratively sequential and cannot fit one canvas |
-| Single image post (1080x1080) | situational - for one-line takes / single-stat posts |
-| LinkedIn personal banner (1584x396) | **pre-redesign, to be rebuilt** - current banners live on Lanny's profile; rebuild brief will follow the same cheat-sheet primitives |
+| Editorial infographic, vertical 4:5 or taller | **Primary format** |
+| Framework grid, comparison matrix, annotated breakdown | **Primary archetypes** |
+| Animated process infographic | Secondary |
+| Carousel | Situational, only when a sequence cannot live on one canvas |
+| Single-image stat or comparison | Situational |
+| LinkedIn personal banner | Pre-redesign, rebuild later in this system |
 
-## How this doc relates to the rest of the system
+## Source hierarchy
 
-| Source | Owns | We reference |
-|---|---|---|
-| `~/enablement-site/src/styles/global.css` | Production color/type/spacing tokens | All canonical hex values, font stack, scale |
-| `~/enablement-design-system/site-plan.md` | Website composition rules | Voice, italic-emphasis pattern, hierarchy |
-| `~/enablement-design-system/social-examples/inspiration/README.md` | **Calibration references and rules they teach** | Every rule in this doc traces back to a reference |
-| `~/enablement-design-system/templates/brief-template.md` | Brief contract for designer | What every brief must contain |
-| `~/enablement-design-system/templates/figma-file-spec.md` | Designer's Figma file structure | Required frames, layers, variable names |
-| **This file** | Social-specific rules | Format specs, voice-to-visual translation, primitives |
+1. `social-examples/inspiration/` - visual calibration references.
+2. `DESIGN_SOCIAL.md` - rules derived from those references.
+3. `templates/brief-template.md` - the production brief contract.
+4. `templates/figma-file-spec.md` - component and layer implementation.
 
-**Rule:** when production tokens drift from this doc, production wins. Update this doc, not the site.
-**Rule:** when this doc drifts from a reference in `inspiration/`, the references win. Update this doc, not the references.
-**Rule:** when this doc drifts from `templates/figma-file-spec.md`, this doc wins. Update the Figma file.
+If a rule conflicts with a reference, the references win and this document must
+be updated. The former SaaS-glass system is preserved only in
+`social-examples/legacy-saas-glass/`; it is not an active reference.
 
 ---
 
-## 1. The brand at a glance
+## 1. The visual register
 
-Enablement's social visual register is **information-dense premium cheat sheet.** The format is a single vertical canvas, partitioned into bento tiles, each tile carrying a piece of the framework or play. Reference: the Cold Email Cheatsheet and GTM Orchestration Framework in `social-examples/inspiration/`.
+Enablement's LinkedIn register is **editorial, information-dense infographic**.
+It combines the scanability of a well-designed worksheet with the clarity of a
+modern magazine explainer.
 
-Three words that must apply to every output:
+Three words must apply to every output:
 
-- **Dense.** Every tile carries information. Empty space exists to let tiles breathe, never as filler.
-- **Visualised.** No tile is text-only. Each tile contains a mockup, mini-table, workflow snippet, tool logo with context, chart fragment, or other visual artefact that makes the concept legible without reading.
-- **Premium.** Subtle gradients, glassmorphic surfaces, soft drop shadows, faint grid textures. The graphic should look like a dashboard component, not a marketing poster.
+- **Structured.** The reader sees the information architecture immediately.
+- **Dense.** The canvas rewards a second and third look without becoming a wall
+  of text.
+- **Visual.** Diagrams, tables, screenshots, ladders, matrices, flows, and
+  annotated examples carry the argument.
 
-What we are NOT:
+The design is visually restrained and informationally rich. Minimal decoration
+does not mean minimal copy. Negative space separates sections; it is not the
+main event.
 
-- Not text-heavy slideware. If the only content of a tile is words, it is a draft, not a final.
-- Not flat-color minimalism. Backgrounds gradient, surfaces glassmorphic, depth exists.
-- Not corporate-templated. No PowerPoint stock charts, no hand-drawn anything, no clipart.
-- Not playful. No emojis as visual elements. No comic typography.
+### What this replaces
+
+The prior SaaS-glass direction is retired. Do not default to:
+
+- Glassmorphism, refractive borders, or frosted cards.
+- Linear or Stripe dashboard styling.
+- Blue-to-white product gradients and floating SaaS cards.
+- Large empty canvases justified as premium minimalism.
+- Soft-depth effects as the primary visual idea.
+
+### What this is not
+
+- Not an austere one-idea concept poster. That remains a separate specialized
+  format for the `minimalist-visual` workflow.
+- Not PowerPoint slideware. A panel needs information architecture, not a title
+  and paragraph dropped into a rectangle.
+- Not playful illustration. Avoid mascots, stickers, emoji decoration, and
+  hand-drawn scenes.
+- Not generic corporate consulting diagrams. Every section should feel specific
+  to the content.
 
 ---
 
-## 2. Tokens (canonical)
-
-Hex values come from production `global.css`. When you see a color in this doc, it comes from here.
+## 2. Tokens
 
 ### 2.1 Color
 
+#### Core brand colors
+
 | Token | Hex | Use |
 |---|---|---|
-| `--color-canvas` | `#F2F4F8` | **Default base.** Light slate. Never pure white. |
-| `--color-surface` | `#FFFFFF` | Bento tile fills |
-| `--color-surface-raised` | `#FAFBFD` | Subtle layered surface (chips, secondary tiles) |
-| `--color-border` | `#E1E5EC` | Hairline borders on tiles (always present) |
-| `--color-border-strong` | `#C9CFD9` | Heavier dividers |
-| `--color-heading` | `#0F1217` | Deep charcoal. Headings, primary text. |
-| `--color-body` | `#4A5360` | Body text |
-| `--color-muted` | `#7C8390` | Captions, legends, mono labels |
-| `--color-accent` | `#E11E48` | **Enablement Red.** Used sparingly. One element per graphic. |
-| `--color-accent-hover` | `#BE123C` | Pressed-state red (rarely used in static) |
-| `--color-flow` | `#6FA8DC` | Diagram flow lines, neutral connectors |
-| `--color-flow-strong` | `#4A89C7` | Emphasised flow lines |
-| `--color-canvas-tint` | `#D7EBFE` | Background gradient endpoint (pale blue). Named explicitly so the rendered color is documented, not derived from opacity math. |
-| `--color-positive` | `#2E8F54` | Success state |
-| `--color-warning` | `#C77B0E` | Caution state |
-| `--color-critical` | `#B43A2A` | Failure state |
+| `--color-canvas` | `#FFFFFF` | Default editorial canvas |
+| `--color-canvas-alt` | `#F7F8FA` | Optional off-white canvas |
+| `--color-surface` | `#FFFFFF` | Untinted panels and cells |
+| `--color-ink` | `#0F1217` | Headlines, body, strong outlines |
+| `--color-body` | `#343A45` | Supporting copy |
+| `--color-muted` | `#707784` | Captions and metadata |
+| `--color-rule` | `#183A67` | Panel outlines, table rules, connectors |
+| `--color-rule-light` | `#C9D2DF` | Secondary dividers |
+| `--color-accent` | `#E11E48` | One primary highlight or headline capsule |
+| `--color-accent-dark` | `#BE123C` | Small high-contrast accent states |
 
-**Background gradient (locked):** linear gradient at 135° from `--color-canvas` (`#F2F4F8`) at top-left to `--color-canvas-tint` (`#D7EBFE`) at bottom-right. Subtle. Both colors are named tokens - no opacity math. Should be barely perceptible at first glance; visible on close inspection.
+#### Editorial tints
 
-**Tool-brand accents** are allowed inside individual bento tiles when a specific tool is being illustrated (e.g. Slack purple inside a Slack mockup tile). Outside of tool-specific tiles, only the Enablement palette applies.
-
-**Dark-mode tokens** (use only if a specific reference establishes a dark version):
+Use two to four tints when categories require color coding. Tints organize; they
+do not decorate.
 
 | Token | Hex |
 |---|---|
-| `--color-canvas` (dark) | `#0F1217` |
-| `--color-surface` (dark) | `#181C23` |
-| `--color-heading` (dark) | `#E5E9F0` |
+| `--color-tint-blue` | `#DCEBFF` |
+| `--color-tint-blue-strong` | `#AFCBFA` |
+| `--color-tint-pink` | `#F8D6DF` |
+| `--color-tint-purple` | `#E6D5FA` |
+| `--color-tint-yellow` | `#FFF2B8` |
+| `--color-tint-cyan` | `#D8F4F7` |
+| `--color-tint-green` | `#DDF5D8` |
+| `--color-tint-peach` | `#FBE0D0` |
+
+Semantic colors remain available for true states, not general decoration:
+
+| Token | Hex | Use |
+|---|---|---|
+| `--color-positive` | `#2E8F54` | Improvement or success |
+| `--color-warning` | `#C77B0E` | Caution |
+| `--color-critical` | `#B43A2A` | Failure or risk |
+
+**Color discipline:** one dominant accent plus a small supporting tint system.
+Do not turn every panel into a different bright color. Use color consistently
+across matching categories, columns, and steps.
 
 ### 2.2 Typography
 
-| Use | Family | Size source |
+| Use | Family | Guidance |
 |---|---|---|
-| Headlines, display | **Sofia Sans** (Bold) | `--font-size-h1` 3.8125rem, `--font-size-display` clamp(2.75rem, 6vw, 5rem) |
-| Section headings (per bento) | **Sofia Sans** (Semibold) | `--font-size-h4` 1.9375rem or `--font-size-h5` 1.5625rem |
-| Body, labels | **Sofia Sans** (Regular) | `--font-size-body` 1rem |
-| Captions, eyebrows, legends, numerics | **JetBrains Mono** (Regular) | `--font-size-caption` 0.8125rem, `--font-size-eyebrow` 0.75rem |
+| Display headline | Sofia Sans Bold | 64-104px on 1080px-wide canvases |
+| Panel heading | Sofia Sans Bold or Semibold | 25-40px |
+| Body | Sofia Sans Regular | 18-28px depending on density |
+| Labels, numerics, step IDs | JetBrains Mono | 14-22px |
 
-**No serif typefaces anywhere.** Lanny called this out as off-brand. Sofia Sans + JetBrains Mono is the entire stack.
+- Use Sofia Sans and JetBrains Mono only.
+- Use sentence case by default.
+- Use one Sofia Sans Bold Italic phrase per headline at most.
+- Use large weight or a flat color capsule to create the headline interruption.
+- Keep paragraph line lengths short. Convert long prose into bullets, labels,
+  rows, or annotated fragments.
+- Use tabular numerics for aligned comparisons.
 
-**Pattern: italic emphasis on one word.** Borrowed from website (`Scale your pipeline, *not your headcount*`). One italic word per headline maximum.
+### 2.3 Spacing
 
-**Pattern: mono eyebrows.** Above every section heading, a small uppercase mono eyebrow in `--color-muted` provides category (`STEP 01`, `SIGNAL`, `OUTCOME`). Sets the rhythm.
+Scale: `4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96`.
 
-**Pattern: tabular numerics.** Stats use mono with `font-variant-numeric: tabular-nums`. Numbers align vertically across tiles.
+- Outer canvas margin: 40-56px.
+- Major section gap: 20-32px.
+- Standard panel padding: 20-28px.
+- Dense table cell padding: 12-18px.
+- Never reduce body text below a readable mobile size to preserve a fixed ratio.
+  Extend the canvas instead.
 
-### 2.3 Spacing scale
+### 2.4 Radius and shadow
 
-`4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 / 128 / 192` (px, named `--space-1` through `--space-11`).
+- Primary panels: 6-10px radius.
+- Tables and comparison matrices may use square corners.
+- Pills and labels: pill radius.
+- Default shadow: none.
+- Optional overlay shadow: `0 3px 10px rgba(15, 18, 23, 0.12)` for a lifted
+  label, headline capsule, screenshot, or deliberately stacked element.
 
-**Bento tile padding rule:** minimum `--space-5` (24px) internal padding on all sides. **Tighter padding is the single most common failure mode** (called out explicitly by Lanny on GTM Orchestration Steps 2, 3, 8). When unsure, pad more.
-
-**Section gaps:** `--space-6` (32px) between bento tiles minimum. Tiles should never share borders without a gap.
-
-### 2.4 Radius
-
-`4 / 8 / 12 / 20 / 999` (`--radius-xs / sm / md / lg / pill`).
-
-- Bento tiles: `--radius-md` (12px) default. The slight extra roundness vs cards (8px) reinforces the glassmorphic feel.
-- Pills, chips, eyebrows: `--radius-pill`.
-- No corners larger than 20px.
-
-### 2.5 Shadow
-
-```
---shadow-xs  0 1px 2px  rgba(15, 18, 23, 0.04)
---shadow-sm  0 4px 12px rgba(15, 18, 23, 0.06)
---shadow-md  0 12px 32px rgba(15, 18, 23, 0.08)
-```
-
-**Bento tile shadow:** `--shadow-sm` default. Soft, diffused. Provides depth without announcing itself.
-
-**Layered shadows for 3D depth** (per allbound reference): when a tile or central element needs more depth, layer `--shadow-xs` + `--shadow-md` rather than using a single hard shadow. No 3D bevels. No gradient-on-text effects.
+Shadows establish hierarchy on selected objects. They do not appear on every
+panel.
 
 ---
 
 ## 3. Composition primitives
 
-The building blocks. Every social graphic is assembled from these.
+### 3.1 Editorial canvas
 
-> **Tool logos** used inside primitives (mockup tiles, pill rows, ad-stack visualisations) live in `~/enablement-design-system/logos/`. See [`logos/README.md`](logos/README.md) for naming convention and current inventory. If a brief references a tool whose logo is not in the folder, flag it in `## Open Questions` - do not substitute.
+Use a flat white or off-white canvas. A faint 1px layout grid at no more than 5%
+opacity is allowed when it supports alignment, as in a working document. Do not
+use ambient product gradients, glowing orbs, or decorative SaaS textures.
 
-### 3.1 Background (gradient + grid)
+### 3.2 Editorial panel
 
-The canvas itself is a primitive. Two layers:
+The default modular container:
 
-1. **Gradient layer:** linear gradient `--color-canvas` (top-left) → `--color-flow` at 8% opacity (bottom-right). Subtle.
-2. **Grid texture layer:** 1px dot or hairline grid at ~24px spacing, in `--color-border` at 20% opacity, overlaid on the gradient. Adds depth, prevents flatness. Reference: visible in the Allbound flywheel.
+- Flat white or editorial-tint fill.
+- 1.5-2px `--color-rule` outline, or 1px `--color-rule-light` for secondary cells.
+- Optional tinted header strip separated by a horizontal rule.
+- 6-10px radius, or square corners for a table.
+- 20-28px padding, reduced to 12-18px only for dense table cells.
+- No refractive edge, inset shine, blur, or ambient glass shadow.
 
-Both layers are part of the canvas template, not per-tile.
+Panels can contain copy when the copy is structured. A hierarchy of heading,
+bullets, labels, and an embedded diagram is valid. A paragraph pasted into a box
+without hierarchy is not.
 
-### 3.2 Bento tile (the main primitive)
+### 3.3 Table and comparison matrix
 
-The unit of information in cheat sheets. The glassmorphic read comes from four layered details working together - none of them on its own is sufficient.
+Use for repeated fields across two or more categories.
 
-- **Surface:** linear gradient from `--color-surface` (`#FFFFFF`) at the top to `--color-surface-raised` (`#FAFBFD`) at the bottom. Never flat white. The gradient sustains the "glass under light" feel.
-- **Refractive edge** (the most important detail): a 1px gradient border at 135°. Bright white at the upper-left corner, fading through translucent mid-tones to a deeper cool-grey near the lower-right corner. Simulates how light catches the edge of glass. **A flat 1px solid border kills the glass read entirely** - it feels like a div with a stroke, not like a panel of glass refracting light. Approximate stops: `rgba(255,255,255,1) → rgba(255,255,255,0.55) @ 35% → rgba(201,207,217,0.50) @ 65% → rgba(201,207,217,0.95)`.
-- **Inset top highlight:** `inset 0 1px 0 rgba(255, 255, 255, 0.9)` - a subtle line of bright white just inside the top edge. This is the "shine" of light hitting the front face of the glass. Without it, the tile feels matte.
-- **Radius:** `--radius-md` (12px). Not 8px (too flat), not 20px (too rounded-marketing).
-- **Padding:** minimum `--space-5` (24px), more is acceptable. Never less.
-- **Drop shadow:** `--shadow-sm` (`0 4px 12px rgba(15, 18, 23, 0.06)`). Soft, barely visible, lifts the tile off the canvas without announcing itself.
-- **Optional left-accent stripe:** 4px wide vertical bar on the left edge in `--color-positive`, `--color-warning`, `--color-critical`, or `--color-accent` for semantic state. Sits above the refractive edge in z-order.
+- Lock column widths and row logic before styling.
+- Use tinted column headers or section bands.
+- Repeat the same field order so readers compare horizontally.
+- Use bullets, mini-bars, diagrams, and labels inside cells.
+- Use strong outer rules and lighter internal dividers.
 
-**Glassmorphic effect recipe:** gradient surface + refractive edge + inset top highlight + soft drop shadow. All four. Drop any one and the read collapses.
+### 3.4 Diagram block
 
-**Implementation note:** the refractive edge is implemented in CSS via a pseudo-element with a `linear-gradient` background and `mask-composite: exclude`. In Figma, replicate by applying a **1px gradient stroke** (white at 100% on the upper-left → cool grey `#C9CFD9` at ~95% on the lower-right) instead of a solid stroke. Do not use `backdrop-filter: blur` on static exports - the effect is achieved entirely with gradient stops and shadows, never with backdrop blur (which doesn't survive PNG export anyway).
+Allowed diagram forms:
 
-### 3.3 Mockup tile (the show-don't-tell unit)
+- Ladder or maturity scale.
+- Venn diagram.
+- Funnel or stack.
+- Circular ecosystem.
+- Linear process or pipeline.
+- Before/after system map.
+- Annotated screenshot or post.
+- Mini bar, score, or progression chart.
 
-A bento tile that contains a visualised artefact instead of (or in addition to) text. **This is non-negotiable.** Every section in a cheat sheet must contain a visualisation, not just text.
+Use the simplest diagram that makes the information easier to understand.
 
-Allowed visualisation types inside a tile:
+### 3.5 Highlight capsule
 
-- Email mockup (from / subject / first 3 lines, in a faux Gmail or Outlook shell)
-- Workflow snippet (trigger → action → outcome, with mini nodes and connectors)
-- Mini-table (2-4 columns, 3-5 rows max)
-- Annotated logo (tool logo + a one-line label of what it does in this play)
-- Chart fragment (sparkline, mini bar chart, mini funnel)
-- Pill / chip stack (a labelled set of tactic chips, e.g. "Bumping / Circling back / New Angle")
-- Mini-screenshot (UI fragment from a real tool, cropped tightly)
-- Stat callout (number + label, in mono)
+A flat or lightly shadowed capsule interrupts the headline or marks one decisive
+phrase. Use Enablement Red for the primary brand moment. Pastel capsules may mark
+category labels. Do not use more than one red capsule per canvas.
 
-**Failure mode:** a tile that contains only a logo (no surrounding visualisation or label) wastes the slot. Lanny called this out specifically on GTM Orchestration Step 6.
+### 3.6 Step ID and section band
 
-### 3.4 Pill / chip / eyebrow
+- Step IDs use JetBrains Mono and a compact light panel or label.
+- Section bands use a tint related to that category.
+- Keep numbering large enough to create scan order.
+- Use distinct section names. Repeated vague verbs are a defect.
 
-- Background: subtle gradient (light grey → mid grey) or solid (white with border, or accent for emphasis). Gradient is preferred; sustains the premium feel.
-- Radius: `--radius-pill`.
-- Padding: `--space-2` vertical, `--space-3` horizontal.
-- Type: JetBrains Mono uppercase for eyebrows. Sofia Sans Semibold for action/state chips.
-- Examples from references: "STEP 01," "SIGNAL," tactic chips (Bumping / Circling back / New Angle), state chips ("3-4% Above average").
+### 3.7 Evidence block
 
-### 3.5 Connector / arrow
+Screenshots, social posts, mini case studies, and real examples can occupy a full
+column or major panel. Annotate them with rules, color blocks, or callouts. Crop
+tightly and keep the source legible.
 
-- Solid line in `--color-heading`: human-executed step.
-- Dashed line in `--color-flow-strong`: automated step.
-- Single arrowhead, single direction.
-- Stroke: 1.5px for diagram lines, 1px for dividers.
+### 3.8 Connector
 
-### 3.6 Stat callout
+- 1.5-2px `--color-rule` stroke.
+- One arrowhead and one clear direction.
+- Solid for the main reading path.
+- Dashed only for optional or automated branches.
 
-- Number: Sofia Sans Bold, large (`--font-size-display` or larger).
-- Label below: JetBrains Mono uppercase caption in `--color-muted`.
-- Optional before/after pattern: `5% → 30%` with thin arrow.
-- Mono numerics throughout for vertical alignment across tiles.
+### 3.9 Wordmark and attribution
 
-### 3.7 Pull quote
-
-- Quote: Sofia Sans Regular at `--font-size-lead`.
-- Use the actual `"` character only - no decorative giant glyphs.
-- Attribution: `- [Name], [Title], [Company]` in JetBrains Mono caption.
-- Generous side padding (at least `--space-7`).
-
-### 3.8 Wordmark (logo lockup)
-
-- Files: `~/enablement-site/public/logo-black.svg`, `logo-white.svg`.
-- On light canvas: black wordmark.
-- On dark canvas: white wordmark.
-- Placement: bottom-right, small, unobtrusive.
-- Minimum clearspace: equal to wordmark cap height on all sides.
+- Enablement wordmark bottom-right.
+- Author photo and name bottom-left when relevant.
+- Keep attribution small and outside the core information grid.
 
 ---
 
 ## 4. Visual archetypes
 
-The macro-level visual recipes - "what is the whole visual?" Archetypes compose the primitives in §3 into a complete layout. Pick one before composing tiles.
+### 4.1 Framework grid
 
-A post's archetype is usually decided by its rhetorical structure. The voice-to-visual table (§5) maps post types to default archetypes; this section defines each archetype.
+Two to six modular panels, each explaining one pillar, step, or part of a system.
+Panels can mix diagrams, bullets, and mini examples. Reference:
+`04_founder-content-engine.png` and `06_four-pillar-content-framework.png`.
 
-### 4.1 Cheat sheet grid
+### 4.2 Comparison matrix
 
-Information-dense scannable reference. 5-10 bento tiles in a grid, optional grouping headers, designed to be screenshotted and re-referenced. Primary archetype for Framework Breakdown and Tool/Resource posts.
+Two to four columns with repeated row fields. Use for roles, approaches, tools,
+or maturity levels. Reference: `01_top-1-percent-communicator.png` and
+`03_viral-infographics-comparison.png`.
 
-### 4.2 Sequential workflow
+### 4.3 Annotated source plus breakdown
 
-Linear process laid out left-to-right or top-to-bottom. Each stage is a Mockup Tile (§3.3) with optional tool-icon pills, Connectors (§3.5) between stages. Used for Process Visual posts when the process has a clear start and end.
+Place a screenshot, post, or source artifact on one side and the framework that
+explains it on the other. Reference: `05_inbound-leads-post-system.png`.
 
-### 4.3 Flywheel (cyclical workflow)
+### 4.4 Tiered ladder
 
-Self-reinforcing process arranged radially around a central concept. Bento Tiles (§3.2) on a circle, curved connectors. Dark-canvas (`#0F1217`) exception applies. Used for Process Visual posts when outputs feed back into inputs.
+Stack levels vertically to show accessibility, maturity, trust, or complexity.
+Each level can contain example thumbnails and short labels. Reference:
+`02_content-accessibility-ladder.png`.
 
-### 4.4 Comparison split
+### 4.5 System map
 
-Two parallel columns showing a structured comparison. Same row structure on both sides. Two valid variants:
+Use ladders, funnels, loops, or pipeline diagrams to show movement through a
+system. Keep the shapes flat, outlined, and editorial. Motion versions reveal
+the same system step by step rather than adding decorative animation.
 
-- **Contrarian variant** - wrong/right, old/new, common/contrarian framing. Critical color on the wrong side, Positive color on the right side. Used for Contrarian Take posts.
-- **Neutral variant** - both columns are valid choices, framing is "when to use which". Each column may use its subject's brand-tinted accents (e.g. tool brand colors); Critical/Positive semantics do not apply. Used for Tool/Resource comparison posts where the answer is "use both".
+### 4.6 NEW
 
-When a comparison has more than ~5 deep rows, consider §4.5 Comparison Table instead. Reference: [`05_clay-vs-claude-code.gif`](social-examples/inspiration/05_clay-vs-claude-code.gif) (neutral variant, 9 rows, brand-tinted columns).
-
-### 4.5 Comparison table
-
-Multi-option grid (3+ columns) for structured choice. Row and column headers, Mockup Tiles (§3.3) or Pills (§3.4) inside cells, optional accent color on the recommended column. Used when comparing tools, tactics, or approaches.
-
-### 4.6 NEW (escape hatch)
-
-If no archetype above fits, document the new pattern in `social-examples/inspiration/` first (annotated reference image), then promote it here. Do not ship a one-off archetype without a reference image - that's how the design system drifts.
-
-**Current one-offs under NEW:**
-- [`04_claude-code-for-gtm-2026.gif`](social-examples/inspiration/04_claude-code-for-gtm-2026.gif) - centered-mark framework with 8 orbital component bentos. Pattern not common enough yet to promote to its own archetype.
+Use a new composition when none of the above fits. Document the shipped result
+in the reference library before promoting it to a repeated archetype.
 
 ---
 
-## 5. Voice-to-visual translation
+## 5. Voice-to-visual routing
 
-The post tells you which format to reach for. This table is the lookup.
+| Post structure | Default treatment |
+|---|---|
+| Framework or methodology | Framework grid |
+| Two to four repeated categories | Comparison matrix |
+| Teardown of a real post or artifact | Annotated source plus breakdown |
+| Beginner to advanced or maturity progression | Tiered ladder |
+| Multi-stage operating system | System map |
+| One specific result | Single-image stat or compact evidence block |
+| Contrarian take | Comparison matrix or compact split |
+| Personal story | Photo plus annotated timeline or pull quote |
 
-| Post type (from `LINKEDIN_STYLE_GUIDE.md`) | Format | Notes |
-|---|---|---|
-| **Framework Breakdown** | **Cheat sheet** | Each framework step = one bento tile with a visualised artefact. 6-10 tiles. |
-| **Tool/Resource (cheat sheet)** | **Cheat sheet** | Primary use case. Tools/tactics laid out as bentos. |
-| **Process Visual (multi-step system)** | **Animated GIF** | Flywheel or sequential reveal. Glassmorphic central composition. |
-| **Contrarian Take** | Cheat sheet (split-comparison layout) OR single image | Two side-by-side bentos contrasting old vs new model. Or a single tall comparison panel. |
-| **Specific Result** (numbers-driven) | Single image (1:1) or cheat-sheet cover | Hero stat callout + 1-line context. Less is more here. |
-| **Personal Story** | Single image | Photo + pull quote. Banner-style photo treatment (will be rebuilt post-redesign). |
-| **High-Velocity** (rapid takes) | Single image (1:1) | All-type composition. Bold hook restated visually. |
-
-**The test:** if a post hinges on multiple distinct insights, plays, tools, or steps, it's a cheat sheet. If a post hinges on one number, one quote, or one one-liner, it's a single image. If a post hinges on a self-reinforcing process, it's a GIF.
-
----
-
-## 6. Format specs
-
-### 6.1 Cheat sheet (primary format)
-
-**Canvas:** 1080 x 1350 px (4:5) **minimum.** Longer is fine. Up to 1080 x 1920 (9:16) or even 1080 x 2160 acceptable when content density demands it. **Do not force content into a fixed grid that compresses padding.** Lanny called this out: rather extend the canvas vertically than cram tiles.
-
-**Format:** PNG, 24-bit, sRGB.
-
-**Anatomy** (top to bottom):
-
-1. **Title block** (top). Sofia Sans Bold display size. Sentence case or all-caps depending on register. Optional one-line subtitle in Sofia Sans Regular below. Optional small attribution chip (e.g. "Based on 4.3B emails sent").
-2. **Step / section sequence** (middle, ~70-80% of canvas). Bento tiles in a grid. Each tile is a Mockup Tile (Section 3.3) - never text-only. Each tile has:
-   - Mono eyebrow (e.g. `STEP 01`)
-   - Section heading (Sofia Sans Semibold, **distinct from other section headings - no repeated verbs**)
-   - Visualised artefact (mockup, table, workflow, chart fragment, pill stack)
-3. **Anchor line** (bottom, centered, optional, italic). One sentence that lands the insight.
-4. **Wordmark** (bottom-right, small).
-
-**Grid rules:**
-
-- Allowed layouts: 1-column (very tall, ~10+ tiles), 2-column (balanced, 6-10 tiles), 2x3 / 3x2 / 2x4 / 4x2 / mixed-size bento (where some tiles span 2 columns or 2 rows).
-- **Mixed-size bento is encouraged** - a hero tile spanning the full width followed by 4 smaller tiles below reads more dynamically than a uniform grid.
-- **No forced grid alignment that compresses padding.** Extend canvas vertically instead.
-
-**Tile content rules:**
-
-- **Every tile must have a distinct section name.** No "Track" repeated 3 times. Use Validate / Enrich / Route / Personalise / Send / Measure instead.
-- **Every tile must show, not just tell.** Visualisation required (see Section 3.3 for allowed types).
-- **Tool logos require context.** A logo alone in a tile is incomplete - pair with a one-line label, a workflow snippet, or a mockup that contextualises the tool's role.
-
-### 6.2 Animated GIF (process / flywheel)
-
-**Canvas:** 1080 x 1350 px (4:5) default. 1:1 (1080x1080) acceptable for compact flywheels.
-**Frame rate:** 12-15 fps.
-**Duration:** 4-6 seconds total, looping seamlessly.
-**File size:** ≤8MB.
-
-**Pattern: flywheel reveal** (reference: Allbound Flow 2026).
-
-- **Central composition:** circular ring with 3-5 orbital nodes. The ring has subtle 3D depth (drop shadow on the ring itself, not just on nodes).
-- **Nodes:** glassmorphic bento tiles arranged at clock positions on the ring. Each node has a left-accent stripe in a sequential color (warning → flow → positive → accent, or similar).
-- **Connectors:** curved arrows along the ring path, between nodes. Solid for human steps, dashed for automated.
-- **Central card:** floating bento in the middle of the ring, containing the hero stat or insight.
-- **Background:** gradient + grid texture (same as cheat-sheet canvas).
-
-**Beat structure:**
-
-| Beat | Time | Action |
-|---|---|---|
-| 1 | 0.0-1.0s | Background + headline + central card fade in |
-| 2 | 1.0-2.0s | Node 1 appears |
-| 3 | 2.0-3.0s | Connector to Node 2 draws, Node 2 appears |
-| 4 | 3.0-4.0s | Remaining nodes + connectors complete |
-| 5 (loop) | 4.0-6.0s | Hold final frame, snap to start |
-
-**Per-node rule:** each node needs a label that explains *which step in the system it is* (e.g. "ENGAGE: Cold Email") and a small explanatory text below (one line max). Not just a logo. Per Lanny's critique of Allbound.
-
-**Motion rules:**
-
-- Ease-out only. No bounce, no parallax, no spinning elements.
-- Motion is informational, not decorative.
-
-### 6.3 Carousel (de-emphasised)
-
-**Use when:** content is narratively sequential and cannot fit on one canvas. Otherwise prefer a cheat sheet.
-
-**Canvas:** 1080 x 1350 px (4:5).
-**Slide count:** 6-9 slides.
-
-**Slide types:**
-
-- Slide 01 - Cover: eyebrow + headline + subhead + slide indicator + wordmark
-- Slides 02..N-1 - Content: one bento composition per slide (re-use cheat-sheet primitives)
-- Slide N - CTA: closing headline + action line + wordmark
-
-**Slide indicator:** `01 / NN` in JetBrains Mono caption, `--color-muted`, top-right.
-
-### 6.4 Single image post (1:1 or 4:5)
-
-Default to 1080 x 1080 px when the post hinges on a single stat, quote, or contrarian one-liner.
-
-**Anatomy:**
-
-- One hero element (stat callout, pull quote, or all-type hook).
-- Background: same gradient + grid texture as cheat sheets.
-- Wordmark bottom-right.
-
-### 6.5 LinkedIn personal banner (1584x396) - pre-redesign
-
-**Status:** the current LinkedIn banners on Lanny's profile predate the website redesign and will be rebuilt.
-
-**Rebuild brief (parked):** when the time comes, write a banner brief using the same primitives as the cheat-sheet format (gradient + grid texture canvas, glassmorphic surfaces). Banner rebuild is not blocking the cheat-sheet trial.
+The test is structural: choose the archetype that matches the argument, then
+apply the editorial visual language.
 
 ---
 
-## 7. The "do not" list
+## 6. Format specifications
 
-These are the recurring failure modes from the references. Treat as inviolable.
+### 6.1 Vertical infographic
 
-- **No text-only tiles.** Every tile must include a visualisation. A tile that is just a heading and a paragraph is a draft.
-- **No tiles that are just a logo.** Logos need context (label, workflow snippet, mockup).
-- **No cramped padding.** Internal padding < 24px is a defect. Extend the canvas vertically rather than tighten padding.
-- **No repeated section names.** No three "Track" steps. Each section needs a distinct, accurate verb.
-- **No serif typefaces.** Sofia Sans + JetBrains Mono only.
-- **No flat-color backgrounds.** Gradient + grid texture, always.
-- **No more than one Enablement Red accent element per graphic** (except inside tool-specific tiles where tool brand colors apply).
-- **No emojis as visual elements in graphics.** Fine in post copy, not in graphics.
-- **No 3D bevels, glossy effects, or gradient-on-text effects.**
-- **No stock photography.** No "diverse group around a laptop." No abstract data viz stock.
-- **No hand-drawn or sketchy textures.** No paper grain.
-- **No motion-graphic transitions in GIFs** (no swipes, no wipes, no zooms).
-- **No drop shadows on text.**
+- Width: 1080px.
+- Default height: 1350px.
+- Extend to 1620, 1920, or 2160px when the content requires it.
+- Export: PNG, 24-bit, sRGB.
+
+Anatomy:
+
+1. Headline block with one highlighted phrase at most.
+2. Optional subhead or proof line.
+3. Main structured grid, matrix, source breakdown, or system map.
+4. Small author attribution and Enablement wordmark.
+
+### 6.2 Carousel
+
+- 1080 x 1350px per slide.
+- Six to nine slides.
+- Use only when revealing the framework sequentially improves understanding.
+- Each slide follows the same editorial panel and type rules.
+
+### 6.3 Animated infographic
+
+- 1080 x 1350px.
+- 12-15fps, 4-6 seconds, maximum 8MB.
+- Reveal rows, levels, connectors, or annotations in reading order.
+- Use ease-out only. No bounce, spin, glow sweeps, parallax, or zoom transitions.
+- The final frame must work as a static infographic.
+
+### 6.4 Single image
+
+- 1080 x 1080px or 1080 x 1350px.
+- Use a compact matrix, annotated example, stat, or one structured comparison.
+- Do not stretch an infographic across an empty canvas.
+
+### 6.5 Banner
+
+- 1584 x 396px.
+- Rebuild later using flat editorial panels, strong typography, and one brand
+  highlight. Do not reuse the retired SaaS-glass treatment.
+
+---
+
+## 7. Do not list
+
+- No glassmorphism, blur, refractive borders, or frosted surfaces.
+- No SaaS dashboard aesthetic, floating product cards, or ambient blue gradients.
+- No decorative glow, gradient-on-text, or shadow on body copy.
+- No giant areas of empty space when useful information belongs there.
+- No paragraph walls. Structure copy as bullets, rows, captions, and labels.
+- No tiny copy used to force a 4:5 canvas.
+- No inconsistent category colors.
+- No decorative emojis, clipart, stock photography, or hand-drawn scenes.
+- No serif fonts unless Lanny explicitly approves a new brand font.
+- No repeated section labels that obscure the framework.
+- No logo-only panels. A logo needs context.
+- No invented metrics or fabricated receipts.
 
 ---
 
 ## 8. Workflow
 
-```
-LinkedIn post (text)
-       ↓
-Lanny (or Claude) fills out brief-template.md
-   - exact format (cheat sheet / GIF / carousel / single image)
-   - exact copy for every tile / element
-   - layout grid + tile count + per-tile visualisation type
-   - reference image(s) from social-examples/inspiration/
-       ↓
-ClickUp task created with brief in description
-       ↓
-Designer (WhatsApp handoff for now)
-       ↓
-Designer opens Enablement Social Templates Figma file
-       ↓
-Designer populates the chosen template frame from the brief
-       ↓
-Designer exports to PNG (cheat sheet, single image) or GIF
-       ↓
-Files delivered back via ClickUp + WhatsApp
-       ↓
-Lanny posts on LinkedIn
+```text
+LinkedIn post or source insight
+        ↓
+Choose the argument structure and archetype
+        ↓
+Write the canonical brief
+        ↓
+Pin one or two references from social-examples/inspiration/
+        ↓
+Build in the Enablement LinkedIn Figma file
+        ↓
+Review hierarchy, legibility, density, and factual accuracy
+        ↓
+Export and deliver
 ```
 
-### File naming convention
-
-- Cheat sheet: `<post-slug>_cheatsheet.png`
-- GIF: `<post-slug>_animated.gif`
-- Carousel: `<post-slug>_carousel_01.png` ... `_NN.png`
-- Single image: `<post-slug>_single.png`
-
-Where `<post-slug>` is kebab-case, max 6 words.
-
-### Delivery location
-
-- During trial: ClickUp task attachments.
-- Long-term: Google Drive folder `/Enablement/LinkedIn/Visuals/YYYY-MM/` + ClickUp task link.
+Every brief must specify the exact panel structure, content hierarchy, diagram
+type, color-coding logic, and reference image. “Make an infographic” is not an
+executable brief.
 
 ---
 
-## 9. Versioning
+## Changelog
 
-This doc is v1.0. Increment minor on additive changes (new format, new primitive). Increment major on positioning shifts or token changes.
-
-### Changelog
-
-- `2026-05-22` - v0.1 initial draft (deprecated). Partially built on BenAI-derived references; positioning was wrong.
-- `2026-05-23` - **v1.0 major rewrite.** Repositioned to cheat-sheet-first based on 3 production references in `social-examples/inspiration/`. New primitives: gradient background + grid texture, mockup tile (show-don't-tell), glassmorphic bento with subtle gradient overlay. Padding minimum tightened to 24px and called out as the #1 failure mode. Serif typeface banned. Banners marked as pre-redesign. Carousel format de-emphasised in favour of vertical cheat sheets that can extend beyond 4:5. BenAI-contaminated language (glow-stack, premium SaaS product diagram framing, three-pattern visual-A/B/C taxonomy) removed.
+- `2026-08-06` - **v2.0 direction replacement.** Replaced the SaaS-glass visual
+  system with the editorial, information-dense infographic register. Promoted
+  framework grids, comparison matrices, annotated breakdowns, tiered ladders,
+  and flat system maps. Added six canonical references supplied by Lanny and
+  moved the former glassmorphic references to `legacy-saas-glass/`.
+- `2026-05-23` - v1.0 glassmorphic cheat-sheet direction, now retired.

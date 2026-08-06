@@ -6,7 +6,10 @@
 
 Enablement is a B2B GTM engineering agency. We help our customers build outbound systems that produce pipeline without the founder's daily involvement. The visual output you'll produce supports our LinkedIn presence - vertical cheat sheets, animated process GIFs, the occasional single image, and (later) a banner refresh.
 
-The visual register is **information-dense premium cheat sheet.** Think Linear / Stripe dashboard component, not marketing poster. Bento tiles, glassmorphism, gradient backgrounds, grid textures, show-don't-tell.
+The visual register is **editorial, information-dense infographic.** Think a
+modern magazine explainer or exceptionally clear worksheet, not a SaaS product
+dashboard. Flat panels, strong information architecture, category tints,
+tables, diagrams, annotated examples, and structured copy do the work.
 
 ## What you have access to
 
@@ -45,7 +48,7 @@ You'll get the most out of these files if you read them in this order. Don't try
 
 | # | File | What you'll learn | Time |
 |---|---|---|---|
-| 1 | [social-examples/inspiration/README.md](social-examples/inspiration/README.md) | The 3 reference graphics that calibrate everything. Open the actual files alongside (Drive links in the README). | 10 min |
+| 1 | [social-examples/inspiration/README.md](social-examples/inspiration/README.md) | The 6 reference graphics that calibrate everything. Open the actual files alongside the annotations. | 10 min |
 | 2 | [DESIGN_SOCIAL.md](DESIGN_SOCIAL.md) | The full social design system. Tokens, primitives, format specs, do-not list. | 15 min |
 | 3 | [templates/brief-template.md](templates/brief-template.md) | The structure every brief follows. Skim once - you'll see this format repeatedly. | 2 min |
 | 4 | [templates/figma-file-spec.md](templates/figma-file-spec.md) | The Figma master file structure you'll build on Day 1. | 3 min |
@@ -58,7 +61,9 @@ Follow [templates/figma-file-spec.md](templates/figma-file-spec.md) step by step
 - [ ] Load Sofia Sans (Google Fonts) and JetBrains Mono (Google Fonts) into the file
 - [ ] Create the color styles listed in Section 2.1 of figma-file-spec.md
 - [ ] Create the text styles listed in Section 2.2
-- [ ] Build the 6 component primitives listed in Section 2.3 (Card, Pill, Stat Callout, Wordmark, Slide Indicator, Connector)
+- [ ] Build the component primitives listed in Section 2.3 (Editorial Panel,
+  Table Cell, Highlight Capsule, Step ID, Stat Callout, Wordmark, Slide
+  Indicator, Connector)
 
 Don't build the actual template frames (cheat sheet, infographic, etc.) yet. The first real brief will tell us what frame to build first - we build templates as we need them, not upfront.
 
@@ -119,8 +124,12 @@ Claude knows the repo. No need to upload anything or copy-paste spec sections.
 ## What you should NOT do
 
 - **Don't work from memory after Day 1.** Always check the latest spec by re-reading the relevant section or asking Claude. The system evolves.
-- **Don't optimise tiles for text density.** Tiles need visualised artefacts (mockups, mini-tables, workflow snippets), not paragraphs. See DESIGN_SOCIAL.md Section 3.3.
-- **Don't tighten padding to fit more content.** If content doesn't fit, extend the canvas vertically. Cramped padding is the #1 documented failure mode (per the GTM Orchestration critique in inspiration/README.md).
+- **Don't confuse density with paragraph walls.** Copy is welcome when it is
+  structured as bullets, rows, labels, and annotated fragments.
+- **Don't add glassmorphism or SaaS dashboard effects.** Flat editorial panels,
+  rules, color bands, and diagrams are the current direction.
+- **Don't shrink type to fit more content.** Extend the canvas vertically when
+  the framework needs more space.
 - **Don't introduce serif typefaces anywhere.** Sofia Sans + JetBrains Mono only. Lanny called this out specifically.
 
 ---
@@ -129,8 +138,10 @@ Claude knows the repo. No need to upload anything or copy-paste spec sections.
 
 The current system has a few unresolved edges. If any of these become live decisions during your first brief, flag them:
 
-1. **Cheat sheet max length.** v1.0 says "extend vertically as needed" with no hard cap. At what aspect ratio does a cheat sheet stop reading well on LinkedIn mobile? Empirical question.
-2. **Dark mode option.** v1.0 removed the dark-mode flywheel exception. If you find a brief that genuinely needs dark mode, propose a dark variant spec.
+1. **Infographic max length.** v2.0 allows 1080x2160 when information density
+   demands it. Test long canvases on LinkedIn mobile before shipping.
+2. **Dark mode option.** The active reference set is light and editorial. Any
+   dark variant needs an approved reference before entering the system.
 3. **Carousel scope.** v1.0 demotes carousels to "narratively sequential" content only. We don't yet have a production carousel reference. The first one we ship will help calibrate.
 4. **Banner rebuild.** Parked. If your first brief is a banner refresh, expect to propose the rebuild yourself based on DESIGN_SOCIAL.md's primitives.
 

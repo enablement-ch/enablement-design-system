@@ -1,225 +1,316 @@
-# Figma File Spec - Enablement Social Templates
+# Figma File Spec - Enablement LinkedIn Designs
 
-> What the designer must build in the master Figma file before any production work begins.
-> This is the contract that lets future automation (Figma MCP) populate templates programmatically.
+> Component and layer contract for the editorial infographic system. Frame and
+> layer names are stable automation interfaces.
 
-**File name:** `Enablement - Social Templates`
+**File name:** `Enablement - LinkedIn Designs`
 
-**File location:** Designer's Figma team workspace. Lanny gets edit access. The file URL goes back into this spec once created.
-
----
-
-## 1. Why this file exists
-
-The designer never starts a brief from a blank canvas. Every brief points at a frame in this file, populates the variable text fields, and exports.
-
-Future state: Claude pushes layout + text into these frames via the Figma MCP server. The frame contract below is what the MCP relies on - if frame names, layer names, or variable text fields drift, automation breaks.
+**File URL:**
+`https://www.figma.com/design/p5EfpR3pD5o0Mqh6e5cfo0/Enablement---LinkedIn-Designs`
 
 ---
 
-## 2. File-level setup
+## 1. Pages
 
-### Pages
+Create these pages in order:
 
-Create these pages in this order:
+1. `00 - System`
+2. `01 - Infographic`
+3. `02 - Carousel`
+4. `03 - GIF Storyboard`
+5. `04 - Banner`
+6. `05 - Sandbox`
 
-1. `00 - System` - tokens, type styles, color styles, components
-2. `01 - Carousel` - carousel templates (cover + content + CTA frames)
-3. `02 - Infographic` - vertical infographic templates per primitive
-4. `03 - GIF Storyboard` - frame-by-frame storyboards for animated GIFs
-5. `04 - Banner` - LinkedIn banner variants (already exists - import the 4 examples)
-6. `05 - Sandbox` - WIP space, never referenced by briefs
+---
 
-### Color styles
+## 2. Shared styles
 
-Create as **shared styles** in `00 - System`. Names must match `DESIGN_SOCIAL.md` token names exactly (without the `--` prefix):
+### 2.1 Colors
 
 | Style name | Hex |
 |---|---|
-| `color/canvas` | `#F2F4F8` |
-| `color/canvas-dark` | `#0F1217` |
+| `color/canvas` | `#FFFFFF` |
+| `color/canvas-alt` | `#F7F8FA` |
 | `color/surface` | `#FFFFFF` |
-| `color/surface-raised` | `#FAFBFD` |
-| `color/border` | `#E1E5EC` |
-| `color/border-strong` | `#C9CFD9` |
-| `color/heading` | `#0F1217` |
-| `color/body` | `#4A5360` |
-| `color/muted` | `#7C8390` |
-| `color/inverse` | `#FFFFFF` |
+| `color/ink` | `#0F1217` |
+| `color/body` | `#343A45` |
+| `color/muted` | `#707784` |
+| `color/rule` | `#183A67` |
+| `color/rule-light` | `#C9D2DF` |
 | `color/accent` | `#E11E48` |
-| `color/accent-hover` | `#BE123C` |
-| `color/flow` | `#6FA8DC` |
-| `color/flow-strong` | `#4A89C7` |
+| `color/accent-dark` | `#BE123C` |
+| `color/tint-blue` | `#DCEBFF` |
+| `color/tint-blue-strong` | `#AFCBFA` |
+| `color/tint-pink` | `#F8D6DF` |
+| `color/tint-purple` | `#E6D5FA` |
+| `color/tint-yellow` | `#FFF2B8` |
+| `color/tint-cyan` | `#D8F4F7` |
+| `color/tint-green` | `#DDF5D8` |
+| `color/tint-peach` | `#FBE0D0` |
 | `color/positive` | `#2E8F54` |
 | `color/warning` | `#C77B0E` |
 | `color/critical` | `#B43A2A` |
 
-### Text styles
+### 2.2 Text
 
-Create as **shared text styles**. Sofia Sans and JetBrains Mono must be loaded into the Figma file.
+Load Sofia Sans and JetBrains Mono.
 
 | Style name | Family / weight | Size |
 |---|---|---|
-| `text/eyebrow-mono` | JetBrains Mono / Regular | 12px uppercase, letter-spacing 0.08em |
-| `text/caption-mono` | JetBrains Mono / Regular | 13px |
-| `text/body` | Sofia Sans / Regular | 16px |
-| `text/lead` | Sofia Sans / Regular | 20px |
-| `text/h5` | Sofia Sans / Bold | 25px |
-| `text/h4` | Sofia Sans / Bold | 31px |
-| `text/h3` | Sofia Sans / Bold | 39px |
-| `text/h2` | Sofia Sans / Bold | 49px |
-| `text/h1` | Sofia Sans / Bold | 61px |
-| `text/display` | Sofia Sans / Bold | 80px (scale up per format) |
+| `text/step-mono` | JetBrains Mono / Bold | 18px |
+| `text/caption-mono` | JetBrains Mono / Regular | 14px |
+| `text/body-small` | Sofia Sans / Regular | 18px |
+| `text/body` | Sofia Sans / Regular | 22px |
+| `text/lead` | Sofia Sans / Regular | 28px |
+| `text/panel-heading` | Sofia Sans / Bold | 32px |
+| `text/h2` | Sofia Sans / Bold | 52px |
+| `text/h1` | Sofia Sans / Bold | 72px |
+| `text/display` | Sofia Sans / Bold | 96px |
 
-### Components
-
-Build these on `00 - System` as **published components** with editable text variants:
-
-1. **Card / glow-stack node** - white fill, 1px `color/border`, 8px radius, 24px padding all sides. Variants: with-left-stripe (positive/warning/critical/accent), no-stripe.
-2. **Pill / eyebrow** - radius pill, 12px vertical padding, 16px horizontal. Variants: neutral (white + border), accent (red fill), positive, warning, critical.
-3. **Stat callout** - container with: number (Sofia Bold Display) + label (mono caption). Variant: side-by-side `5% → 30%` arrow.
-4. **Wordmark** - SVG of Enablement logo, two variants: black (for light canvas), white (for dark canvas). Bottom-right placement guide layer included.
-5. **Slide indicator** - `01 / 09` mono caption, top-right anchor. Variants for 6 / 7 / 8 / 9 / 10 slide carousels.
-6. **Connector / arrow** - 1.5px stroke, single arrowhead. Variants: solid (human step, `color/heading`), dashed (automated, `color/flow-strong`).
+Create a Bold Italic variant for one short phrase in a headline. Do not add a
+serif display style.
 
 ---
 
-## 3. Carousel template - on page `01 - Carousel`
+## 3. Components on `00 - System`
 
-Build these frames. Frame names must be exact.
+### 3.1 `Panel / Editorial`
 
-### Frame: `Carousel / Cover`
+- Flat white or tint fill.
+- 2px `color/rule` outline.
+- 8px radius.
+- 24px default padding.
+- Optional `header-band` with a horizontal rule.
+- Variants: `white`, `blue`, `pink`, `purple`, `yellow`, `cyan`, `green`,
+  `peach`, `square-table-cell`.
+- No blur, gradient border, inset shine, or default shadow.
 
-- **Size:** 1080 x 1350 px
-- **Background:** `color/canvas`
-- **Layers (named exactly):**
-  - `eyebrow` - text layer, `text/eyebrow-mono`, top-left of message zone
-  - `headline` - text layer, `text/display` or `text/h1`, max 8 words
-  - `subhead` - text layer, `text/lead`, `color/body`, max 15 words
-  - `slide-indicator` - instance of slide-indicator component, top-right
-  - `wordmark` - instance of wordmark component, bottom-right
+Editable layers:
 
-### Frame: `Carousel / Content - Card Stack`
+- `step-id`
+- `panel-heading`
+- `panel-body`
+- `panel-visual`
 
-- **Size:** 1080 x 1350 px
-- **Layers:**
-  - `slide-indicator` - top-right
-  - `section-heading` - text, `text/h4`
-  - `body` - text, `text/body`, max 35 words
-  - `card-stack` - auto-layout group of 3-5 Card components, 16px gap
-  - `wordmark` - bottom-right
+### 3.2 `Cell / Table`
 
-### Frame: `Carousel / Content - Split Comparison`
+- Square or 4px radius.
+- 1px `color/rule-light` internal rule.
+- 14px padding.
+- Variants: `header`, `label`, `body`, `tinted-body`.
 
-- **Layers:**
-  - `slide-indicator`
-  - `section-heading`
-  - `column-left` (Card with left-stripe `critical`) - title + 2-3 bullet labels
-  - `divider` - vertical 1px hairline `color/border`
-  - `column-right` (Card with left-stripe `positive`) - title + 2-3 bullet labels
-  - `wordmark`
+### 3.3 `Capsule / Highlight`
 
-### Frame: `Carousel / Content - Stat Callout`
+- Variants: `accent`, `blue`, `pink`, `purple`, `yellow`, `cyan`, `green`.
+- 8px radius for headline capsules, pill radius for labels.
+- Accent variant may use the optional overlay shadow.
 
-- **Layers:**
-  - `slide-indicator`
-  - `stat-number` - text, `text/display` upscaled to 200px
-  - `stat-label` - text, `text/caption-mono` uppercase
-  - `context-line` - text, `text/body`, optional
-  - `wordmark`
+### 3.4 `Step / ID`
 
-### Frame: `Carousel / Content - Pull Quote`
+- JetBrains Mono Bold.
+- Compact white or tinted square.
+- Variants `01` through `12`.
 
-- **Layers:**
-  - `slide-indicator`
-  - `quote` - text, `text/lead`
-  - `attribution` - text, `text/caption-mono`
-  - `wordmark`
+### 3.5 `Stat / Callout`
 
-### Frame: `Carousel / CTA Close`
+- Large Sofia Sans Bold number.
+- JetBrains Mono label.
+- Variants: single, before/after, mini-bar, score.
 
-- **Layers:**
-  - `closing-headline` - text, `text/h2`
-  - `action-line` - text, `text/lead`, `color/accent` for the URL
-  - `wordmark`
+### 3.6 `Connector / Arrow`
 
----
+- 1.5-2px `color/rule` stroke.
+- Variants: solid, dashed, elbow, curved.
+- One arrowhead.
 
-## 4. Infographic templates - on page `02 - Infographic`
+### 3.7 `Wordmark / Enablement`
 
-### Frame: `Infographic / Split Screen` (visual-A pattern)
+- Black wordmark for the light canvas.
+- Bottom-right placement guide included.
 
-- 1080 x 1350 px, canvas background
-- Layers: `headline` (top, `color/accent` red, all-caps), `column-left-header` (pill), `column-left-flow` (vertical card stack with critical stripe), `column-right-header` (pill, accent fill), `column-right-flow` (vertical card stack with positive stripe), `legend` (bottom), `wordmark`
+### 3.8 `Attribution / Author`
 
-### Frame: `Infographic / Branching Flowchart` (visual-B pattern)
+- 32-40px circular author image.
+- Sofia Sans name.
+- Bottom-left placement guide included.
 
-- 1080 x 1350 px, canvas background
-- Layers: `headline`, `source-node` (single card at top), `branch-left` (3-card stack with warning/critical stripe), `branch-right` (3-card stack with positive stripe), `outcome-badge-left`, `outcome-badge-right`, `anchor-line` (italic at bottom), `wordmark`
+### 3.9 `Slide / Indicator`
 
-### Frame: `Infographic / Flywheel Dark` (visual-C pattern - exception)
-
-- 1080 x 1350 px, **canvas-dark background**
-- Layers: `headline`, `flywheel-ring`, `node-1` (top-left, glassmorphism, warning-tinted), `node-2` (top-right, glassmorphism, positive-tinted), `node-3` (bottom-center, glassmorphism, accent-tinted), `center-card` (the hero stat), `anchor-line-1`, `anchor-line-2`, `wordmark-white`
+- JetBrains Mono caption.
+- Variants for six through nine slides.
 
 ---
 
-## 5. GIF storyboard - on page `03 - GIF Storyboard`
+## 4. Infographic frames on `01 - Infographic`
 
-For each animated GIF, the designer creates a **5-frame storyboard** on this page. Each frame is one beat from `DESIGN_SOCIAL.md` Section 6.4.
+All frames default to 1080 x 1350px and may extend vertically.
 
-### Frame group: `GIF / Storyboard - [post-slug]`
+### `Infographic / Framework Grid`
 
-Contains 5 sub-frames:
+Layers:
 
-- `Beat 1 - 0.0s` (headline only)
-- `Beat 2 - 1.0s` (headline + first node)
-- `Beat 3 - 2.0s` (headline + first node + connector + second node)
-- `Beat 4 - 3.0s` (all elements + anchor line + wordmark)
-- `Beat 5 - 4.0s` (hold frame, identical to Beat 4)
+- `headline-block`
+- `headline`
+- `headline-highlight`
+- `subhead`
+- `panel-grid`
+- `panel-1` through `panel-6`
+- `attribution`
+- `wordmark`
 
-Designer then exports these to After Effects or uses Figma's prototype-to-GIF flow.
+The grid supports two-by-two, two-by-three, and mixed-span variants.
+
+### `Infographic / Comparison Matrix`
+
+Layers:
+
+- `headline-block`
+- `headline`
+- `subhead`
+- `row-labels`
+- `column-1` through `column-4`
+- `comparison-grid`
+- `attribution`
+- `wordmark`
+
+Build two-, three-, and four-column component variants. The same row labels must
+repeat across every column.
+
+### `Infographic / Annotated Breakdown`
+
+Layers:
+
+- `headline-block`
+- `source-artifact`
+- `source-annotation-1` through `source-annotation-6`
+- `breakdown-panels`
+- `panel-1` through `panel-6`
+- `attribution`
+- `wordmark`
+
+The source artifact occupies 38-46% of the width. The breakdown occupies the
+remainder.
+
+### `Infographic / Tiered Ladder`
+
+Layers:
+
+- `headline-block`
+- `tier-1` through `tier-4`
+- `tier-labels`
+- `tier-examples`
+- `progression-connectors`
+- `attribution`
+- `wordmark`
+
+### `Infographic / System Map`
+
+Layers:
+
+- `headline-block`
+- `system-diagram`
+- `node-1` through `node-8`
+- `connectors`
+- `evidence-block`
+- `attribution`
+- `wordmark`
+
+Keep nodes flat and outlined. Do not convert them into floating product cards.
+
+### `Infographic / Compact Stat`
+
+Layers:
+
+- `headline`
+- `stat-callout`
+- `context-diagram`
+- `source-line`
+- `attribution`
+- `wordmark`
 
 ---
 
-## 6. Banner page - on page `04 - Banner`
+## 5. Carousel frames on `02 - Carousel`
 
-Import the 4 existing banner PNGs from `~/enablement-design-system/social-examples/` as static references. Rebuild as editable Figma frames once the rest of the templates are stable. Not blocking the trial.
+### `Carousel / Cover`
+
+- `headline`
+- `headline-highlight`
+- `subhead`
+- `preview-diagram`
+- `slide-indicator`
+- `wordmark`
+
+### `Carousel / Content`
+
+- `section-heading`
+- `section-band`
+- `body-structure`
+- `panel-visual`
+- `slide-indicator`
+- `wordmark`
+
+Create variants for framework panel, matrix, annotated source, tier, and system
+map. Every slide must still read like part of the same editorial document.
+
+### `Carousel / CTA`
+
+- `closing-headline`
+- `action-line`
+- `wordmark`
 
 ---
 
-## 7. Naming rules the automation depends on
+## 6. GIF storyboard on `03 - GIF Storyboard`
 
-These are not stylistic preferences. Future MCP automation reads frame names and layer names verbatim.
+Create a five-beat group named `GIF / Storyboard - [post-slug]`:
 
-- **Frame names:** exactly as written above, including spaces and dashes. `Carousel / Cover` not `carousel-cover`.
-- **Layer names:** kebab-case, exactly as written. `slide-indicator` not `Slide Indicator`.
-- **Component names:** include the slash hierarchy. `Card / Glow-Stack` not just `Card`.
-- **Text layer content:** does not matter for placeholder text - the automation overwrites it. What matters is the layer's *name* and its *position/styles*.
+- `Beat 1 - 0.0s` - headline and base grid.
+- `Beat 2 - 1.0s` - first panel or level.
+- `Beat 3 - 2.0s` - second panel plus connector.
+- `Beat 4 - 3.0s` - complete information structure.
+- `Beat 5 - 4.0s` - final static hold.
 
----
-
-## 8. Designer onboarding checklist
-
-For the first session with the file:
-
-- [ ] Designer has Figma seat with edit access
-- [ ] Sofia Sans and JetBrains Mono loaded into the file (free Google fonts)
-- [ ] All color styles created on `00 - System` (Section 2 above)
-- [ ] All text styles created (Section 2 above)
-- [ ] All components built (Section 2 above)
-- [ ] One template frame per format built and tested with the trial brief
-- [ ] Lanny + designer review the first frame together before committing the rest
-- [ ] Figma file URL captured at the top of this spec
+Animate reading order only. Do not add glow sweeps, spins, parallax, or floating
+card motion.
 
 ---
 
-## 9. File URL
+## 7. Banner page
 
-`[TO BE FILLED IN WHEN FIGMA FILE EXISTS]`
+Build banners only after an approved editorial reference exists. Use flat
+panels, strong typography, and one headline highlight. Do not reuse retired
+glassmorphic banner treatments.
+
+---
+
+## 8. Naming rules
+
+- Frame names must match this file exactly.
+- Layer names use kebab-case.
+- Component names retain their slash hierarchy.
+- Do not rename automation-facing layers during production.
+- Add new variants instead of duplicating unnamed frames.
+
+---
+
+## 9. QA checklist
+
+- [ ] White or off-white editorial canvas.
+- [ ] No glassmorphism, blur, refractive border, or ambient SaaS gradient.
+- [ ] Information hierarchy reads before decorative styling.
+- [ ] Body text is legible at LinkedIn mobile size.
+- [ ] Copy is structured as bullets, rows, labels, or annotations.
+- [ ] Category tint use is consistent.
+- [ ] Only one Enablement Red hero highlight.
+- [ ] Sofia Sans and JetBrains Mono loaded correctly.
+- [ ] Author attribution and wordmark are present.
+- [ ] Final frame works as a static export.
 
 ---
 
 ## Changelog
 
-- `2026-05-22` - v0.1 initial spec. Frame and layer naming conventions locked for future MCP automation. Designer to build from this spec during trial.
+- `2026-08-06` - v2.0 rebuilt around the editorial infographic system and
+  removed SaaS-glass component requirements.
+- `2026-05-22` - v0.1 initial glassmorphic template contract, retired.

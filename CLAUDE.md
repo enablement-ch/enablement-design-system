@@ -26,10 +26,10 @@ enablement-design-system/
 ├── DESIGN_SOCIAL.md           - social media design system (LinkedIn formats)
 ├── site-plan.md               - website composition rules + locked decisions
 ├── index.html                 - live styleguide page (deployed to GitHub Pages)
-├── social-examples/           - banner examples (pre-redesign) + inspiration references
+├── social-examples/           - active and retired social references
 │   ├── README.md
-│   ├── banner-01..04          - existing LinkedIn banners (pre-redesign)
-│   └── inspiration/           - post-redesign references that drive DESIGN_SOCIAL.md
+│   ├── inspiration/           - canonical editorial infographic references
+│   └── legacy-saas-glass/     - retired glassmorphic direction
 ├── templates/
 │   ├── brief-template.md      - the contract every design brief follows
 │   └── figma-file-spec.md     - what designer builds in the master Figma file
@@ -93,14 +93,14 @@ See [briefs/README.md](briefs/README.md) for the full workflow detail.
 |---|---|---|
 | `enablement-site` | Live Astro website | Reads design tokens from `global.css` (which mirrors what's in this repo's `index.html`). When tokens drift, this repo + the site sync. |
 | `enablement-gtm` | Sales pipeline, ghostwriter, ICP updater, lead magnets | Produces LinkedIn posts via the Ghostwriter. Those posts feed into briefs in this repo. |
-| `claude-skills` (`enablement-ch/claude-skills`) | Reusable Claude Code skills + global reference docs | Hosts the future `/linkedin-design` skill that orchestrates brief generation. Global CLAUDE.md there points at this repo's DESIGN_SOCIAL.md. |
+| `claude-skills` (`enablement-ch/claude-skills`) | Reusable Claude Code skills + global reference docs | Hosts `linkedin-visual-brief` and `minimalist-visual`. The former follows this repo's editorial infographic system. |
 
 ## Asking Claude Code questions about the brand
 
 Once you've cloned this repo and `cd`'d in, fire up Claude Code and ask things like:
 
 - "Summarise the active brief"
-- "What does DESIGN_SOCIAL.md say about bento tile padding?"
+- "What does DESIGN_SOCIAL.md say about editorial panel structure?"
 - "Show me the references for the cheat sheet format"
 - "What's wrong with the existing LinkedIn banners?"
 - "Draft a brief from this LinkedIn post: [paste]"

@@ -38,13 +38,13 @@
 
 **Slide count (carousels only):** [6-10]
 
-**Primary primitive (from `DESIGN_SOCIAL.md` Section 3):**
-- [ ] Card stack
-- [ ] Split-screen comparison
-- [ ] Branching flowchart
-- [ ] Stat callout
-- [ ] Pull quote
-- [ ] Flywheel (dark-mode exception only)
+**Primary archetype (from `DESIGN_SOCIAL.md` Section 4):**
+- [ ] Framework grid
+- [ ] Comparison matrix
+- [ ] Annotated source plus breakdown
+- [ ] Tiered ladder
+- [ ] System map
+- [ ] Compact stat or comparison
 - [ ] Other: [describe]
 
 **Reference image(s)** in `~/enablement-design-system/social-examples/`:
@@ -58,16 +58,16 @@ Every word that appears on the graphic, in order. Designer copies these verbatim
 
 ### Cover slide / headline area
 - **Eyebrow** (mono caps): `[EYEBROW TEXT]`
-- **Headline** (Sofia Sans Bold, max 8 words): `[HEADLINE TEXT]`
-- **Italic emphasis word:** `[ONE WORD - or "none"]`
-- **Subhead** (Sofia Sans Regular, max 15 words): `[SUBHEAD TEXT]`
+- **Headline** (Sofia Sans Bold, max 12 words): `[HEADLINE TEXT]`
+- **Italic emphasis phrase:** `[ONE SHORT PHRASE - or "none"]`
+- **Subhead** (Sofia Sans Regular, max 20 words): `[SUBHEAD TEXT]`
 
 ### Content (carousels only - one block per slide)
 
 **Slide 02:**
 - Section heading: `[TEXT]`
-- Body (max 35 words): `[TEXT]`
-- Visual element: [card stack with these 3 items / stat callout / etc.]
+- Body (max 50 words, structured as bullets or labels): `[TEXT]`
+- Visual element: [editorial panel / matrix / diagram / annotated source / etc.]
 
 **Slide 03:**
 - Section heading: `[TEXT]`
@@ -97,9 +97,14 @@ Bottom italic line that lands the insight (Sofia Sans Regular italic, max 12 wor
 
 ## 4. Visual specs
 
-**Canvas color:** Light slate `#F2F4F8` (default) / Dark `#0F1217` (flywheel exception only)
+**Canvas color:** White `#FFFFFF` (default) / Off-white `#F7F8FA`
 
-**Accent color in use:** Enablement Red `#E11E48` - applied to [ONE specific element: headline / pill / final card stripe]
+**Accent color in use:** Enablement Red `#E11E48` - applied to [ONE specific element: headline capsule / decisive label / final step]
+
+**Editorial tints in use:** [list 2-4 tint tokens and the categories they encode]
+
+**Panel treatment:** Flat fill, 1.5-2px `#183A67` outline, optional tinted
+header band. No glassmorphism, refractive borders, blur, or ambient gradient.
 
 **Semantic colors in use:** [list which semantic colors and where, e.g. "Positive `#2E8F54` on the success-path cards, Critical `#B43A2A` on the failure-path cards"]
 
