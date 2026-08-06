@@ -58,10 +58,12 @@ When writing or critiquing copy that appears in graphics (headlines, anchor line
 ## Writing style rules
 
 - **Never use em-dashes (—).** Use a hyphen with spaces ( - ) instead. Strict.
-- Sofia Sans + JetBrains Mono only. No serif typefaces in any visual output.
+- LinkedIn infographics use Sofia Sans for all functional text and DM Serif
+  Display Italic only for the highlighted headline keyword. Do not use
+  JetBrains Mono in LinkedIn infographics.
 - Every infographic headline begins with `How to` and highlights one meaningful
   keyword in the canonical red gradient capsule.
-- Mono eyebrows above section headings.
+- LinkedIn infographic eyebrows use Sofia Sans Semibold caps with tracking.
 
 ## Workflow (social)
 

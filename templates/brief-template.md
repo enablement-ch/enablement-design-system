@@ -60,9 +60,9 @@ for every infographic unless Lanny explicitly approves an exception.
 Every word that appears on the graphic, in order. Designer copies these verbatim. No paraphrasing.
 
 ### Cover slide / headline area
-- **Eyebrow** (optional, mono caps): `[EYEBROW TEXT or "none"]`
+- **Eyebrow** (optional, Sofia Sans Semibold caps with tracking): `[EYEBROW TEXT or "none"]`
 - **Headline** (Sofia Sans Bold, max 12 words): `How to [HEADLINE TEXT]`
-- **Highlighted word:** `[EXACTLY ONE KEYWORD - a two-word term requires explicit approval]`
+- **Highlighted word** (DM Serif Display Italic): `[EXACTLY ONE KEYWORD - a two-word term requires explicit approval]`
 - **Headline validation:** [confirm the full headline starts with `How to` and
   the highlighted word appears inside it exactly once]
 - **Subhead** (Sofia Sans Regular, max 20 words): `[SUBHEAD TEXT]`

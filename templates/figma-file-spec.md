@@ -50,12 +50,12 @@ from `color/accent-bright` to `color/accent`.
 
 ### 2.2 Text
 
-Load Sofia Sans and JetBrains Mono.
+Load Sofia Sans and DM Serif Display.
 
 | Style name | Family / weight | Size |
 |---|---|---|
-| `text/step-mono` | JetBrains Mono / Bold | 18px |
-| `text/caption-mono` | JetBrains Mono / Regular | 14px |
+| `text/step` | Sofia Sans / Semibold | 18px |
+| `text/caption` | Sofia Sans / Semibold | 14px |
 | `text/body-small` | Sofia Sans / Regular | 18px |
 | `text/body` | Sofia Sans / Regular | 22px |
 | `text/lead` | Sofia Sans / Regular | 28px |
@@ -63,9 +63,11 @@ Load Sofia Sans and JetBrains Mono.
 | `text/h2` | Sofia Sans / Bold | 52px |
 | `text/h1` | Sofia Sans / Bold | 72px |
 | `text/display` | Sofia Sans / Bold | 96px |
+| `text/editorial-highlight` | DM Serif Display / Italic | 96px |
 
-Do not add a serif display style. The headline interruption comes from the red
-gradient capsule, not from a competing font treatment.
+Sofia Sans owns every functional text role. DM Serif Display Italic is limited
+to the one highlighted headline keyword inside the red gradient capsule. Do not
+load or use JetBrains Mono.
 
 ---
 
@@ -106,7 +108,7 @@ it as an editable component.
 - `highlight-word` contains exactly one keyword by default.
 - Put the highlight on its own line when possible.
 - Highlight fill: `gradient/headline-accent`.
-- Highlight text: white, Sofia Sans Bold.
+- Highlight text: white, DM Serif Display Italic.
 - Highlight shape: 10px radius, thin `color/blue-900` plus white edge, restrained
   template shadow.
 - Keep the title and highlight within the template's upper-left safe area.
@@ -119,14 +121,14 @@ it as an editable component.
 
 ### 3.5 `Step / ID`
 
-- JetBrains Mono Bold.
+- Sofia Sans Semibold.
 - Compact white or tinted square.
 - Variants `01` through `12`.
 
 ### 3.6 `Stat / Callout`
 
 - Large Sofia Sans Bold number.
-- JetBrains Mono label.
+- Sofia Sans Semibold label.
 - Variants: single, before/after, mini-bar, score.
 
 ### 3.7 `Connector / Arrow`
@@ -148,7 +150,7 @@ it as an editable component.
 
 ### 3.10 `Slide / Indicator`
 
-- JetBrains Mono caption.
+- Sofia Sans Semibold caption.
 - Variants for six through nine slides.
 
 ---
@@ -333,7 +335,8 @@ glassmorphic banner treatments.
 - [ ] Copy is structured as bullets, rows, labels, or annotations.
 - [ ] Blue-family information coding is consistent.
 - [ ] Only one Enablement Red hero highlight.
-- [ ] Sofia Sans and JetBrains Mono loaded correctly.
+- [ ] Sofia Sans and DM Serif Display loaded correctly.
+- [ ] JetBrains Mono is not used.
 - [ ] Author attribution and wordmark are present.
 - [ ] Final frame works as a static export.
 

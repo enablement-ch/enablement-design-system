@@ -66,7 +66,7 @@ Follow [templates/figma-file-spec.md](templates/figma-file-spec.md) step by step
 - [ ] Create a new file in your Figma team workspace, name it `Enablement - Social Templates`
 - [ ] Import `templates/linkedin-infographic-template.svg` and rebuild the
       headline as the editable `Headline / How To` component
-- [ ] Load Sofia Sans (Google Fonts) and JetBrains Mono (Google Fonts) into the file
+- [ ] Load Sofia Sans and DM Serif Display from Google Fonts
 - [ ] Create the color styles listed in Section 2.1 of figma-file-spec.md
 - [ ] Create the text styles listed in Section 2.2
 - [ ] Build the component primitives listed in Section 2.3 (Headline / How To,
@@ -137,12 +137,16 @@ Claude knows the repo. No need to upload anything or copy-paste spec sections.
 - **Don't add glassmorphism or SaaS dashboard effects.** Flat editorial panels,
   rules, color bands, and diagrams are the current direction.
 - **Don't improvise the headline grammar.** Infographics begin with `How to` and
-  highlight one meaningful keyword using the template's red gradient capsule.
+  highlight one meaningful keyword using DM Serif Display Italic inside the
+  template's red gradient capsule.
+- **Don't use JetBrains Mono.** Sofia Sans owns all functional typography,
+  including labels, numbers, step IDs, and eyebrows.
 - **Don't introduce extra palette families.** Use the approved neutral, red,
   and blue tokens unless Lanny explicitly approves an exception.
 - **Don't shrink type to fit more content.** Extend the canvas vertically when
   the framework needs more space.
-- **Don't introduce serif typefaces anywhere.** Sofia Sans + JetBrains Mono only. Lanny called this out specifically.
+- **Don't introduce additional typefaces.** The social system is Sofia Sans plus
+  DM Serif Display Italic for the single highlighted headline keyword.
 
 ---
 

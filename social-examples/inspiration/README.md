@@ -121,6 +121,8 @@ Use `../../templates/linkedin-infographic-template.svg` for:
 - fixed bottom-left author and bottom-right Enablement attribution;
 - `How to` headline start;
 - one highlighted keyword in the `#FF3762` to `#E11E48` capsule;
+- DM Serif Display Italic for that highlighted keyword, with Sofia Sans for all
+  remaining functional text;
 - `#17365F` structural outlines and the approved blue information family.
 
 ## Adding references

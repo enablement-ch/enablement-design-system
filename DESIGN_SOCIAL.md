@@ -1,4 +1,4 @@
-# Enablement - Social Design System v2.1
+# Enablement - Social Design System v2.2
 
 > Canonical visual rules for Enablement's LinkedIn infographics, GIFs, carousels,
 > single images, and banners. References, briefs, templates, and skills follow
@@ -119,11 +119,15 @@ cyan, or peach panels without explicit approval.
 | Use | Family | Guidance |
 |---|---|---|
 | Display headline | Sofia Sans Bold | 64-104px on 1080px-wide canvases |
+| Editorial highlight | DM Serif Display Italic | One highlighted headline keyword only |
 | Panel heading | Sofia Sans Bold or Semibold | 25-40px |
 | Body | Sofia Sans Regular | 18-28px depending on density |
-| Labels, numerics, step IDs | JetBrains Mono | 14-22px |
+| Labels, numerics, step IDs | Sofia Sans Semibold | 14-22px, tracked when needed |
 
-- Use Sofia Sans and JetBrains Mono only.
+- Use Sofia Sans for all functional typography.
+- Use DM Serif Display Italic only for the editorial highlight keyword inside
+  the red headline capsule.
+- Do not use JetBrains Mono in LinkedIn infographics.
 - Use sentence case by default.
 - Every infographic headline starts with the exact words `How to`.
 - Highlight exactly one meaningful word in the red gradient capsule. A two-word
@@ -213,13 +217,14 @@ Use the simplest diagram that makes the information easier to understand.
 ### 3.5 Highlight capsule
 
 The headline highlight is mandatory for infographics. It contains exactly one
-meaningful word by default, uses white type, and uses the red gradient from
-`#FF3762` to `#E11E48`. Use the template's 10px radius, thin navy-and-white edge,
-and restrained shadow. Do not use more than one red headline capsule per canvas.
+meaningful word by default, uses white DM Serif Display Italic, and uses the red
+gradient from `#FF3762` to `#E11E48`. Use the template's 10px radius, thin
+navy-and-white edge, and restrained shadow. Do not use more than one red
+headline capsule per canvas.
 
 ### 3.6 Step ID and section band
 
-- Step IDs use JetBrains Mono and a compact light panel or label.
+- Step IDs use Sofia Sans Semibold and a compact light panel or label.
 - Section bands use a tint related to that category.
 - Keep numbering large enough to create scan order.
 - Use distinct section names. Repeated vague verbs are a defect.
@@ -361,7 +366,7 @@ Anatomy:
 - No colors outside the approved neutral, red, and blue families without Lanny's
   explicit approval.
 - No decorative emojis, clipart, stock photography, or hand-drawn scenes.
-- No serif fonts unless Lanny explicitly approves a new brand font.
+- No serif fonts outside the DM Serif Display Italic headline keyword.
 - No repeated section labels that obscure the framework.
 - No logo-only panels. A logo needs context.
 - No invented metrics or fabricated receipts.
@@ -394,6 +399,9 @@ executable brief.
 
 ## Changelog
 
+- `2026-08-06` - **v2.2 editorial type lock.** Removed JetBrains Mono from the
+  LinkedIn infographic system. Sofia Sans now handles every functional text
+  role; DM Serif Display Italic is reserved for the highlighted headline word.
 - `2026-08-06` - **v2.1 palette and headline lock.** Added the canonical SVG
   template, replaced the broad pastel system with Lanny's red-and-blue palette,
   and made `How to` plus one highlighted keyword mandatory for infographics.
