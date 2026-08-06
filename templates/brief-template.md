@@ -50,6 +50,9 @@
 **Reference image(s)** in `~/enablement-design-system/social-examples/`:
 - [filename] - [why it's relevant]
 
+**Canonical shell:** `templates/linkedin-infographic-template.svg` - required
+for every infographic unless Lanny explicitly approves an exception.
+
 ---
 
 ## 3. Exact copy
@@ -57,9 +60,11 @@
 Every word that appears on the graphic, in order. Designer copies these verbatim. No paraphrasing.
 
 ### Cover slide / headline area
-- **Eyebrow** (mono caps): `[EYEBROW TEXT]`
-- **Headline** (Sofia Sans Bold, max 12 words): `[HEADLINE TEXT]`
-- **Italic emphasis phrase:** `[ONE SHORT PHRASE - or "none"]`
+- **Eyebrow** (optional, mono caps): `[EYEBROW TEXT or "none"]`
+- **Headline** (Sofia Sans Bold, max 12 words): `How to [HEADLINE TEXT]`
+- **Highlighted word:** `[EXACTLY ONE KEYWORD - a two-word term requires explicit approval]`
+- **Headline validation:** [confirm the full headline starts with `How to` and
+  the highlighted word appears inside it exactly once]
 - **Subhead** (Sofia Sans Regular, max 20 words): `[SUBHEAD TEXT]`
 
 ### Content (carousels only - one block per slide)
@@ -97,16 +102,20 @@ Bottom italic line that lands the insight (Sofia Sans Regular italic, max 12 wor
 
 ## 4. Visual specs
 
-**Canvas color:** White `#FFFFFF` (default) / Off-white `#F7F8FA`
+**Canvas treatment:** Canonical SVG shell using `#F5FAFF` to `#E4F2FF` pale
+blue paper tones beneath a white surface and faint document grid.
 
-**Accent color in use:** Enablement Red `#E11E48` - applied to [ONE specific element: headline capsule / decisive label / final step]
+**Headline capsule:** Gradient from `#FF3762` to `#E11E48`, white highlighted
+word, 10px radius, thin `#17365F` and white edge, restrained shadow.
 
-**Editorial tints in use:** [list 2-4 tint tokens and the categories they encode]
+**Blue information colors in use:** [list from `#D1E5FF`, `#B5D0FF`,
+`#86B0FF`, `#4F7FEA`, `#315FAD`, `#17365F`, and state what each encodes]
 
-**Panel treatment:** Flat fill, 1.5-2px `#183A67` outline, optional tinted
+**Panel treatment:** Flat white or blue-family fill, 1.5-2px `#17365F` outline, optional tinted
 header band. No glassmorphism, refractive borders, blur, or ambient gradient.
 
-**Semantic colors in use:** [list which semantic colors and where, e.g. "Positive `#2E8F54` on the success-path cards, Critical `#B43A2A` on the failure-path cards"]
+**Additional red use:** [normally none; if required, choose `#BE123C` and name
+the exact semantic purpose]
 
 **Photo of Lanny?** Yes (use the banner-01 crop reference) / No
 
@@ -141,13 +150,15 @@ Round-1 deliverable is full-quality work. After round 1:
 Before starting, the designer should have read:
 
 1. `~/enablement-design-system/DESIGN_SOCIAL.md` - the full social design system
-2. `~/enablement-design-system/social-examples/README.md` - annotated examples
-3. The specific reference image(s) named in Section 2 above
+2. `~/enablement-design-system/templates/linkedin-infographic-template.svg` -
+   the mandatory infographic shell and headline treatment
+3. `~/enablement-design-system/social-examples/README.md` - annotated examples
+4. The specific reference image(s) named in Section 2 above
 
 If the designer has not been onboarded yet, also share:
 
-4. `~/enablement-design-system/site-plan.md` - the website composition rules (for voice and italic-emphasis pattern)
-5. `~/enablement-design-system/templates/figma-file-spec.md` - the Figma file structure they should build
+5. `~/enablement-design-system/site-plan.md` - the website composition rules
+6. `~/enablement-design-system/templates/figma-file-spec.md` - the Figma file structure they should build
 
 ---
 

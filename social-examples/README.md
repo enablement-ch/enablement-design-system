@@ -2,9 +2,10 @@
 
 Reference images for Enablement's LinkedIn visual work.
 
-See [`inspiration/`](inspiration/) for the canonical editorial infographic
-reference set that drives [`../DESIGN_SOCIAL.md`](../DESIGN_SOCIAL.md). Read its
-README first for the rules each image teaches.
+Start with [`../templates/linkedin-infographic-template.svg`](../templates/linkedin-infographic-template.svg)
+for the canonical shell, palette, headline treatment, and footer. Then use
+[`inspiration/`](inspiration/) for editorial body composition and information
+density. Read its README for the rules each image teaches.
 
 The former SaaS-glass direction is preserved in
 [`legacy-saas-glass/`](legacy-saas-glass/) for history only. Do not use it for

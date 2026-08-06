@@ -1,4 +1,4 @@
-# Enablement - Social Design System v2.0
+# Enablement - Social Design System v2.1
 
 > Canonical visual rules for Enablement's LinkedIn infographics, GIFs, carousels,
 > single images, and banners. References, briefs, templates, and skills follow
@@ -17,13 +17,17 @@
 
 ## Source hierarchy
 
-1. `social-examples/inspiration/` - visual calibration references.
-2. `DESIGN_SOCIAL.md` - rules derived from those references.
-3. `templates/brief-template.md` - the production brief contract.
-4. `templates/figma-file-spec.md` - component and layer implementation.
+1. `templates/linkedin-infographic-template.svg` - canonical canvas shell,
+   headline grammar, highlight treatment, and footer placement.
+2. `social-examples/inspiration/` - body composition and information-density
+   references.
+3. `DESIGN_SOCIAL.md` - rules derived from the template and references.
+4. `templates/brief-template.md` - the production brief contract.
+5. `templates/figma-file-spec.md` - component and layer implementation.
 
-If a rule conflicts with a reference, the references win and this document must
-be updated. The former SaaS-glass system is preserved only in
+If the color, headline, shell, or footer treatment conflicts with the SVG
+template, the SVG wins. For body composition, the reference library wins. This
+document must then be updated. The former SaaS-glass system is preserved only in
 `social-examples/legacy-saas-glass/`; it is not an active reference.
 
 ---
@@ -73,48 +77,42 @@ The prior SaaS-glass direction is retired. Do not default to:
 
 ### 2.1 Color
 
-#### Core brand colors
+#### Neutral and surface colors
 
 | Token | Hex | Use |
 |---|---|---|
-| `--color-canvas` | `#FFFFFF` | Default editorial canvas |
-| `--color-canvas-alt` | `#F7F8FA` | Optional off-white canvas |
-| `--color-surface` | `#FFFFFF` | Untinted panels and cells |
-| `--color-ink` | `#0F1217` | Headlines, body, strong outlines |
-| `--color-body` | `#343A45` | Supporting copy |
-| `--color-muted` | `#707784` | Captions and metadata |
-| `--color-rule` | `#183A67` | Panel outlines, table rules, connectors |
-| `--color-rule-light` | `#C9D2DF` | Secondary dividers |
-| `--color-accent` | `#E11E48` | One primary highlight or headline capsule |
-| `--color-accent-dark` | `#BE123C` | Small high-contrast accent states |
+| `--color-ink` | `#0F1217` | Headlines and primary text |
+| `--color-body` | `#4A5360` | Body copy, captions, and attribution |
+| `--color-canvas-start` | `#F5FAFF` | Very pale blue canvas gradient start |
+| `--color-canvas-end` | `#E4F2FF` | Very pale blue canvas gradient end |
+| `--color-surface` | `#FFFFFF` | Primary paper and untinted panels |
 
-#### Editorial tints
-
-Use two to four tints when categories require color coding. Tints organize; they
-do not decorate.
-
-| Token | Hex |
-|---|---|
-| `--color-tint-blue` | `#DCEBFF` |
-| `--color-tint-blue-strong` | `#AFCBFA` |
-| `--color-tint-pink` | `#F8D6DF` |
-| `--color-tint-purple` | `#E6D5FA` |
-| `--color-tint-yellow` | `#FFF2B8` |
-| `--color-tint-cyan` | `#D8F4F7` |
-| `--color-tint-green` | `#DDF5D8` |
-| `--color-tint-peach` | `#FBE0D0` |
-
-Semantic colors remain available for true states, not general decoration:
+#### Red brand family
 
 | Token | Hex | Use |
 |---|---|---|
-| `--color-positive` | `#2E8F54` | Improvement or success |
-| `--color-warning` | `#C77B0E` | Caution |
-| `--color-critical` | `#B43A2A` | Failure or risk |
+| `--color-accent-bright` | `#FF3762` | Headline-capsule gradient start |
+| `--color-accent` | `#E11E48` | Headline-capsule gradient end and brand mark |
+| `--color-accent-dark` | `#BE123C` | Dark red state, emphasis, or small contrast detail |
 
-**Color discipline:** one dominant accent plus a small supporting tint system.
-Do not turn every panel into a different bright color. Use color consistently
-across matching categories, columns, and steps.
+The canonical headline capsule uses a left-to-right gradient from `#FF3762` to
+`#E11E48`. Do not use that gradient on body panels, text, or decorative shapes.
+
+#### Blue information family
+
+| Token | Hex | Use |
+|---|---|---|
+| `--color-blue-100` | `#D1E5FF` | Light panel fill and table cell |
+| `--color-blue-200` | `#B5D0FF` | Section band or secondary category |
+| `--color-blue-300` | `#86B0FF` | Stronger category or progression step |
+| `--color-blue-500` | `#4F7FEA` | Active connector, selected state, or key data |
+| `--color-blue-700` | `#315FAD` | Strong label, diagram block, or secondary outline |
+| `--color-blue-900` | `#17365F` | Primary panel outline, table rule, and connector |
+
+**Color discipline:** red stops the scroll; blue organizes the information.
+White and pale blue create the paper. Use the blue scale consistently across
+categories and stages. Do not introduce unrelated pink, purple, yellow, green,
+cyan, or peach panels without explicit approval.
 
 ### 2.2 Typography
 
@@ -127,8 +125,12 @@ across matching categories, columns, and steps.
 
 - Use Sofia Sans and JetBrains Mono only.
 - Use sentence case by default.
-- Use one Sofia Sans Bold Italic phrase per headline at most.
-- Use large weight or a flat color capsule to create the headline interruption.
+- Every infographic headline starts with the exact words `How to`.
+- Highlight exactly one meaningful word in the red gradient capsule. A two-word
+  term is allowed only when splitting it would change the meaning.
+- Keep `How to` and the supporting headline words in `--color-ink`.
+- Put the highlighted word on its own line when possible, following
+  `templates/linkedin-infographic-template.svg`.
 - Keep paragraph line lengths short. Convert long prose into bullets, labels,
   rows, or annotated fragments.
 - Use tabular numerics for aligned comparisons.
@@ -162,16 +164,18 @@ panel.
 
 ### 3.1 Editorial canvas
 
-Use a flat white or off-white canvas. A faint 1px layout grid at no more than 5%
-opacity is allowed when it supports alignment, as in a working document. Do not
-use ambient product gradients, glowing orbs, or decorative SaaS textures.
+Start from `templates/linkedin-infographic-template.svg`. Its shell uses pale
+blue paper tones, a white surface, faint document-grid texture, 20px edge
+guides, and fixed footer attribution. The surface should read as white at first
+glance. Do not use ambient product gradients, glowing orbs, or decorative SaaS
+textures.
 
 ### 3.2 Editorial panel
 
 The default modular container:
 
 - Flat white or editorial-tint fill.
-- 1.5-2px `--color-rule` outline, or 1px `--color-rule-light` for secondary cells.
+- 1.5-2px `--color-blue-900` outline, or a lighter blue for secondary cells.
 - Optional tinted header strip separated by a horizontal rule.
 - 6-10px radius, or square corners for a table.
 - 20-28px padding, reduced to 12-18px only for dense table cells.
@@ -208,9 +212,10 @@ Use the simplest diagram that makes the information easier to understand.
 
 ### 3.5 Highlight capsule
 
-A flat or lightly shadowed capsule interrupts the headline or marks one decisive
-phrase. Use Enablement Red for the primary brand moment. Pastel capsules may mark
-category labels. Do not use more than one red capsule per canvas.
+The headline highlight is mandatory for infographics. It contains exactly one
+meaningful word by default, uses white type, and uses the red gradient from
+`#FF3762` to `#E11E48`. Use the template's 10px radius, thin navy-and-white edge,
+and restrained shadow. Do not use more than one red headline capsule per canvas.
 
 ### 3.6 Step ID and section band
 
@@ -227,7 +232,7 @@ tightly and keep the source legible.
 
 ### 3.8 Connector
 
-- 1.5-2px `--color-rule` stroke.
+- 1.5-2px `--color-blue-900` stroke.
 - One arrowhead and one clear direction.
 - Solid for the main reading path.
 - Dashed only for optional or automated branches.
@@ -307,7 +312,7 @@ apply the editorial visual language.
 
 Anatomy:
 
-1. Headline block with one highlighted phrase at most.
+1. Headline beginning with `How to` and exactly one highlighted keyword.
 2. Optional subhead or proof line.
 3. Main structured grid, matrix, source breakdown, or system map.
 4. Small author attribution and Enablement wordmark.
@@ -350,6 +355,11 @@ Anatomy:
 - No paragraph walls. Structure copy as bullets, rows, captions, and labels.
 - No tiny copy used to force a 4:5 canvas.
 - No inconsistent category colors.
+- No infographic headline that fails to begin with `How to`.
+- No unhighlighted infographic headline and no multiple highlighted words unless
+  a two-word term is semantically inseparable.
+- No colors outside the approved neutral, red, and blue families without Lanny's
+  explicit approval.
 - No decorative emojis, clipart, stock photography, or hand-drawn scenes.
 - No serif fonts unless Lanny explicitly approves a new brand font.
 - No repeated section labels that obscure the framework.
@@ -384,6 +394,9 @@ executable brief.
 
 ## Changelog
 
+- `2026-08-06` - **v2.1 palette and headline lock.** Added the canonical SVG
+  template, replaced the broad pastel system with Lanny's red-and-blue palette,
+  and made `How to` plus one highlighted keyword mandatory for infographics.
 - `2026-08-06` - **v2.0 direction replacement.** Replaced the SaaS-glass visual
   system with the editorial, information-dense infographic register. Promoted
   framework grids, comparison matrices, annotated breakdowns, tiered ladders,

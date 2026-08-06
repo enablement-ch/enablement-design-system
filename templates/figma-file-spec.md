@@ -1,7 +1,8 @@
 # Figma File Spec - Enablement LinkedIn Designs
 
-> Component and layer contract for the editorial infographic system. Frame and
-> layer names are stable automation interfaces.
+> Component and layer contract for the editorial infographic system. Start from
+> `linkedin-infographic-template.svg`. Frame and layer names are stable
+> automation interfaces.
 
 **File name:** `Enablement - LinkedIn Designs`
 
@@ -29,27 +30,23 @@ Create these pages in order:
 
 | Style name | Hex |
 |---|---|
-| `color/canvas` | `#FFFFFF` |
-| `color/canvas-alt` | `#F7F8FA` |
+| `color/canvas-start` | `#F5FAFF` |
+| `color/canvas-end` | `#E4F2FF` |
 | `color/surface` | `#FFFFFF` |
 | `color/ink` | `#0F1217` |
-| `color/body` | `#343A45` |
-| `color/muted` | `#707784` |
-| `color/rule` | `#183A67` |
-| `color/rule-light` | `#C9D2DF` |
+| `color/body` | `#4A5360` |
+| `color/blue-100` | `#D1E5FF` |
+| `color/blue-200` | `#B5D0FF` |
+| `color/blue-300` | `#86B0FF` |
+| `color/blue-500` | `#4F7FEA` |
+| `color/blue-700` | `#315FAD` |
+| `color/blue-900` | `#17365F` |
+| `color/accent-bright` | `#FF3762` |
 | `color/accent` | `#E11E48` |
 | `color/accent-dark` | `#BE123C` |
-| `color/tint-blue` | `#DCEBFF` |
-| `color/tint-blue-strong` | `#AFCBFA` |
-| `color/tint-pink` | `#F8D6DF` |
-| `color/tint-purple` | `#E6D5FA` |
-| `color/tint-yellow` | `#FFF2B8` |
-| `color/tint-cyan` | `#D8F4F7` |
-| `color/tint-green` | `#DDF5D8` |
-| `color/tint-peach` | `#FBE0D0` |
-| `color/positive` | `#2E8F54` |
-| `color/warning` | `#C77B0E` |
-| `color/critical` | `#B43A2A` |
+
+Create one paint style named `gradient/headline-accent`: linear left-to-right
+from `color/accent-bright` to `color/accent`.
 
 ### 2.2 Text
 
@@ -67,8 +64,8 @@ Load Sofia Sans and JetBrains Mono.
 | `text/h1` | Sofia Sans / Bold | 72px |
 | `text/display` | Sofia Sans / Bold | 96px |
 
-Create a Bold Italic variant for one short phrase in a headline. Do not add a
-serif display style.
+Do not add a serif display style. The headline interruption comes from the red
+gradient capsule, not from a competing font treatment.
 
 ---
 
@@ -76,13 +73,13 @@ serif display style.
 
 ### 3.1 `Panel / Editorial`
 
-- Flat white or tint fill.
-- 2px `color/rule` outline.
+- Flat white or blue-family fill.
+- 2px `color/blue-900` outline.
 - 8px radius.
 - 24px default padding.
 - Optional `header-band` with a horizontal rule.
-- Variants: `white`, `blue`, `pink`, `purple`, `yellow`, `cyan`, `green`,
-  `peach`, `square-table-cell`.
+- Variants: `white`, `blue-100`, `blue-200`, `blue-300`,
+  `square-table-cell`.
 - No blur, gradient border, inset shine, or default shadow.
 
 Editable layers:
@@ -95,46 +92,61 @@ Editable layers:
 ### 3.2 `Cell / Table`
 
 - Square or 4px radius.
-- 1px `color/rule-light` internal rule.
+- 1px blue-family internal rule.
 - 14px padding.
 - Variants: `header`, `label`, `body`, `tinted-body`.
 
-### 3.3 `Capsule / Highlight`
+### 3.3 `Headline / How To`
 
-- Variants: `accent`, `blue`, `pink`, `purple`, `yellow`, `cyan`, `green`.
-- 8px radius for headline capsules, pill radius for labels.
-- Accent variant may use the optional overlay shadow.
+Import the headline shell from `linkedin-infographic-template.svg` and rebuild
+it as an editable component.
 
-### 3.4 `Step / ID`
+- Lock the prefix text to `How to`.
+- Expose `title-rest` and `highlight-word` as editable text properties.
+- `highlight-word` contains exactly one keyword by default.
+- Put the highlight on its own line when possible.
+- Highlight fill: `gradient/headline-accent`.
+- Highlight text: white, Sofia Sans Bold.
+- Highlight shape: 10px radius, thin `color/blue-900` plus white edge, restrained
+  template shadow.
+- Keep the title and highlight within the template's upper-left safe area.
+
+### 3.4 `Capsule / Label`
+
+- Variants: `blue-100`, `blue-200`, `blue-300`, `blue-500`, `red-dark`.
+- Pill radius for labels.
+- Never use the headline gradient for small labels.
+
+### 3.5 `Step / ID`
 
 - JetBrains Mono Bold.
 - Compact white or tinted square.
 - Variants `01` through `12`.
 
-### 3.5 `Stat / Callout`
+### 3.6 `Stat / Callout`
 
 - Large Sofia Sans Bold number.
 - JetBrains Mono label.
 - Variants: single, before/after, mini-bar, score.
 
-### 3.6 `Connector / Arrow`
+### 3.7 `Connector / Arrow`
 
-- 1.5-2px `color/rule` stroke.
+- 1.5-2px `color/blue-900` stroke.
 - Variants: solid, dashed, elbow, curved.
 - One arrowhead.
 
-### 3.7 `Wordmark / Enablement`
+### 3.8 `Wordmark / Enablement`
 
 - Black wordmark for the light canvas.
 - Bottom-right placement guide included.
 
-### 3.8 `Attribution / Author`
+### 3.9 `Attribution / Author`
 
 - 32-40px circular author image.
 - Sofia Sans name.
 - Bottom-left placement guide included.
 
-### 3.9 `Slide / Indicator`
+### 3.10 `Slide / Indicator`
 
 - JetBrains Mono caption.
 - Variants for six through nine slides.
@@ -145,13 +157,18 @@ Editable layers:
 
 All frames default to 1080 x 1350px and may extend vertically.
 
+Every infographic frame is based on
+`templates/linkedin-infographic-template.svg`. Preserve its 20px edge guides,
+faint document texture, headline safe area, bottom-left author attribution, and
+bottom-right Enablement wordmark.
+
 ### `Infographic / Framework Grid`
 
 Layers:
 
-- `headline-block`
-- `headline`
-- `headline-highlight`
+- `headline-how-to`
+- `title-rest`
+- `highlight-word`
 - `subhead`
 - `panel-grid`
 - `panel-1` through `panel-6`
@@ -164,8 +181,9 @@ The grid supports two-by-two, two-by-three, and mixed-span variants.
 
 Layers:
 
-- `headline-block`
-- `headline`
+- `headline-how-to`
+- `title-rest`
+- `highlight-word`
 - `subhead`
 - `row-labels`
 - `column-1` through `column-4`
@@ -180,7 +198,9 @@ repeat across every column.
 
 Layers:
 
-- `headline-block`
+- `headline-how-to`
+- `title-rest`
+- `highlight-word`
 - `source-artifact`
 - `source-annotation-1` through `source-annotation-6`
 - `breakdown-panels`
@@ -195,7 +215,9 @@ remainder.
 
 Layers:
 
-- `headline-block`
+- `headline-how-to`
+- `title-rest`
+- `highlight-word`
 - `tier-1` through `tier-4`
 - `tier-labels`
 - `tier-examples`
@@ -207,7 +229,9 @@ Layers:
 
 Layers:
 
-- `headline-block`
+- `headline-how-to`
+- `title-rest`
+- `highlight-word`
 - `system-diagram`
 - `node-1` through `node-8`
 - `connectors`
@@ -221,7 +245,9 @@ Keep nodes flat and outlined. Do not convert them into floating product cards.
 
 Layers:
 
-- `headline`
+- `headline-how-to`
+- `title-rest`
+- `highlight-word`
 - `stat-callout`
 - `context-diagram`
 - `source-line`
@@ -234,8 +260,9 @@ Layers:
 
 ### `Carousel / Cover`
 
-- `headline`
-- `headline-highlight`
+- `headline-how-to`
+- `title-rest`
+- `highlight-word`
 - `subhead`
 - `preview-diagram`
 - `slide-indicator`
@@ -296,12 +323,15 @@ glassmorphic banner treatments.
 
 ## 9. QA checklist
 
-- [ ] White or off-white editorial canvas.
+- [ ] Canonical SVG shell is used.
+- [ ] Headline begins with the exact words `How to`.
+- [ ] Exactly one keyword is highlighted in the red gradient capsule.
+- [ ] Only approved neutral, red, and blue colors are used.
 - [ ] No glassmorphism, blur, refractive border, or ambient SaaS gradient.
 - [ ] Information hierarchy reads before decorative styling.
 - [ ] Body text is legible at LinkedIn mobile size.
 - [ ] Copy is structured as bullets, rows, labels, or annotations.
-- [ ] Category tint use is consistent.
+- [ ] Blue-family information coding is consistent.
 - [ ] Only one Enablement Red hero highlight.
 - [ ] Sofia Sans and JetBrains Mono loaded correctly.
 - [ ] Author attribution and wordmark are present.
@@ -311,6 +341,8 @@ glassmorphic banner treatments.
 
 ## Changelog
 
+- `2026-08-06` - v2.1 imported the canonical SVG shell, locked the red-and-blue
+  palette, and added the mandatory `Headline / How To` component.
 - `2026-08-06` - v2.0 rebuilt around the editorial infographic system and
   removed SaaS-glass component requirements.
 - `2026-05-22` - v0.1 initial glassmorphic template contract, retired.

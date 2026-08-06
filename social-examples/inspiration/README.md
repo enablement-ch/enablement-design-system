@@ -1,8 +1,13 @@
 # Canonical Editorial Infographic References
 
-These six images define Enablement's current LinkedIn visual direction as of
-August 6, 2026. The system is editorial, information-dense, modular, and flat.
-It does not use SaaS glassmorphism.
+These six images define body composition and information treatment for
+Enablement's LinkedIn visuals. The system is editorial, information-dense,
+modular, and flat. It does not use SaaS glassmorphism.
+
+They do not override the canonical shell in
+`../../templates/linkedin-infographic-template.svg`. New Enablement
+infographics must use that template's red-and-blue palette, footer, and headline
+grammar: begin with `How to` and highlight one meaningful keyword.
 
 The reference images include external inspiration and Enablement-produced work.
 Use them to learn composition and information treatment. Do not copy another
@@ -100,11 +105,23 @@ Use for: pillar frameworks, category maps, and balanced four-part systems.
 Across all six references:
 
 - Information architecture creates the visual impact.
-- Flat panels, table rules, and category tints replace glass and ambient depth.
+- Flat panels, table rules, and blue-family information coding replace glass and
+  ambient depth.
 - Copy is allowed when it is structured.
 - Diagrams and real examples make the framework specific.
 - Large headlines stop the scroll; dense bodies earn the save.
 - The canvas is visually restrained and informationally rich.
+
+## Canonical shell
+
+Use `../../templates/linkedin-infographic-template.svg` for:
+
+- 1080 x 1350 canvas and 20px edge guides;
+- faint document-grid texture;
+- fixed bottom-left author and bottom-right Enablement attribution;
+- `How to` headline start;
+- one highlighted keyword in the `#FF3762` to `#E11E48` capsule;
+- `#17365F` structural outlines and the approved blue information family.
 
 ## Adding references
 

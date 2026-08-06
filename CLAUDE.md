@@ -5,7 +5,7 @@
 The single source of truth for Enablement's brand and design language. Two consumers:
 
 1. **Website** (`~/enablement-site/` separate repo) - draws design intent from `site-plan.md` and tokens from `index.html`
-2. **Social** (LinkedIn cheat sheets, GIFs, carousels, single images, banners) - driven by `DESIGN_SOCIAL.md` + `social-examples/inspiration/` + briefs in `briefs/`
+2. **Social** (LinkedIn cheat sheets, GIFs, carousels, single images, banners) - driven by `templates/linkedin-infographic-template.svg` + `DESIGN_SOCIAL.md` + `social-examples/inspiration/` + briefs in `briefs/`
 
 Anyone working on Enablement's visual output - website devs, social designers, automation - reads from this repo.
 
@@ -31,6 +31,7 @@ enablement-design-system/
 │   ├── inspiration/           - canonical editorial infographic references
 │   └── legacy-saas-glass/     - retired glassmorphic direction
 ├── templates/
+│   ├── linkedin-infographic-template.svg - canonical 1080x1350 shell
 │   ├── brief-template.md      - the contract every design brief follows
 │   └── figma-file-spec.md     - what designer builds in the master Figma file
 └── briefs/
@@ -41,6 +42,7 @@ enablement-design-system/
 
 ## Key reference files
 
+- `templates/linkedin-infographic-template.svg` - mandatory infographic shell, palette, headline, and footer.
 - `DESIGN_SOCIAL.md` - the social design system. Read end-to-end before producing any social graphic.
 - `social-examples/inspiration/README.md` - the calibration references. Every rule in DESIGN_SOCIAL.md traces back to a reference here.
 - `site-plan.md` - website composition rules, voice patterns (italic emphasis, mono eyebrows, etc.)
@@ -57,7 +59,8 @@ When writing or critiquing copy that appears in graphics (headlines, anchor line
 
 - **Never use em-dashes (—).** Use a hyphen with spaces ( - ) instead. Strict.
 - Sofia Sans + JetBrains Mono only. No serif typefaces in any visual output.
-- One italic-emphasis word per headline, maximum.
+- Every infographic headline begins with `How to` and highlights one meaningful
+  keyword in the canonical red gradient capsule.
 - Mono eyebrows above section headings.
 
 ## Workflow (social)

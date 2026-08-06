@@ -8,8 +8,13 @@ Enablement is a B2B GTM engineering agency. We help our customers build outbound
 
 The visual register is **editorial, information-dense infographic.** Think a
 modern magazine explainer or exceptionally clear worksheet, not a SaaS product
-dashboard. Flat panels, strong information architecture, category tints,
-tables, diagrams, annotated examples, and structured copy do the work.
+dashboard. Flat panels, strong information architecture, a tightly controlled
+red-and-blue palette, tables, diagrams, annotated examples, and structured copy
+do the work.
+
+Every infographic starts from `templates/linkedin-infographic-template.svg`.
+Its headline begins with the exact words `How to` and highlights one meaningful
+keyword in the red gradient capsule.
 
 ## What you have access to
 
@@ -48,22 +53,25 @@ You'll get the most out of these files if you read them in this order. Don't try
 
 | # | File | What you'll learn | Time |
 |---|---|---|---|
-| 1 | [social-examples/inspiration/README.md](social-examples/inspiration/README.md) | The 6 reference graphics that calibrate everything. Open the actual files alongside the annotations. | 10 min |
-| 2 | [DESIGN_SOCIAL.md](DESIGN_SOCIAL.md) | The full social design system. Tokens, primitives, format specs, do-not list. | 15 min |
-| 3 | [templates/brief-template.md](templates/brief-template.md) | The structure every brief follows. Skim once - you'll see this format repeatedly. | 2 min |
-| 4 | [templates/figma-file-spec.md](templates/figma-file-spec.md) | The Figma master file structure you'll build on Day 1. | 3 min |
+| 1 | [templates/linkedin-infographic-template.svg](templates/linkedin-infographic-template.svg) | The canonical shell, headline, highlight, grid, and footer. | 5 min |
+| 2 | [social-examples/inspiration/README.md](social-examples/inspiration/README.md) | The 6 body-composition references. Open the actual files alongside the annotations. | 10 min |
+| 3 | [DESIGN_SOCIAL.md](DESIGN_SOCIAL.md) | The full social design system. Tokens, primitives, format specs, do-not list. | 15 min |
+| 4 | [templates/brief-template.md](templates/brief-template.md) | The structure every brief follows. | 2 min |
+| 5 | [templates/figma-file-spec.md](templates/figma-file-spec.md) | The Figma master file structure. | 3 min |
 
 ### 4. Set up your Figma file (~25 min)
 
 Follow [templates/figma-file-spec.md](templates/figma-file-spec.md) step by step. Specifically:
 
 - [ ] Create a new file in your Figma team workspace, name it `Enablement - Social Templates`
+- [ ] Import `templates/linkedin-infographic-template.svg` and rebuild the
+      headline as the editable `Headline / How To` component
 - [ ] Load Sofia Sans (Google Fonts) and JetBrains Mono (Google Fonts) into the file
 - [ ] Create the color styles listed in Section 2.1 of figma-file-spec.md
 - [ ] Create the text styles listed in Section 2.2
-- [ ] Build the component primitives listed in Section 2.3 (Editorial Panel,
-  Table Cell, Highlight Capsule, Step ID, Stat Callout, Wordmark, Slide
-  Indicator, Connector)
+- [ ] Build the component primitives listed in Section 2.3 (Headline / How To,
+  Editorial Panel, Table Cell, Label Capsule, Step ID, Stat Callout, Wordmark,
+  Slide Indicator, Connector)
 
 Don't build the actual template frames (cheat sheet, infographic, etc.) yet. The first real brief will tell us what frame to build first - we build templates as we need them, not upfront.
 
@@ -112,7 +120,7 @@ You'll see updates land in `DESIGN_SOCIAL.md` as the system evolves. Three rules
 This is the biggest unlock vs. the old "read a static PDF" workflow. Try things like:
 
 - "What's the active brief?"
-- "Summarise the bento tile spec from DESIGN_SOCIAL.md."
+- "Summarise the editorial panel spec from DESIGN_SOCIAL.md."
 - "What does the inspiration say about padding?"
 - "Show me the references for the GIF format."
 - "What's the difference between a cheat sheet and a carousel here?"
@@ -128,6 +136,10 @@ Claude knows the repo. No need to upload anything or copy-paste spec sections.
   structured as bullets, rows, labels, and annotated fragments.
 - **Don't add glassmorphism or SaaS dashboard effects.** Flat editorial panels,
   rules, color bands, and diagrams are the current direction.
+- **Don't improvise the headline grammar.** Infographics begin with `How to` and
+  highlight one meaningful keyword using the template's red gradient capsule.
+- **Don't introduce extra palette families.** Use the approved neutral, red,
+  and blue tokens unless Lanny explicitly approves an exception.
 - **Don't shrink type to fit more content.** Extend the canvas vertically when
   the framework needs more space.
 - **Don't introduce serif typefaces anywhere.** Sofia Sans + JetBrains Mono only. Lanny called this out specifically.
