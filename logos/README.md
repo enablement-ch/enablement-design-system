@@ -32,6 +32,10 @@ Run `ls ~/enablement-design-system/logos/ | sort` to see the current list. Cover
 - Clearbit
 - Apple / Microsoft / Outlook brand marks (referenced in posts about email delivery)
 
+**Sourcing notes for recent additions:**
+- `teamfluence-*` - pulled from the official brand-assets page at [teamfluence.com/brand-assets](https://teamfluence.com/brand-assets) (Oct 2025 kit). Brand colors: magenta `#DE00CB`, text navy `#333647`. Use `teamfluence-full.svg` on light canvas, `teamfluence-full-white.svg` on dark, `teamfluence-icon.svg` in tight bento slots.
+- `sales-navigator-icon.png` - LinkedIn publishes no standalone Sales Navigator SVG (brand.linkedin.com/downloads only ships the LinkedIn logo and the `in` bug). This is the official LinkedIn Corporation app icon (1024px, App Store), circular-masked to a transparent background. It is the compass mark, not the LinkedIn `in` bug - do not swap in `linkedin.png` as a substitute.
+
 ## How to add a new logo
 
 1. **Find the official source.** Brand kit on the tool's website is best. Avoid screenshotted or AI-generated logos.
