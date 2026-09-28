@@ -44,6 +44,7 @@ Brand-wide rules that apply to every page, every component, every asset. The ful
 - **Display theme:** Dark is the only website theme. Do not add a light-mode toggle or saved light preference. Design page-specific colors and logos for the dark palette.
 - **Background depth:** Use three restrained section treatments across the site: a faint 36px blueprint grid with a small pointer spotlight for selected heroes, a broad slow-moving red/blue radial glow for one transition, and a static 44px grid plus corner wash for quieter sections. Keep evidence galleries, video frames, cards, and long reading surfaces plain. Stop the glow animation when reduced motion is requested.
 - **Navigation:** Main menu labels should use light gray text against the dark header. Dropdown choices need a visible red border and deep-red fill on hover and keyboard focus.
+- **Customer proof:** Reuse the rolling client-logo marquee immediately below the Customer Results page header, before the case-study grid. Keep the same component as the homepage so logos and links stay in sync.
 
 ### Resource page pattern (AI Sales Coach → Allbound Audit)
 
