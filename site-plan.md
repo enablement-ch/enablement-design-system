@@ -237,7 +237,7 @@ Single column. Embed front and center. Don't compete with the booking action.
 
 - **Layout:** Below the embed, generous vertical spacing. Centered.
 - **Content:**
-  - Caption in mono caps: `Trusted by over 100 GTM teams across DACH`
+  - Caption in mono caps: `Trusted by 125+ companies`
   - Optional: 6-8 client logos in a single horizontal row, monochrome, scaled down
 - **Reasoning:** Quiet social proof. Sits below the booking action so it doesn't pull attention upward. The buyer who needs reassurance scrolls and finds it; the buyer who's already committed never has to.
 
