@@ -42,6 +42,8 @@ Brand-wide rules that apply to every page, every component, every asset. The ful
 - **Italic emphasis:** Italic is a tone modifier, not just typographic style. See `DESIGN_SOCIAL.md` and the styleguide for usage.
 - **Colors:** Use named tokens from the palette only. Never define colors via opacity math; promote any rendered color to a named token first.
 - **Display theme:** Dark is the only website theme. Do not add a light-mode toggle or saved light preference. Design page-specific colors and logos for the dark palette.
+- **Background depth:** Use three restrained section treatments across the site: a faint 36px blueprint grid with a small pointer spotlight for selected heroes, a broad slow-moving red/blue radial glow for one transition, and a static 44px grid plus corner wash for quieter sections. Keep evidence galleries, video frames, cards, and long reading surfaces plain. Stop the glow animation when reduced motion is requested.
+- **Navigation:** Main menu labels should use light gray text against the dark header. Dropdown choices need a visible red border and deep-red fill on hover and keyboard focus.
 
 ### Resource page pattern (AI Sales Coach → Allbound Audit)
 
