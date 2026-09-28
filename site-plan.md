@@ -58,7 +58,7 @@ Brand-wide rules that apply to every page, every component, every asset. The ful
 - Lead with the buyer's problem, then show the connected operating system: strategy and research, human-edited content and design, then qualified conversations with CRM context. Use short problem cards and a clear process diagram or three-step sequence.
 - Keep first-hand evidence prominent. Preserve screenshot galleries even when full case studies are limited; label what each gallery actually proves, make screenshots enlargeable, and avoid treating reach or engagement as pipeline on its own.
 - State attribution narrowly. A content-assisted inbound result can support a content claim; results from a broader outbound or GTM engagement must be labeled as such. Pair each claim with a link to its source story where available.
-- Put practical engagement terms near the CTA: founder time, what the team handles, and any guarantee conditions in plain language. For the LinkedIn offer, show the six-month term and the conditional first-30-day opt-out/refund accurately; do not imply a free first month.
+- Keep the offer section concise: show the founder's time commitment, what the team handles, and a short 30-day money-back guarantee. Put the participation and input conditions in the FAQ. Do not publish a fixed contract length or imply the first month is free.
 - End with concise FAQs and one clear booking action. Keep mobile cards and galleries single-column, and verify lightbox interaction and keyboard access.
 
 ---
