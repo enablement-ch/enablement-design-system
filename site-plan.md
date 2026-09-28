@@ -41,7 +41,7 @@ Brand-wide rules that apply to every page, every component, every asset. The ful
 - **Fonts:** Sofia Sans (display + body), JetBrains Mono (code, labels, technical accents).
 - **Italic emphasis:** Italic is a tone modifier, not just typographic style. See `DESIGN_SOCIAL.md` and the styleguide for usage.
 - **Colors:** Use named tokens from the palette only. Never define colors via opacity math; promote any rendered color to a named token first.
-- **Display theme:** Dark is the default on every website page. Keep the light-mode toggle available and respect a visitor's saved light preference before the page paints. Check both themes when adding page-specific colors or logos.
+- **Display theme:** Dark is the only website theme. Do not add a light-mode toggle or saved light preference. Design page-specific colors and logos for the dark palette.
 
 ### Resource page pattern (AI Sales Coach → Allbound Audit)
 
