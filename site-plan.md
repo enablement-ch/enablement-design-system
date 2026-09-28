@@ -47,7 +47,7 @@ Brand-wide rules that apply to every page, every component, every asset. The ful
 - Keep resource pages editorial and compact: 72px section padding on desktop, 56px on narrow mobile; use 12-24px between eyebrow, heading, and lead text. Avoid repeated 96-128px empty gaps.
 - Use red uppercase eyebrows and round red markers as recurring scanning cues. Use soft pink sparingly for a hero wash, comparison section, or important callout; keep reading surfaces white.
 - Present diagnostic lists as bold problem statements with short supporting text. Put severity in a small labeled pill and place the concrete result or repair in a separate "Impact when fixed" panel. Severity describes the cost of leaving the issue unresolved, not a measured score.
-- Use two light cards for old-world/new-world comparisons, with a colored left rule and compact marker bullets. The same structure appears on the AI Sales Coach resource page.
+- Use two light cards for old-world/new-world comparisons. The old world uses red rules and × markers; the new world uses green rules and check marks. Keep this contrast visible in the headings and bullets, as on the AI Sales Coach resource page.
 - Give planned diagrams a deliberate, labeled placeholder with the intended information architecture. Replace the placeholder when the graphic is ready; do not substitute long prose that repeats the adjacent sections.
 - These choices were tested on `/resources/gtm-audit` first. Reuse the pattern on later resource pages when the content calls for diagnosis, comparison, or system diagrams.
 
