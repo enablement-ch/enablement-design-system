@@ -51,6 +51,15 @@ Brand-wide rules that apply to every page, every component, every asset. The ful
 - Give planned diagrams a deliberate, labeled placeholder with the intended information architecture. Replace the placeholder when the graphic is ready; do not substitute long prose that repeats the adjacent sections.
 - These choices were tested on `/resources/gtm-audit` first. Reuse the pattern on later resource pages when the content calls for diagnosis, comparison, or system diagrams.
 
+### Service page pattern (LinkedIn Thought Leadership)
+
+- Carry the resource pages' compact rhythm into service pages: 72px section padding on desktop and 56px on narrow mobile, with 12-24px between eyebrow, headline, and lead. Use red eyebrows, small round red markers, and a restrained soft-pink section or hero wash.
+- Lead with the buyer's problem, then show the connected operating system: strategy and research, human-edited content and design, then qualified conversations with CRM context. Use short problem cards and a clear process diagram or three-step sequence.
+- Keep first-hand evidence prominent. Preserve screenshot galleries even when full case studies are limited; label what each gallery actually proves, make screenshots enlargeable, and avoid treating reach or engagement as pipeline on its own.
+- State attribution narrowly. A content-assisted inbound result can support a content claim; results from a broader outbound or GTM engagement must be labeled as such. Pair each claim with a link to its source story where available.
+- Put practical engagement terms near the CTA: founder time, what the team handles, and any guarantee conditions in plain language. For the LinkedIn offer, show the six-month term and the conditional first-30-day opt-out/refund accurately; do not imply a free first month.
+- End with concise FAQs and one clear booking action. Keep mobile cards and galleries single-column, and verify lightbox interaction and keyboard access.
+
 ---
 
 ## `/` — Home
