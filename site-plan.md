@@ -1,6 +1,6 @@
 # Enablement.ch - Website design and page plan
 
-Updated 2026-09-29 from the current `enablement-site` Astro pages. This document records the shipped site and guides new pages. The live implementation in `src/styles/global.css`, page components, and content collections is the technical source for exact tokens and copy. Use `index.html` as a styleguide reference only where it agrees with the current dark site.
+Updated 2026-09-30 from the current `enablement-site` Astro pages. This document records the shipped site and guides new pages. The live implementation in `src/styles/global.css`, page components, and content collections is the technical source for exact tokens and copy. Use `index.html` as a styleguide reference only where it agrees with the current dark site.
 
 ## Site architecture
 
@@ -19,7 +19,7 @@ Updated 2026-09-29 from the current `enablement-site` Astro pages. This document
 | `/li-playbook-typ` | Follow-up after a LinkedIn playbook request | Utility |
 | `/gtc`, `/privacy` | Legal text | Reading page |
 
-`/case-studies`, `/legacy-case-studies`, preview routes, and variant routes are legacy or working surfaces. Use `/customer-results` for new public links. The navigation has Services and Resources dropdowns, a Customer Results link, and a Schedule meeting button. Most booking actions go directly to the HubSpot meeting URL. The footer has the wordmark, Customer Results and booking links, founders, Clay Enterprise Partner badge, and legal links.
+`/case-studies`, `/legacy-case-studies`, preview routes, and variant routes are legacy or working surfaces. Use `/customer-results` for new public links. The navigation has Services and Resources dropdowns, a Customer Results link, and a Book a GTM session button. The navigation and homepage booking actions go directly to the HubSpot meeting URL. The footer has the wordmark, Customer Results and booking links, founders, Clay Enterprise Partner badge, and legal links.
 
 ## Website visual language
 
@@ -42,7 +42,7 @@ Sequence: centered VSL hero with rotating Allbound and service headlines; client
 
 The Allbound diagram has three entry motions (outbound, content, ads), then a narrowing capture and qualify funnel. It opens into route, engage, and close, followed by a separate learn stage. AI Revenue Operations is the operating layer; signals, conversations, and deals feed back into targeting, content, and outreach. This is a system architecture, not a required channel bundle for every client. The service rows link to the three service pages and carry narrowly attributed proof.
 
-The first headline and lead should identify the buyer and the connected offer quickly. The VSL supplies depth. The page lets visitors choose a service or move to a GTM session after seeing the system and proof.
+The first headline and lead should identify the buyer and the connected offer quickly. The VSL supplies depth. Use a direct Book a GTM session button below the video, below the Allbound diagram, below the founder involvement card, and in the final CTA. Each button links to `https://revenue.enablement.ch/meetings/l-heiz/firstmeeting`. The homepage booking actions do not ask for an email before opening the calendar. The page lets visitors choose a service or move to a GTM session after seeing the system and proof.
 
 ### Service pages
 
