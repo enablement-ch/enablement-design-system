@@ -33,8 +33,9 @@ That's it. No ClickUp, no Drive sharing chains, no Slack. Everything else flows 
 ### 1. Clone the repo (~5 min)
 
 ```bash
-git clone git@github.com:enablement-ch/enablement-design-system.git
-cd enablement-design-system
+mkdir -p "$HOME/Claude Code/enablement-brain"
+git clone git@github.com:enablement-ch/enablement-design-system.git "$HOME/Claude Code/enablement-brain/Design"
+cd "$HOME/Claude Code/enablement-brain/Design"
 ```
 
 ### 2. Open in Claude Code (~2 min)
