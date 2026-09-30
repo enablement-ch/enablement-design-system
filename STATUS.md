@@ -19,7 +19,7 @@ A snapshot of where the Enablement.ch website rebuild stands. This is the source
 
 | Path | What's there |
 |---|---|
-| `~/enablement-design-system/` | `index.html` (styleguide), `site-plan.md`, this `STATUS.md` |
+| `~/Claude Code/enablement-brain/Design/` | `index.html` (styleguide), `site-plan.md`, this `STATUS.md` |
 | `~/enablement-site/` | Astro project — components, pages, content collections |
 
 ### Deploys
@@ -153,7 +153,7 @@ cd ~/enablement-site && npm run build
 cd ~/enablement-site && git add -A && git commit -m "..." && git push
 
 # Edit the styleguide / site-plan
-cd ~/enablement-design-system
+cd "$HOME/Claude Code/enablement-brain/Design"
 # index.html = the styleguide
 # site-plan.md = wireframes and locked decisions
 # STATUS.md = this file

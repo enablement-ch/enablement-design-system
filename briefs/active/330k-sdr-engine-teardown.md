@@ -97,7 +97,7 @@ Comment "SETUP" and I'll send you the full workflow.
 - [ ] Flywheel (dark-mode exception only)
 - [ ] Other
 
-**Reference image(s)** in `~/enablement-design-system/social-examples/inspiration/`:
+**Reference image(s)** in `~/Claude Code/enablement-brain/Design/social-examples/inspiration/`:
 - `05_clay-vs-claude-code.gif` - **primary structural reference.** This is the closest existing execution: two columns, a leftmost spine column of row-label icons, per-column tinted headers, show-don't-tell inside every cell (real logos, mini bars, mini charts), and a receipts panel at the bottom carrying real dollar outcomes. Build the same skeleton. One deliberate difference: that reference is a neutral "use both" comparison, this one is contrarian (old vs new), so semantic Critical/Positive colors appear here - but only where Section 4 below says they do.
 - `03_cold-email-cheatsheet.jpg` - **quality bar reference.** Match this one for premium feel: gradient shifts inside title boxes and pills, subtle-but-always-present 1px borders, and padding that lets every cell breathe. Ignore its serif subtitle, that was flagged as off-brand.
 
@@ -277,7 +277,7 @@ N/A - vertical infographic does not use this section.
 
 **Padding:** minimum 24px inside every cell, 32px gap between tiles. With 7 rows plus a receipts band, if this does not fit at 1620px, **extend the canvas further rather than tightening padding.** Cramped padding is the number one recurring defect in past Enablement graphics.
 
-**Tool logos:** all ten pull from `~/enablement-design-system/logos/`. Exact filenames named inline in Section 3. `teamfluence-icon.svg` and `sales-navigator-icon.png` were added on 2026-07-29 - `sales-navigator-icon.png` is the Sales Navigator compass mark, do not substitute `linkedin.png` or the `in` bug.
+**Tool logos:** all ten pull from `~/Claude Code/enablement-brain/Design/logos/`. Exact filenames named inline in Section 3. `teamfluence-icon.svg` and `sales-navigator-icon.png` were added on 2026-07-29 - `sales-navigator-icon.png` is the Sales Navigator compass mark, do not substitute `linkedin.png` or the `in` bug.
 
 **Photo of Lanny?** No
 
@@ -311,14 +311,14 @@ Round-1 deliverable is full-quality work. After round 1:
 
 Before starting, the designer should have read:
 
-1. `~/enablement-design-system/DESIGN_SOCIAL.md` - the full social design system
-2. `~/enablement-design-system/social-examples/README.md` - annotated examples
+1. `~/Claude Code/enablement-brain/Design/DESIGN_SOCIAL.md` - the full social design system
+2. `~/Claude Code/enablement-brain/Design/social-examples/README.md` - annotated examples
 3. The specific reference image(s) named in Section 2 above
 
 If the designer has not been onboarded yet, also share:
 
-4. `~/enablement-design-system/site-plan.md` - the website composition rules (for voice and italic-emphasis pattern)
-5. `~/enablement-design-system/templates/figma-file-spec.md` - the Figma file structure they should build
+4. `~/Claude Code/enablement-brain/Design/site-plan.md` - the website composition rules (for voice and italic-emphasis pattern)
+5. `~/Claude Code/enablement-brain/Design/templates/figma-file-spec.md` - the Figma file structure they should build
 
 ---
 

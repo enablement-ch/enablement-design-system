@@ -26,7 +26,7 @@ Examples:
 
 ## Current inventory
 
-Run `ls ~/enablement-design-system/logos/ | sort` to see the current list. Coverage is broad but not complete - missing logos should be flagged in briefs.
+Run `ls "$HOME/Claude Code/enablement-brain/Design/logos/" | sort` to see the current list. Coverage is broad but not complete - missing logos should be flagged in briefs.
 
 **Known gaps as of v1:**
 - Clearbit

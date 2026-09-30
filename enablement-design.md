@@ -8,7 +8,7 @@ Sibling documents, different jobs:
 - `site-plan.md` - website composition and voice
 - **this file** - generated documents
 
-Tokens here are derived from `DESIGN_SOCIAL.md` v1.0 so the two never drift.
+Document tokens are intentionally separate from the website and LinkedIn layout systems. The shared brand anchors are Sofia Sans, Enablement red `#E11E48`, deep charcoal `#0F1217`, precise diagrams, and evidence-led copy. Use this file for rendered documents; use `site-plan.md` for website pages and `DESIGN_SOCIAL.md` for LinkedIn graphics.
 
 ---
 
@@ -40,7 +40,7 @@ Token meanings, and where each one lands in a rendered document:
 | `heading_font` | Sofia Sans | All headings |
 | `mono_font` | JetBrains Mono | Code, captions, numerics |
 
-Full palette for anything the renderer does not cover: see `DESIGN_SOCIAL.md` §2.1.
+The supporting colors below are for document rendering. Website and LinkedIn graphics have their own surface and contrast rules; do not copy their palettes into the PDF theme JSON.
 
 | Purpose | Hex |
 |---|---|
@@ -55,15 +55,15 @@ Full palette for anything the renderer does not cover: see `DESIGN_SOCIAL.md` §
 
 ## Typography rules
 
-- **Sofia Sans and JetBrains Mono are the entire stack.** No other families.
-- **No serif typefaces anywhere.** This is a hard brand rule, not a preference.
+- **For generated documents, Sofia Sans and JetBrains Mono are the type stack.** This does not set type rules for the website or LinkedIn graphics.
+- **Do not use serif type in generated documents.**
 - Fonts must be installed locally for the renderer to embed them. If Sofia Sans is missing, the stack falls back to the system sans and the document still renders - it just isn't quite on brand. Install from Google Fonts.
-- One italic word per headline maximum, following the website pattern (`Scale your pipeline, *not your headcount*`).
+- Use one purposeful italic phrase per headline when it improves the reading hierarchy, following the website emphasis pattern. Keep emphasis short and readable.
 
 ## Logos
 
-- Dark backgrounds: `~/enablement-design-system/logos/enablement-white.svg`
-- Light backgrounds: `~/enablement-design-system/logos/enablement-black.svg`
+- Dark backgrounds: `~/Claude Code/enablement-brain/Design/logos/enablement-white.svg`
+- Light backgrounds: `~/Claude Code/enablement-brain/Design/logos/enablement-black.svg`
 
 The renderer takes a `logo` key (absolute path) and places it above the cover banner. SVG works; if a raster is needed, export at 2x.
 
@@ -83,7 +83,7 @@ The shared PDF module lives at `~/.claude/skills/allbound-deep-research/scripts/
 ```bash
 # 1. Extract the token block from this file into a theme JSON
 python3 ~/.claude/skills/allbound-deep-research/scripts/design_to_theme.py \
-  ~/enablement-design-system/enablement-design.md /tmp/theme.json
+  "$HOME/Claude Code/enablement-brain/Design/enablement-design.md" /tmp/theme.json
 
 # 2. Render
 python3 ~/.claude/skills/allbound-deep-research/scripts/render_pdf.py \
@@ -103,5 +103,7 @@ Skills that render Enablement-branded documents:
 ---
 
 ## Changelog
+
+- `2026-09-29` - Clarified the document-only scope of tokens and typography after auditing the current dark website and LinkedIn design guide. Kept renderer JSON unchanged.
 
 - `2026-08-08` - v1.0. Extracted document tokens from `DESIGN_SOCIAL.md` v1.0 so generated PDFs and workbooks share the social palette.

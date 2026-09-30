@@ -1,283 +1,73 @@
-# Enablement.ch — Site Plan v0.1
+# Enablement.ch - Website design and page plan
 
-The site architecture for enablement.ch. This doc is the source of truth — code follows what's locked here, not the other way around.
+Updated 2026-09-29 from the current `enablement-site` Astro pages. This document records the shipped site and guides new pages. The live implementation in `src/styles/global.css`, page components, and content collections is the technical source for exact tokens and copy. Use `index.html` as a styleguide reference only where it agrees with the current dark site.
 
-## Status
+## Site architecture
 
-| Page | Status |
-|---|---|
-| Sitemap | locked |
-| Home | locked (FAQ list TBD) |
-| Case Studies index | locked |
-| Case Study detail | locked |
-| /book | TBD |
-| /gtc | TBD |
-| /privacy | TBD |
+| Route | Purpose | Page pattern |
+|---|---|---|
+| `/` | Explain the Allbound system and direct visitors to a service or GTM session | Home |
+| `/linkedin-thoughtleadership` | Founder and executive content service | Service |
+| `/signal-based-outbound` | Outbound service | Service |
+| `/ai-revenue-operations` | Data, workflow, and CRM service | Service |
+| `/customer-results` | Evidence index | Customer results |
+| `/customer-results/[slug]` | Individual customer story | Customer result detail |
+| `/resources/gtm-audit` | Allbound Audit | Diagnostic resource |
+| `/resources/ai-sales-coach` | AI Sales Coach | Product resource |
+| `/book` | GTM session booking | Utility |
+| `/meeting-booked` | Prepare for a booked call | Utility |
+| `/li-playbook-typ` | Follow-up after a LinkedIn playbook request | Utility |
+| `/gtc`, `/privacy` | Legal text | Reading page |
 
-**Future scope (not now):** Playbook / Resources section.
+`/case-studies`, `/legacy-case-studies`, preview routes, and variant routes are legacy or working surfaces. Use `/customer-results` for new public links. The navigation has Services and Resources dropdowns, a Customer Results link, and a Schedule meeting button. Most booking actions go directly to the HubSpot meeting URL. The footer has the wordmark, Customer Results and booking links, founders, Clay Enterprise Partner badge, and legal links.
 
----
+## Website visual language
 
-## Sitemap
+- Dark theme only. Base canvas `#0F1217`; surface `#181C23`; raised surface `#232830`; heading `#E5E9F0`; body `#A0A8B5`; muted `#6B7280`; accent `#E11E48`. Use the named CSS tokens for exact values.
+- Sofia Sans carries display and body type. JetBrains Mono carries eyebrows, stage IDs, technical labels, and small system details. Use one red italic phrase to emphasize a headline's turn. Keep sentence case for normal headings.
+- Use a restrained page frame: vertical hairlines around the content container and horizontal section boundaries. The content container is 1120px maximum, with wider spacing on desktop.
+- Section spacing is 72px on the newer home and service pages, narrowing to 56px on mobile. Older shared sections use the global spacing tokens. Keep the gap between eyebrow, heading, and lead compact.
+- Apply textures selectively: a faint grid for selected heroes, a slow red/blue glow for a system transition, and a static grid with corner wash for quieter sections. Leave proof galleries, video frames, cards, and long reading surfaces plain. Respect reduced-motion settings.
+- Use flat dark cards with thin borders and modest radius. Red top rules mark problems or key steps. Green indicates qualified outcomes and feedback in workflow diagrams. Do not make every card glow or cast a shadow.
+- Use Lucide icons at 1.5px stroke when an icon is needed. Diagrams can use labeled boxes and directional arrows. Give each connector a clear reading path and label what changes at each stage.
+- Pair claims with visible evidence: customer name, quote, linked story, or exact result. State whether a result came from the specific service or a broader GTM engagement. Do not imply that reach or engagement alone is pipeline.
+- Primary actions should be explicit: schedule a meeting, book a GTM session, explore a service, or read the customer story. Use the same red button treatment for primary actions and restrained text links for secondary paths.
+- On mobile, collapse multi-column cards and diagrams into a single readable column. Keep stage order, labels, arrows, and proof intact. Use accessible focus states and keyboard-operable dropdowns, accordions, video controls, and screenshot lightboxes.
 
-| URL | Purpose | Nav | Footer |
-|---|---|---|---|
-| `/` | Home | Logo (left) | — |
-| `/case-studies` | Client work | "Clients" | quick link |
-| `/book` | HubSpot meeting embed | "Schedule meeting" (button) | quick link |
-| `/gtc` | Terms | — | legal |
-| `/privacy` | Privacy | — | legal |
+## Page patterns
 
-**Nav:** Logo · "Clients" · "Schedule meeting" (CTA button).
-**Footer:** logo + tagline · mini sitemap · founders block · partner band · legal.
+### Home `/`
 
----
+Sequence: centered VSL hero with rotating Allbound and service headlines; client-logo marquee; three video testimonials; three disconnected-motion problem cards; complete Allbound system diagram; three connected service rows; how-we-work section with founder involvement; FAQ; final booking action; footer.
 
-## Visual System
+The Allbound diagram has three entry motions (outbound, content, ads), then a narrowing capture and qualify funnel. It opens into route, engage, and close, followed by a separate learn stage. AI Revenue Operations is the operating layer; signals, conversations, and deals feed back into targeting, content, and outreach. This is a system architecture, not a required channel bundle for every client. The service rows link to the three service pages and carry narrowly attributed proof.
 
-Brand-wide rules that apply to every page, every component, every asset. The full technical reference lives in [index.html](./index.html); this section is the short answer.
+The first headline and lead should identify the buyer and the connected offer quickly. The VSL supplies depth. The page lets visitors choose a service or move to a GTM session after seeing the system and proof.
 
-- **Icon family:** **Lucide only.** 1.5px stroke. No mixing with Tabler, Heroicons, Phosphor, Font Awesome, or any other set.
-- **Fonts:** Sofia Sans (display + body), JetBrains Mono (code, labels, technical accents).
-- **Italic emphasis:** Italic is a tone modifier, not just typographic style. See `DESIGN_SOCIAL.md` and the styleguide for usage.
-- **Colors:** Use named tokens from the palette only. Never define colors via opacity math; promote any rendered color to a named token first.
-- **Display theme:** Dark is the only website theme. Do not add a light-mode toggle or saved light preference. Design page-specific colors and logos for the dark palette.
-- **Background depth:** Use three restrained section treatments across the site: a faint 36px blueprint grid with a small pointer spotlight for selected heroes, a broad slow-moving red/blue radial glow for one transition, and a static 44px grid plus corner wash for quieter sections. Keep evidence galleries, video frames, cards, and long reading surfaces plain. Stop the glow animation when reduced motion is requested.
-- **Navigation:** Main menu labels should use light gray text against the dark header. Dropdown choices need a visible red border and deep-red fill on hover and keyboard focus.
-- **Customer proof:** Reuse the rolling client-logo marquee immediately below the Customer Results page header, before the case-study grid. Keep the same component as the homepage so logos and links stay in sync.
+### Service pages
 
-### Resource page pattern (AI Sales Coach → Allbound Audit)
+Shared sequence: buyer-focused hero with fit statement and booking action; concrete problem cards; process or system visual; specific use cases or capabilities; sales handoff or practical example; linked customer proof; engagement model; concise FAQ; final booking action. Keep the order flexible when a page needs a different proof format.
 
-- Keep resource pages editorial and compact: 72px section padding on desktop, 56px on narrow mobile; use 12-24px between eyebrow, heading, and lead text. Avoid repeated 96-128px empty gaps.
-- Use red uppercase eyebrows and round red markers as recurring scanning cues. Use soft pink sparingly for a hero wash, comparison section, or important callout; keep reading surfaces white.
-- Present diagnostic lists as bold problem statements with short supporting text. Put severity in a small labeled pill and place the concrete result or repair in a separate "Impact when fixed" panel. Severity describes the cost of leaving the issue unresolved, not a measured score.
-- Use two light cards for old-world/new-world comparisons. The old world uses red rules and × markers; the new world uses green rules and check marks. Keep this contrast visible in the headings and bullets, as on the AI Sales Coach resource page.
-- Give planned diagrams a deliberate, labeled placeholder with the intended information architecture. Replace the placeholder when the graphic is ready; do not substitute long prose that repeats the adjacent sections.
-- These choices were tested on `/resources/gtm-audit` first. Reuse the pattern on later resource pages when the content calls for diagnosis, comparison, or system diagrams.
+- **LinkedIn thought leadership:** hero and fit; three buyer problems; the point-of-view-to-pipeline system; real attention examples; real conversation examples; linked customer proof; engagement and guarantee; FAQ; final CTA. Preserve the real screenshot galleries for attention and conversations. Make images enlargeable and label what each example proves. The founder brings perspective; the team builds and operates the content system.
+- **Signal-based outbound:** hero; four buyer problems; four process steps from market focus to sales conversation; three campaign plays; sales handoff; linked customer results; build-and-enable or operated engagement; FAQ; final CTA. Explain market coverage, signal-triggered outreach, and named-account ABM. Give sales the reply, owner, account context, and reason to act.
+- **AI Revenue Operations:** hero; tool and capacity problems; connected signal-to-revenue system; capabilities; practical lead example; linked customer proof; ongoing RevOps engagement; FAQ; final CTA. Explain lead sourcing, clean data, scoring, routing, automation, CRM, and reporting through an example with no lost context.
 
-### Service page pattern (LinkedIn Thought Leadership)
+Service diagrams are not decorative. They need stage labels, inputs, outputs, and a visible handoff to sales or CRM. Proof cards should link to the source story. FAQ answers should resolve implementation and fit questions rather than repeat the hero.
 
-- Carry the resource pages' compact rhythm into service pages: 72px section padding on desktop and 56px on narrow mobile, with 12-24px between eyebrow, headline, and lead. Use red eyebrows, small round red markers, and a restrained soft-pink section or hero wash.
-- Lead with the buyer's problem, then show the connected operating system: strategy and research, human-edited content and design, then qualified conversations with CRM context. Use short problem cards and a clear process diagram or three-step sequence.
-- Keep first-hand evidence prominent. Preserve screenshot galleries even when full case studies are limited; label what each gallery actually proves, make screenshots enlargeable, and avoid treating reach or engagement as pipeline on its own.
-- State attribution narrowly. A content-assisted inbound result can support a content claim; results from a broader outbound or GTM engagement must be labeled as such. Pair each claim with a link to its source story where available.
-- Keep the offer section concise: show the founder's time commitment, what the team handles, and a short 30-day money-back guarantee. Put the participation and input conditions in the FAQ. Do not publish a fixed contract length or imply the first month is free.
-- End with concise FAQs and one clear booking action. Keep mobile cards and galleries single-column, and verify lightbox interaction and keyboard access.
+### Customer results
 
----
+The index opens with a compact hero, then the same linked logo marquee used on the home page, then a grid of live customer stories. Individual stories use an outcome headline; video or a deliberate placeholder; a proof band with available metrics and customer quote; challenge, solution, results, and outcome sections when the data supports them; optional metadata; and a final GTM-session action. Do not force three metrics or a fixed headline formula when the evidence differs. Keep customer attribution and scope precise.
 
-## `/` — Home
+### Resources
 
-Seven sections + footer. Order: hero → marquee logos → video testimonials → pain × 3 → FAQ → final CTA → footer.
+Resource pages are editorial and diagnosis-led. Use a compact hero, clear problem statement, structured diagnostic or comparison, process or product explanation, proof, authority, and one clear next step. On the Allbound Audit page, the ten bottlenecks, old/new operating-model comparison, audit process, customer results, and founder authority lead to booking. The AI Sales Coach page uses a product-specific contrast, scorecard, installation steps, frameworks, and CTA. Resource layouts may differ from service pages while using the same typography, dark palette, frame, and evidence rules.
 
-### 01 — Hero with VSL
+### Booking, confirmation, and legal
 
-- **Layout:** Centered, vertical stack. Eyebrow → H1 → lead → CTA pair → 16:9 video frame below.
-- **Content:** H1 candidate is `Scale your pipeline, not your headcount.` (carry over from existing site, italic emphasis on "*not your headcount*"). Lead: ICP-grounded, ~2 sentences. Primary CTA: `Schedule meeting` → `/book`. Secondary text-link: `See client work →` → `/case-studies`. Video frame: custom thumbnail + crimson play button + label `Watch · 3 min · What we do`.
-- **Reasoning:** ColdIQ-pattern. Video carries the heavy explanation work; copy stays short and recognition-focused. Buyer self-diagnoses → recognizes themselves in the H1 → watches the VSL.
+`/book` puts the meeting action first in a focused single column. `/meeting-booked` helps visitors prepare for the call, while `/li-playbook-typ` completes the playbook request flow. Legal pages use readable prose and minimal decoration. Do not apply sales-page section density to long legal text.
 
-### 02 — Marquee logo wall
+## Shared components and upkeep
 
-- **Layout:** Single horizontal row, full-bleed (extends past container), bordered by hairlines top + bottom. Slow infinite-scroll right-to-left. Pauses on hover.
-- **Content:** Client logos. Each cell wraps in an `<a>` if a case study exists.
-- **Behavior:** On desktop hover, marquee pauses + a "Case Study" pill fades in over linked cells. Click → case study detail. On mobile, marquee runs slower and pills are permanently visible on linked cells.
-- **Reasoning:** Modern execution that signals scale. Marquee implies "more clients than fit on screen." Case study pills preserve the depth-on-demand pattern.
+`Nav`, `Footer`, `Hero`, `MarqueeLogoWall`, `VideoTestimonials`, `FAQ`, `FinalCTA`, the case-study components, and the workflow visuals are the reusable building blocks. Add new public routes to the navigation only when they are ready. Keep client names, logos, proof, and destinations aligned across the homepage, service pages, marquee, and customer-results collection.
 
-### 03 — Video testimonials
-
-- **Layout:** 3×2 grid (6 cards). Divider-grid pattern (hairlines between cells, no individual borders). No drop shadows.
-- **Content per card:** Video thumbnail with crimson play overlay · name · title/company · 1-line quote excerpt.
-- **Reasoning:** Proof-heavy business. Videos go high. Operator-voice testimonials are higher-trust than agency marketing copy. Six videos confirmed available.
-
-### 04 — Pain × 3
-
-Three alternating feature rows. Each row = one buyer pain + the system we build for it. Replaces both "How it works" and "What we build" — modern pattern that integrates pain → solution → proof in a single block.
-
-#### Block A — No outbound, or broken outbound
-- **Eyebrow:** `NO OUTBOUND`
-- **H3:** Buyer-language statement of pain (e.g., `You don't have outbound. Or what you have is broken.`)
-- **Body:** 2-3 sentences in buyer language describing the pain, then 2-3 sentences describing the system we build (Outbound Engine).
-- **Visual (right side):** Workflow snippet — small version of the trigger → score → route diagram.
-- **CTA:** `See this built for [Client] →` → linked case study.
-
-#### Block B — Tools licensed but producing nothing
-- **Eyebrow:** `BROKEN TOOLS`
-- **H3:** `You have Clay, Apollo, HubSpot. Open rates are 14%.`
-- **Body:** Pain articulation → RevOps Stack rebuild description.
-- **Visual (left side, alternating):** Annotated dashboard fragment or before-after metric viz.
-- **CTA:** `See this built for [Client] →`.
-
-#### Block C — Generic AI slop in your content
-- **Eyebrow:** `AI SLOP`
-- **H3:** `Your content sounds like everyone else's content.`
-- **Body:** Pain articulation → Content Engine voice-calibration description.
-- **Visual (right side):** Voice calibration system illustration.
-- **CTA:** `See this built for [Client] →`.
-
-**Reasoning:** Buyers self-diagnose with these exact pains. Each block doubles as an answer to "do you handle X?" and a link to proof. The case study CTA at the end of each block compresses the trust journey.
-
-### 05 — FAQ (accordion)
-
-- **Layout:** Accordion module. Each question collapsed by default. Click to expand. Mono eyebrow numbering (Q01, Q02, …).
-- **Content:** TBD — review pending. Working list of 8 questions parked.
-- **Reasoning:** ICP shows lost deals overindex on unanswered objections. Surfacing them inline lifts decision velocity.
-
-### 06 — Final CTA
-
-- **Layout:** Centered, single-section. H2 + lead + button.
-- **Content:** Direction-locked. Final copy TBD. Single CTA: `Schedule meeting` → `/book`.
-
-### 07 — Footer
-
-- **Top row:** Logo + tagline · Mini sitemap (Clients, Schedule meeting, Privacy, GTC) · Contact (LinkedIn company, hello@enablement.ch).
-- **Founders block (Attio-pattern):** Header `Founders`. Two rows: avatar + name + role + LinkedIn icon. Lanny Heiz · Co-Founder + Gilbert Kralinger · Co-Founder.
-  - Gilbert's LinkedIn: https://www.linkedin.com/in/gilbert-kralinger/
-- **Partner band:** Top hairline + small grayscale partner logos with caption `Official partner.` Confirmed: Clay (Studio Partner), Smartlead, HeyReach, Lemlist.
-- **Bottom row:** © Year · GTC · Privacy.
-
----
-
-## `/case-studies` — Index
-
-Two sections: page header + card grid. No filters yet (add when there are 20+ studies).
-
-### 01 — Page header
-
-- **Layout:** Centered eyebrow + H1 + lead, no video.
-- **Content:** Eyebrow `↳ / Case studies`. H1 `Systems we've` *`shipped.`* (italic emphasis on "shipped"). Lead: short, ICP-grounded.
-
-### 02 — Card grid
-
-- **Layout:** Divider-grid (hairlines between cells, no individual card borders), 2 columns desktop / 1 column mobile. Whole card is a clickable link to detail page.
-- **Card structure:**
-
-  ```
-  [Company logo]                      [▶ Video badge if applicable]
-  How [Company] got [result]
-  ──────────────────────────────────
-  [stat 1]    [stat 2]    [stat 3]
-  ──────────────────────────────────
-  [Person photo]   [Name]
-                   Title · Company
-  ```
-
-- **Card content rules:**
-  - **Top row:** Company logo (small, monochrome) on the left. On the right, an optional video badge — small play icon chip — visible only if the case has a video testimonial linked.
-  - **Title (H3):** Fixed pattern: `How [Company] got [result]`. Predictable, scannable, skip-friendly. Pattern is locked — every case study uses it.
-  - **Stats:** Per-card mini stat strip with 3 metrics. Vertical hairlines between. Functional here because it's the per-card proof.
-  - **Person attribution:** Small avatar/photo + name + title underneath. If no quote/testimonial, this can be omitted on the card.
-
-## `/case-studies/[slug]` — Detail
-
-Five sections. Two hero variants depending on whether the case has a video testimonial.
-
-### 01a — Hero (video case — preferred)
-
-Two-column layout. Video gets prominent positioning because it's the strongest proof we have.
-
-- **Left (5/12 cols):**
-  - Eyebrow: `↳ / Case studies` (links back to index)
-  - H1: `How [Company] got [result]` (matches index card title)
-  - Lead: 1-line outcome summary
-  - Person attribution: photo + name + title (small)
-- **Right (7/12 cols):**
-  - Video player frame, 16:9, custom thumbnail with crimson play button. Click → plays inline (or opens a modal).
-
-### 01b — Hero (no video — fallback)
-
-Centered single-column layout when there's no video.
-
-- Company logo at top (large, monochrome)
-- Eyebrow, H1, lead (same content as variant A)
-- Photo + name attribution below the lead
-
-### 02 — Result callout boxes
-
-Three large outcome boxes in a row, sitting right after the hero. This is the case's biggest proof element.
-
-- **Layout:** 3 cards in a divider grid (hairlines between).
-- **Per box:** huge number (3-4rem, bold) + label below (mono small caps).
-- **Reasoning:** Replaces the old "stat strip" pattern with more visual weight. Each box reads as a callout, not a footnote.
-
-### 03 — Narrative body
-
-Reading-width column (~720px max). Editorial prose styles — body at lead size for legibility, generous line-height. Three H2 sections, fixed structure for every case:
-
-1. **Initial Situation & Challenge** — The state we found. Pain articulation in buyer language, with the customer's actual quotes if available.
-2. **Solution** — What we built. If the case is about a complex workflow, embed a workflow diagram snippet here, scaled to fit the column.
-3. **Result** — Outcomes with numbers inline as full sentences ("Open rate climbed from 14% to 47% by week 8."). Not bullet lists.
-
-### 04 — Metadata aside
-
-Compact 4-column divider grid below the narrative.
-
-- **Cells:** Industry · Team size · Geography · Engagement type
-- **Reasoning:** Quick scannable facts for the buyer who skims first.
-
-### 05 — Final CTA
-
-Reuses the homepage final CTA block. Same `Schedule meeting` button → `/book`. Consistency = credibility.
-
-## `/book`
-
-Single column. Embed front and center. Don't compete with the booking action.
-
-### 01 — Title
-
-- **Layout:** Centered, very tight vertical stack. No eyebrow, no kicker.
-- **Content:**
-  - H1: `Schedule Your GTM Session`
-
-### 02 — HubSpot embed
-
-- **Layout:** Centered, container width (~900–1000px max so the widget doesn't sprawl). Bordered card holding the embed.
-- **Content:** HubSpot meeting widget. Nothing else.
-
-### 03 — Trust line (lower)
-
-- **Layout:** Below the embed, generous vertical spacing. Centered.
-- **Content:**
-  - Caption in mono caps: `Trusted by 125+ companies`
-  - Optional: 6-8 client logos in a single horizontal row, monochrome, scaled down
-- **Reasoning:** Quiet social proof. Sits below the booking action so it doesn't pull attention upward. The buyer who needs reassurance scrolls and finds it; the buyer who's already committed never has to.
-
-### 04 — Footer
-
-(Standard site footer.)
-
-### Reasoning
-
-- Single column keeps focus on the embed. Everything competing for attention is removed (no testimonial video, no big trust panel, no inline assurances).
-- Title uses the literal call type name (`GTM Roadmap`) instead of a clever phrase — buyer arrives knowing exactly what they're booking.
-- Trust line sits below, not beside, so it's available without being distracting.
-
-## `/gtc` and `/privacy`
-
-*Standard legal pages. Plain text in the design system's prose styles. Content provided by you.*
-
----
-
-## Components used (from design system)
-
-- `Nav`, `Footer`
-- `Hero` (with VSL variant)
-- `MarqueeLogoWall` *(new — to build)*
-- `VideoTestimonials` *(new — to build)*
-- `FeatureRow` for pain blocks
-- `FAQ` accordion *(new — to build)*
-- `Workflow` (vertical pipeline diagram)
-- `FoundersBlock` *(new — Attio-pattern)*
-- `PartnerLogos` *(new — for footer)*
-
----
-
-## Open items / pending from Lanny
-
-- [ ] FAQ question list (parked for later review)
-- [ ] Logo files (drop into `~/enablement-site/public/logos/`)
-- [ ] HubSpot meeting URL
-- [ ] Final hero copy
-- [ ] Final CTA copy
-- [ ] Partner logos (svg preferred)
-- [ ] Founder photos (Lanny + Gilbert)
-- [ ] GTC + Privacy content
+When a page pattern changes, update this plan and the relevant social or document guide only if that format is affected. A website screenshot prepared for LinkedIn follows the website visual language; a native LinkedIn infographic follows `DESIGN_SOCIAL.md`.

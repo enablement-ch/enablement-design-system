@@ -1,5 +1,9 @@
 # Enablement - Design System Repo
 
+Local checkout: `~/Claude Code/enablement-brain/Design/`. The former
+`~/enablement-design-system/` path is a compatibility symlink. Use the new path
+in briefs, skills, and project references.
+
 ## What this repo is
 
 The single source of truth for Enablement's brand and design language. Two consumers:
@@ -57,15 +61,11 @@ When writing or critiquing copy that appears in graphics (headlines, anchor line
 
 ## Writing style rules
 
-- **Never use em-dashes (—).** Use a hyphen with spaces ( - ) instead. Strict.
-- LinkedIn infographics use Sofia Sans for all functional text and DM Serif
-  Display Italic only for the highlighted headline keyword. Do not use
-  JetBrains Mono in LinkedIn infographics.
-- Every infographic headline begins with `How to` and highlights one meaningful
-  keyword in the canonical red gradient capsule.
+- **Never use em dashes.** Use a hyphen with spaces ( - ) instead. Strict.
+- Native editorial infographics use Sofia Sans for functional text and DM Serif Display Italic for the highlighted headline keyword. Website-derived graphics may retain JetBrains Mono stage labels from the live site.
+- Native editorial infographic headlines begin with `How to` and highlight one meaningful keyword in the canonical red gradient capsule. Website-derived LinkedIn exports follow `DESIGN_SOCIAL.md` Section 7 and preserve the live page hierarchy.
 - LinkedIn infographic eyebrows use Sofia Sans Semibold caps with tracking.
-- LinkedIn infographics use `#0F1217` for every normal text role. Do not create a
-  second body-copy gray. White is reserved for deliberately reversed text.
+- Native editorial infographics use `#0F1217` for normal text. Website-derived graphics use the live dark website tokens for headings, body, and labels.
 
 ## Workflow (social)
 

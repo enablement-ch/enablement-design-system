@@ -1,4 +1,4 @@
-# Enablement - Social Design System v2.3
+# Enablement - Social Design System v2.4
 
 > Canonical visual rules for Enablement's LinkedIn infographics, GIFs, carousels,
 > single images, and banners. References, briefs, templates, and skills follow
@@ -13,9 +13,12 @@
 | Animated process infographic | Secondary |
 | Carousel | Situational, only when a sequence cannot live on one canvas |
 | Single-image stat or comparison | Situational |
+| Website-derived explainer or workflow | Situational, preserve website visual identity |
 | LinkedIn personal banner | Pre-redesign, rebuild later in this system |
 
 ## Source hierarchy
+
+This hierarchy governs native LinkedIn graphics. A website-derived export follows the separate rules in Section 7. The live website source (`enablement-site`), `site-plan.md`, and `src/styles/global.css` govern those exports.
 
 1. `templates/linkedin-infographic-template.svg` - canonical canvas shell,
    headline grammar, highlight treatment, and footer placement.
@@ -356,7 +359,42 @@ Anatomy:
 
 ---
 
-## 7. Do not list
+## 7. Website-derived graphics
+
+The current website uses a dark visual language that differs from the native light editorial infographic template. Treat a graphic taken from enablement.ch as a distinct LinkedIn format. Preserve its visual identity when the source itself is the subject or a complete framework, as with the Allbound workflow. Do not apply the light SVG shell or the `How to` headline rule to a faithful website export.
+
+### Source and brand treatment
+
+- Work from the current live page or matching Astro component. Confirm that the content, proof, and labels match the published page before exporting.
+- Keep the dark canvas `#0F1217`, dark cards, subtle border rules, Sofia Sans body and headlines, JetBrains Mono stage labels, and red `#E11E48` italic emphasis from the website. Green may identify qualified results, CRM feedback, or other positive states that the source already uses.
+- Retain the page's actual hierarchy: eyebrow, meaningful headline, short explanatory lead where needed, full diagram or evidence block, and any caveat necessary to interpret it. Remove unrelated navigation, CTAs, and surrounding sections.
+- A screenshot is acceptable when its labels remain readable at typical phone size. If the website layout becomes too dense at 1080px wide, rebuild the same content as a vertical diagram with larger type and preserved stage order. Do not simply shrink the screenshot until it fits.
+- Keep customer claims, metrics, quotes, and source attribution exactly as published. If a graphic borrows a website result, distinguish a specific service result from a broader GTM engagement.
+
+### LinkedIn export
+
+- Use 1080 x 1350px for a vertical single image. Use 1080 x 1080px only when the content is naturally compact. Export 24-bit PNG in sRGB.
+- Capture the source at 2x or higher, crop to the complete subject, and scale down with high-quality resampling. Preserve every stage, arrow, label, and feedback loop.
+- Give the graphic a clear headline and sensible margins. Never crop the first input or final outcome to force a ratio. Use extra canvas space for context rather than stretching the source.
+- Review the final PNG at full size and at a phone-sized preview. Check line breaks, contrast, type size, spelling, and whether the reading path remains obvious.
+- Name the file for its content and format, for example `allbound-workflow-linkedin.png`. A website-derived export is a social asset; publishing it does not change the live website component.
+
+### Page-to-visual routes
+
+| Website source | LinkedIn treatment |
+|---|---|
+| Home Allbound system | A complete system map: outbound, content, ads, capture, qualify, route, engage, learn, and CRM feedback |
+| LinkedIn thought leadership service | A point-of-view-to-conversation flow, or a tightly cropped real example with its proof boundary |
+| Signal-based outbound service | Market focus, signal qualification, relevant outreach, and sales handoff as a process diagram |
+| AI Revenue Operations service | Signal-to-decision workflow or a before/after example of manual work and routing |
+| Customer result | One attributed claim with the customer, context, and exact outcome |
+| Allbound Audit or AI Sales Coach resource | A diagnostic matrix, scorecard, or one annotated example rather than a screenshot of the full sales page |
+
+Native editorial infographics continue to follow Sections 1-6 and the canonical SVG template. Website-derived graphics follow this section and the website's current source. State which format is requested in the design brief before building.
+
+---
+
+## 8. Do not list
 
 - No glassmorphism, blur, refractive borders, or frosted surfaces.
 - No SaaS dashboard aesthetic, floating product cards, or ambient blue gradients.
@@ -378,7 +416,7 @@ Anatomy:
 
 ---
 
-## 8. Workflow
+## 9. Workflow
 
 ```text
 LinkedIn post or source insight
@@ -403,6 +441,8 @@ executable brief.
 ---
 
 ## Changelog
+
+- `2026-09-29` - **v2.4 website-derived graphics.** Added a dark website export path, page-to-visual routing, and LinkedIn capture checks. Native editorial infographic rules remain the default for newly designed graphics.
 
 - `2026-08-06` - **v2.3 text color lock.** Removed `#4A5360` from the social
   palette. `#0F1217` now handles every normal text role; white remains available
