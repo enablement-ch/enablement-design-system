@@ -13,6 +13,7 @@ Updated 2026-09-30 from the current `enablement-site` Astro pages. This document
 | `/customer-results` | Evidence index | Customer results |
 | `/customer-results/[slug]` | Individual customer story | Customer result detail |
 | `/resources/gtm-audit` | Allbound Audit | Diagnostic resource |
+| `/resources/gtm-self-audit` | GTM Self Audit review page | Interactive diagnostic resource |
 | `/resources/ai-sales-coach` | AI Sales Coach | Product resource |
 | `/book` | GTM session booking | Utility |
 | `/meeting-booked` | Prepare for a booked call | Utility |
@@ -61,6 +62,8 @@ The index opens with a compact hero, then the same linked logo marquee used on t
 ### Resources
 
 Resource pages are editorial and diagnosis-led. Use a compact hero, clear problem statement, structured diagnostic or comparison, process or product explanation, proof, authority, and one clear next step. On the Allbound Audit page, the ten bottlenecks, old/new operating-model comparison, audit process, customer results, and founder authority lead to booking. The AI Sales Coach page uses a product-specific contrast, scorecard, installation steps, frameworks, and CTA. Resource layouts may differ from service pages while using the same typography, dark palette, frame, and evidence rules.
+
+The GTM Self Audit is an unlinked, noindex review route while the existing Allbound Audit remains public. It asks eight specific questions, one at a time, with Yes / Partly / No answers and a visible Yes standard. Weighted answers produce an immediate directional score, two largest gaps, a first action, a related customer example, and a direct Allbound Audit booking action. The same page explains the free 30-minute call and written diagnosis within 24 hours, followed by customer proof and a final booking action. It does not gate the result or send visitors to the older audit page. Review results before replacing the public resource route.
 
 ### Booking, confirmation, and legal
 
