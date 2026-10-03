@@ -1,6 +1,6 @@
 # Enablement.ch - Website design and page plan
 
-Updated 2026-09-30 from the current `enablement-site` Astro pages. This document records the shipped site and guides new pages. The live implementation in `src/styles/global.css`, page components, and content collections is the technical source for exact tokens and copy. Use `index.html` as a styleguide reference only where it agrees with the current dark site.
+Updated 2026-10-03 from the current `enablement-site` Astro pages. This document records the shipped site and guides new pages. The live implementation in `src/styles/global.css`, page components, and content collections is the technical source for exact tokens and copy. Use `index.html` as a styleguide reference only where it agrees with the current dark site.
 
 ## Site architecture
 
@@ -12,15 +12,14 @@ Updated 2026-09-30 from the current `enablement-site` Astro pages. This document
 | `/ai-revenue-operations` | Data, workflow, and CRM service | Service |
 | `/customer-results` | Evidence index | Customer results |
 | `/customer-results/[slug]` | Individual customer story | Customer result detail |
-| `/resources/gtm-audit` | Allbound Audit | Diagnostic resource |
-| `/resources/gtm-self-audit` | GTM Self Audit review page | Interactive diagnostic resource |
+| `/resources/gtm-self-audit` | GTM Self Audit | Interactive diagnostic tool |
 | `/resources/ai-sales-coach` | AI Sales Coach | Product resource |
 | `/book` | GTM session booking | Utility |
 | `/meeting-booked` | Prepare for a booked call | Utility |
 | `/li-playbook-typ` | Follow-up after a LinkedIn playbook request | Utility |
 | `/gtc`, `/privacy` | Legal text | Reading page |
 
-`/case-studies`, `/legacy-case-studies`, preview routes, and variant routes are legacy or working surfaces. Use `/customer-results` for new public links. The navigation has Services and Resources dropdowns, a Customer Results link, and a Book a GTM session button. The navigation and homepage booking actions go directly to the HubSpot meeting URL. The footer has the wordmark, Customer Results and booking links, founders, Clay Enterprise Partner badge, and legal links.
+`/case-studies`, `/legacy-case-studies`, preview routes, and variant routes are legacy or working surfaces. Use `/customer-results` for new public links. The former `/resources/gtm-audit` route redirects to the GTM Self Audit. The navigation has Services and Tools dropdowns, a Customer Results link, and a Book a GTM session button. The navigation and homepage booking actions go directly to the HubSpot meeting URL. The footer has the wordmark, Customer Results and booking links, founders, Clay Enterprise Partner badge, and legal links.
 
 ## Website visual language
 
@@ -59,11 +58,11 @@ Service diagrams are not decorative. They need stage labels, inputs, outputs, an
 
 The index opens with a compact hero, then the same linked logo marquee used on the home page, then a grid of live customer stories. Individual stories use an outcome headline; video or a deliberate placeholder; a proof band with available metrics and customer quote; challenge, solution, results, and outcome sections when the data supports them; optional metadata; and a final GTM-session action. Do not force three metrics or a fixed headline formula when the evidence differs. Keep customer attribution and scope precise.
 
-### Resources
+### Tools
 
-Resource pages are editorial and diagnosis-led. Use a compact hero, clear problem statement, structured diagnostic or comparison, process or product explanation, proof, authority, and one clear next step. On the Allbound Audit page, the ten bottlenecks, old/new operating-model comparison, audit process, customer results, and founder authority lead to booking. The AI Sales Coach page uses a product-specific contrast, scorecard, installation steps, frameworks, and CTA. Resource layouts may differ from service pages while using the same typography, dark palette, frame, and evidence rules.
+Tools are editorial and diagnosis-led. Use a compact hero, clear problem statement, structured diagnostic or comparison, process or product explanation, proof, authority, and one clear next step. The AI Sales Coach page uses a product-specific contrast, scorecard, installation steps, frameworks, and CTA. Tool layouts may differ from service pages while using the same typography, dark palette, frame, and evidence rules.
 
-The GTM Self Audit is an unlinked, noindex review route while the existing Allbound Audit remains public. It asks eight specific questions, one at a time, with Yes / Partly / No answers and a visible Yes standard. Weighted answers produce an immediate directional score, two largest gaps, a first action, a related customer example, and a direct Allbound Audit booking action. The same page explains the free 30-minute call and written diagnosis within 24 hours, followed by customer proof and a final booking action. It does not gate the result or send visitors to the older audit page. Review results before replacing the public resource route.
+The GTM Self Audit is public and linked from the Tools menu. It asks eight specific questions, one at a time, with Yes / Partly / No answers and a visible Yes standard. Weighted answers produce an immediate directional score, two largest gaps with prominent headings, a first action, a related customer example, and a direct Allbound Audit booking action. The same page explains the free 30-minute call and written diagnosis within 24 hours, followed by customer proof and a final booking action. It does not gate the result. The hero names the commercial pain: where the GTM system loses revenue.
 
 ### Booking, confirmation, and legal
 
