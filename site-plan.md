@@ -1,6 +1,6 @@
 # Enablement.ch - Website design and page plan
 
-Updated 2026-10-03 from the current `enablement-site` Astro pages. This document records the shipped site and guides new pages. The live implementation in `src/styles/global.css`, page components, and content collections is the technical source for exact tokens and copy. Use `index.html` as a styleguide reference only where it agrees with the current dark site.
+Updated 2026-10-07 from the current `enablement-site` Astro pages. This document records the shipped site and guides new pages. The live implementation in `src/styles/global.css`, page components, and content collections is the technical source for exact tokens and copy. Use `index.html` as a styleguide reference only where it agrees with the current dark site.
 
 ## Site architecture
 
@@ -61,6 +61,8 @@ The index opens with a compact hero, then the same linked logo marquee used on t
 
 ### Tools
 
+The Tools dropdown follows the Services order: LinkedIn Competitor Analysis, GTM Self Audit, AI Sales Coach. The LinkedIn Analysis progress panel shows all nine steps from enrichment through report writing, with green checkmarks on completed steps, a red highlight on the active step, and a Step X of 9 count. Keep the running timer and red keep-page-open warning. Interrupted steps must not appear complete.
+
 Tools are editorial and diagnosis-led. Use a compact hero, clear problem statement, structured diagnostic or comparison, process or product explanation, proof, authority, and one clear next step. The AI Sales Coach page uses a product-specific contrast, scorecard, installation steps, frameworks, and CTA. Tool layouts may differ from service pages while using the same typography, dark palette, frame, and evidence rules.
 
 The GTM Self Audit is public and linked from the Tools menu. It asks eight specific questions, one at a time, with Yes / Partly / No answers and a visible Yes standard. Weighted answers produce an immediate directional score and two gap cards with prominent headings, a challenging question, the commercial consequence, and a first action. A direct Allbound Audit booking action follows the gaps. Do not link to customer stories or outside research from the result cards; visitors should focus on the diagnosis and booking. The same page explains the free 30-minute call and written diagnosis within 24 hours, followed by customer proof and a final booking action. It does not gate the result. The hero names the commercial pain: where the GTM system loses revenue.
@@ -72,6 +74,12 @@ LinkedIn Analysis is public and linked from the Tools menu. It asks only for a p
 `/book` puts the meeting action first in a focused single column. `/meeting-booked` helps visitors prepare for the call, while `/li-playbook-typ` completes the playbook request flow. Legal pages use readable prose and minimal decoration. Do not apply sales-page section density to long legal text.
 
 ## Shared components and upkeep
+
+Gilbert's profile photo is `/team/gilbert-x-profile.jpg`, copied from the supplied Enablement X profile image. Use it in the homepage and shared founder block. Change the asset filename when replacing a photo so the CDN does not retain the earlier image.
+
+### Search visibility
+
+Public service pages, tools, current customer stories, six earlier customer stories, booking, and legal pages use unique metadata and absolute www.enablement.ch canonical URLs. The sitemap includes the public LinkedIn Analysis landing page and excludes personal report routes, previews, variants, and confirmations. Keep the older customer stories linked from Customer Results and preserve redirects from their former case-study URLs. The shared layout emits Organization, WebSite, page, breadcrumb, and relevant Service structured data. Case-study search metadata can be shorter than the visible headline. Run `npm run build` and `npm run audit:seo` in `enablement-site` after changing routes or metadata. The site-specific audit is recorded in `enablement-site/Reference Files/SEO Audit - 2026-10-07.md`.
 
 `Nav`, `Footer`, `Hero`, `MarqueeLogoWall`, `VideoTestimonials`, `FAQ`, `FinalCTA`, the case-study components, and the workflow visuals are the reusable building blocks. Add new public routes to the navigation only when they are ready. Keep client names, logos, proof, and destinations aligned across the homepage, service pages, marquee, and customer-results collection.
 
