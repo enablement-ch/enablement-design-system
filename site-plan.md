@@ -12,6 +12,8 @@ Updated 2026-10-07 from the current `enablement-site` Astro pages. This document
 | `/ai-revenue-operations` | Data, workflow, and CRM service | Service |
 | `/customer-results` | Evidence index | Customer results |
 | `/customer-results/[slug]` | Individual customer story | Customer result detail |
+| `/blog` | Browse Enablement articles and related service topics | Blog index |
+| `/blog/[slug]` | Read an evidence-led GTM article with contextual next steps | Blog article |
 | `/resources/gtm-self-audit` | GTM Self Audit | Interactive diagnostic tool |
 | `/resources/linkedin-analysis` | LinkedIn Analysis | Personalized competitor content analysis request |
 | `/resources/ai-sales-coach` | AI Sales Coach | Product resource |
@@ -58,6 +60,12 @@ Service diagrams are not decorative. They need stage labels, inputs, outputs, an
 ### Customer results
 
 The index opens with a compact hero, then the same linked logo marquee used on the home page, then a grid of live customer stories. Individual stories use an outcome headline; video or a deliberate placeholder; a proof band with available metrics and customer quote; challenge, solution, results, and outcome sections when the data supports them; optional metadata; and a final GTM-session action. Do not force three metrics or a fixed headline formula when the evidence differs. Keep customer attribution and scope precise.
+
+### Blog
+
+The `/blog` index has a restrained editorial hero, one featured article, and service-topic links. Additional articles appear as cards when published. The article template uses a readable prose column, a sticky section list on desktop, a compact contents control on mobile, an author and publication date, source or method detail when the topic needs it, one contextual in-body action, and a final next step. Comparison tables scroll horizontally on mobile with the first column kept visible. The first article at `/blog/what-is-signal-based-outbound-b2b` explains Enablement's first-, second-, and third-party signal model and links to the Signal-Based Outbound service and Bound customer result.
+
+Articles are Markdown entries in `enablement-site/src/content/blog/`. Only entries with `draft: false` generate public routes, index cards, and sitemap URLs. The template follows the same dark palette, Sofia Sans and JetBrains Mono typography, frame, and proof rules as the rest of the site. `enablement-site/Blog/README.md` records the article framework and content workflow.
 
 ### Tools
 
