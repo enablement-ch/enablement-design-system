@@ -59,7 +59,7 @@ Service diagrams are not decorative. They need stage labels, inputs, outputs, an
 
 ### Customer results
 
-The index opens with a compact hero, then the same linked logo marquee used on the home page, then a grid of live customer stories. Individual stories use an outcome headline; video or a deliberate placeholder; a proof band with available metrics and customer quote; challenge, solution, results, and outcome sections when the data supports them; optional metadata; and a final GTM-session action. Do not force three metrics or a fixed headline formula when the evidence differs. Keep customer attribution and scope precise.
+The index opens with a compact hero, then the same linked logo marquee used on the home page, then a grid of live customer stories. Below the stories, text testimonial cards show selected customer interview quotes and LinkedIn recommendations. The cards use names, roles, companies, and initials; LinkedIn cards link to screenshots of the original recommendations. Label translated or edited quotes and make clear when a review describes a founder's earlier work. Individual stories use an outcome headline; video or a deliberate placeholder; a proof band with available metrics and customer quote; challenge, solution, results, and outcome sections when the data supports them; optional metadata; and a final GTM-session action. Do not force three metrics or a fixed headline formula when the evidence differs. Keep customer attribution and scope precise.
 
 ### Blog
 
