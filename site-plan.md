@@ -22,7 +22,7 @@ Updated 2026-10-07 from the current `enablement-site` Astro pages. This document
 | `/li-playbook-typ` | Follow-up after a LinkedIn playbook request | Utility |
 | `/gtc`, `/privacy` | Legal text | Reading page |
 
-`/case-studies`, `/legacy-case-studies`, preview routes, and variant routes are legacy or working surfaces. Use `/customer-results` for new public links. The former `/resources/gtm-audit` route redirects to the GTM Self Audit. The navigation has Services and Tools dropdowns, a Customer Results link, and a Book a GTM session button. The navigation and homepage booking actions go directly to the HubSpot meeting URL. The footer has the wordmark, Customer Results and booking links, founders, Clay Enterprise Partner badge, and legal links.
+The retired `/case-studies` and `/legacy-case-studies` URLs redirect to `/customer-results`. The six old unverified story pages are removed. Preview and variant routes remain working surfaces. Use `/customer-results` for new public links. The former `/resources/gtm-audit` route redirects to the GTM Self Audit. The navigation has Services and Tools dropdowns, a Customer Results link, and a Book a GTM session button. The navigation and homepage booking actions go directly to the HubSpot meeting URL. The footer has the wordmark, Customer Results and booking links, founders, Clay Enterprise Partner badge, and legal links.
 
 ## Website visual language
 
@@ -87,7 +87,7 @@ Gilbert's profile photo is `/team/gilbert-x-profile.jpg`, copied from the suppli
 
 ### Search visibility
 
-Public service pages, tools, current customer stories, six earlier customer stories, booking, and legal pages use unique metadata and absolute www.enablement.ch canonical URLs. The sitemap includes the public LinkedIn Analysis landing page and excludes personal report routes, previews, variants, and confirmations. Keep the older customer stories linked from Customer Results and preserve redirects from their former case-study URLs. The shared layout emits Organization, WebSite, page, breadcrumb, and relevant Service structured data. Case-study search metadata can be shorter than the visible headline. Run `npm run build` and `npm run audit:seo` in `enablement-site` after changing routes or metadata. The site-specific audit is recorded in `enablement-site/Reference Files/SEO Audit - 2026-10-07.md`.
+Public service pages, tools, the six video customer stories, booking, and legal pages use unique metadata and absolute www.enablement.ch canonical URLs. The sitemap includes the public LinkedIn Analysis landing page and excludes personal report routes, previews, variants, confirmations, and retired story URLs. The old individual case-study URLs redirect to Customer Results. The shared layout emits Organization, WebSite, page, breadcrumb, and relevant Service structured data. Case-study search metadata can be shorter than the visible headline. Run `npm run build` and `npm run audit:seo` in `enablement-site` after changing routes or metadata. The site-specific audit is recorded in `enablement-site/Reference Files/SEO Audit - 2026-10-07.md`.
 
 `Nav`, `Footer`, `Hero`, `MarqueeLogoWall`, `VideoTestimonials`, `FAQ`, `FinalCTA`, the case-study components, and the workflow visuals are the reusable building blocks. Add new public routes to the navigation only when they are ready. Keep client names, logos, proof, and destinations aligned across the homepage, service pages, marquee, and customer-results collection.
 
