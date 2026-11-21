@@ -48,7 +48,7 @@
 - [ ] Compact stat or comparison
 - [ ] Other: [describe]
 
-**Reference image(s)** in `~/Claude Code/enablement-brain/Design/social-examples/`:
+**Reference image(s)** in `~/Claude Code/enablement-brain/Social Content Guidelines/social-examples/`:
 - [filename] - [why it's relevant]
 
 **Design path:** Native editorial infographic / Website-derived graphic. Native infographics use `templates/linkedin-infographic-template.svg`. Website-derived graphics follow `DESIGN_SOCIAL.md` Section 7 and the live website source.
@@ -150,16 +150,16 @@ Round-1 deliverable is full-quality work. After round 1:
 
 Before starting, the designer should have read:
 
-1. `~/Claude Code/enablement-brain/Design/DESIGN_SOCIAL.md` - the full social design system
-2. `~/Claude Code/enablement-brain/Design/templates/linkedin-infographic-template.svg` -
+1. `~/Claude Code/enablement-brain/Social Content Guidelines/DESIGN_SOCIAL.md` - the full social design system
+2. `~/Claude Code/enablement-brain/Social Content Guidelines/templates/linkedin-infographic-template.svg` -
    the mandatory infographic shell and headline treatment
-3. `~/Claude Code/enablement-brain/Design/social-examples/README.md` - annotated examples
+3. `~/Claude Code/enablement-brain/Social Content Guidelines/social-examples/README.md` - annotated examples
 4. The specific reference image(s) named in Section 2 above
 
 If the designer has not been onboarded yet, also share:
 
-5. `~/Claude Code/enablement-brain/Design/site-plan.md` - the website composition rules
-6. `~/Claude Code/enablement-brain/Design/templates/figma-file-spec.md` - the Figma file structure they should build
+5. `~/Claude Code/enablement-brain/Branding and Design Guidelines/site-plan.md` - the website composition rules
+6. `~/Claude Code/enablement-brain/Social Content Guidelines/templates/figma-file-spec.md` - the Figma file structure they should build
 
 ---
 

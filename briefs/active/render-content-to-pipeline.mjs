@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url';
 import sharp from '/Users/gilbert/Claude Code/enablement-site/node_modules/sharp/lib/index.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const brain = path.resolve(here, '../../..');
-const out = path.join(brain, 'Content/Graphic Exports');
+const brain = path.resolve(here, '../../../..');
+const out = path.join(brain, 'Social Content Guidelines/Graphic Exports');
 const frameDir = path.join(os.tmpdir(), 'enablement-content-to-pipeline-frames');
 const slug = 'from-post-to-pipeline';
 const colors = {
@@ -14,7 +14,7 @@ const colors = {
   borderStrong:'#404754', heading:'#E5E9F0', body:'#A0A8B5', muted:'#6B7280',
   accent:'#E11E48', flow:'#6FA8DC', white:'#FFFFFF'
 };
-const logo = fs.readFileSync(path.join(brain, 'Design/logos/enablement-white.svg')).toString('base64');
+const logo = fs.readFileSync(path.join(brain, 'Branding and Design Guidelines/logos/enablement-white.svg')).toString('base64');
 const rows = [
   {title:'Start from real conversations', body:'Pull topics from sales calls and strategy work.'},
   {title:'Publish the belief to change', body:'Challenge what buyers must stop believing. Bring proof.'},

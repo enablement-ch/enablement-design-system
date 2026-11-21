@@ -30,12 +30,13 @@ That's it. No ClickUp, no Drive sharing chains, no Slack. Everything else flows 
 
 ## Day 1 setup (~60 min)
 
-### 1. Clone the repo (~5 min)
+### 1. Open the social design checkout (~5 min)
+
+On a team Mac with shared skills installed, run setup to create the topic checkouts, then open the LinkedIn design folder.
 
 ```bash
-mkdir -p "$HOME/Claude Code/enablement-brain"
-git clone git@github.com:enablement-ch/enablement-design-system.git "$HOME/Claude Code/enablement-brain/Design"
-cd "$HOME/Claude Code/enablement-brain/Design"
+bash "$HOME/.claude/shared-skills/setup.sh"
+cd "$HOME/Claude Code/enablement-brain/Social Content Guidelines/LinkedIn design"
 ```
 
 ### 2. Open in Claude Code (~2 min)

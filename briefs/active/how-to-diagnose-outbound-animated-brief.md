@@ -75,11 +75,11 @@ If not, find out before you send another message.
 
 **Primary archetype (from `DESIGN_SOCIAL.md` Section 4):** System map.
 
-**Reference image(s)** in `~/Claude Code/enablement-brain/Design/social-examples/`:
+**Reference image(s)** in `~/Claude Code/enablement-brain/Social Content Guidelines/social-examples/`:
 - `inspiration/04_founder-content-engine.png` - editorial brand translation and distinct diagram blocks.
 - `inspiration/06_four-pillar-content-framework.png` - balanced four-part information system.
-- `~/Claude Code/enablement-brain/Content/Graphic References/Best_GTM_Tools_by_Funnel_Stage.jpg` - concept reference for a numbered stage spine only. Do not copy its tool logos or surface styling.
-- `~/Claude Code/enablement-brain/Content/Graphic References/Validate_Launch_Optimize.jpg` - concept reference for stage progression and simple checks.
+- `~/Claude Code/enablement-brain/Social Content Guidelines/Graphic References/Best_GTM_Tools_by_Funnel_Stage.jpg` - concept reference for a numbered stage spine only. Do not copy its tool logos or surface styling.
+- `~/Claude Code/enablement-brain/Social Content Guidelines/Graphic References/Validate_Launch_Optimize.jpg` - concept reference for stage progression and simple checks.
 
 **Design path:** Native editorial infographic. The final frame follows the headline, palette, and footer rules from `templates/linkedin-infographic-template.svg`.
 
@@ -142,7 +142,7 @@ N/A
 - **Post slug:** `how-to-diagnose-outbound`.
 - **Number of files expected:** Two exports and one editable SVG source.
 
-**Delivery:** `~/Claude Code/enablement-brain/Content/Graphic Exports/`. Editable source and renderer are in `Design/briefs/active/`.
+**Delivery:** `~/Claude Code/enablement-brain/Social Content Guidelines/Graphic Exports/`. Editable source and renderer are in `Social Content Guidelines/briefs/active/`.
 
 **Deadline:** 2026-11-07.
 
@@ -157,16 +157,16 @@ Round-1 deliverable is full-quality work. After round 1:
 
 Before starting, the designer should have read:
 
-1. `~/Claude Code/enablement-brain/Design/DESIGN_SOCIAL.md` - the full social design system
-2. `~/Claude Code/enablement-brain/Design/templates/linkedin-infographic-template.svg` -
+1. `~/Claude Code/enablement-brain/Social Content Guidelines/DESIGN_SOCIAL.md` - the full social design system
+2. `~/Claude Code/enablement-brain/Social Content Guidelines/templates/linkedin-infographic-template.svg` -
    the mandatory infographic shell and headline treatment
-3. `~/Claude Code/enablement-brain/Design/social-examples/README.md` - annotated examples
+3. `~/Claude Code/enablement-brain/Social Content Guidelines/social-examples/README.md` - annotated examples
 4. The specific reference image(s) named in Section 2 above
 
 If the designer has not been onboarded yet, also share:
 
-5. `~/Claude Code/enablement-brain/Design/site-plan.md` - the website composition rules
-6. `~/Claude Code/enablement-brain/Design/templates/figma-file-spec.md` - the Figma file structure they should build
+5. `~/Claude Code/enablement-brain/Branding and Design Guidelines/site-plan.md` - the website composition rules
+6. `~/Claude Code/enablement-brain/Social Content Guidelines/templates/figma-file-spec.md` - the Figma file structure they should build
 
 ## 8. Sign-off
 

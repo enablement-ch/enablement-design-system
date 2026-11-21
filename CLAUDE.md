@@ -1,14 +1,12 @@
 # Enablement - Design System Repo
 
-Local checkout: `~/Claude Code/enablement-brain/Design/`. The former
-`~/enablement-design-system/` path is a compatibility symlink. Use the new path
-in briefs, skills, and project references.
+Open `~/Claude Code/enablement-brain/Social Content Guidelines/LinkedIn design` to work on LinkedIn graphics. Website and document guidelines and shared logos live in `~/Claude Code/enablement-brain/Branding and Design Guidelines/`.
 
 ## What this repo is
 
-The single source of truth for Enablement's brand and design language. Two consumers:
+Use the reference for the surface you are designing.
 
-1. **Website** (`~/enablement-site/` separate repo) - draws design intent from `site-plan.md` and tokens from `index.html`
+1. **Website** - use the website plan in Branding and Design Guidelines and the production tokens in `~/Claude Code/enablement-site/src/styles/global.css`.
 2. **Social** (LinkedIn cheat sheets, GIFs, carousels, single images, banners) - driven by `templates/linkedin-infographic-template.svg` + `DESIGN_SOCIAL.md` + `social-examples/inspiration/` + briefs in `briefs/`
 
 Anyone working on Enablement's visual output - website devs, social designers, automation - reads from this repo.
@@ -19,37 +17,16 @@ If you're a designer or designer's Claude Code session arriving for the first ti
 
 If you're already onboarded, the natural starting point is `ls briefs/active/` to see what's open.
 
-## Repo layout
+## Where to work
 
-```
-enablement-design-system/
-├── README.md                  - styleguide intro (website-focused)
-├── STATUS.md                  - website-build status snapshot
-├── CLAUDE.md                  - this file
-├── DESIGNER_ONBOARDING.md     - Day-1 guide for designers
-├── DESIGN_SOCIAL.md           - social media design system (LinkedIn formats)
-├── site-plan.md               - website composition rules + locked decisions
-├── index.html                 - live styleguide page (deployed to GitHub Pages)
-├── social-examples/           - active and retired social references
-│   ├── README.md
-│   ├── inspiration/           - canonical editorial infographic references
-│   └── legacy-saas-glass/     - retired glassmorphic direction
-├── templates/
-│   ├── linkedin-infographic-template.svg - canonical 1080x1350 shell
-│   ├── brief-template.md      - the contract every design brief follows
-│   └── figma-file-spec.md     - what designer builds in the master Figma file
-└── briefs/
-    ├── active/                - briefs currently in flight
-    ├── archive/               - briefs shipped and delivered
-    └── README.md              - the brief workflow
-```
+Run Git commands for social work from `LinkedIn design`. Open `social.html` for the preview. Briefs in progress live in `briefs/active/`, shipped briefs in `briefs/archive/`, and annotated examples in `social-examples/`. The website and document checkout uses the same repository and lives in `Branding and Design Guidelines/Website and documents`.
 
 ## Key reference files
 
 - `templates/linkedin-infographic-template.svg` - mandatory infographic shell, palette, headline, and footer.
 - `DESIGN_SOCIAL.md` - the social design system. Read end-to-end before producing any social graphic.
 - `social-examples/inspiration/README.md` - the calibration references. Every rule in DESIGN_SOCIAL.md traces back to a reference here.
-- `site-plan.md` - website composition rules, voice patterns (italic emphasis, mono eyebrows, etc.)
+- `~/Claude Code/enablement-brain/Branding and Design Guidelines/site-plan.md` - website composition rules, voice patterns (italic emphasis, mono eyebrows, etc.)
 - `templates/brief-template.md` - what every brief contains
 - `templates/figma-file-spec.md` - the Figma master file's structure
 
@@ -91,20 +68,20 @@ See [briefs/README.md](briefs/README.md) for the full workflow detail.
 
 ## What's deployed from this repo
 
-- The live styleguide at https://enablement-ch.github.io/enablement-design-system/ (GitHub Pages, served from `index.html`)
+- A component preview at https://enablement-ch.github.io/enablement-design-system/ (GitHub Pages, served from `index.html`)
 - Nothing else. Briefs, social specs, and inspiration are read by humans + Claude, not deployed.
 
 ## Relationship to other Enablement repos
 
 | Repo | What it owns | How it relates to this one |
 |---|---|---|
-| `enablement-site` | Live Astro website | Reads design tokens from `global.css` (which mirrors what's in this repo's `index.html`). When tokens drift, this repo + the site sync. |
+| `enablement-site` | Live Astro website | Owns the production tokens, components and page layouts. Update the Brain guide and its preview from the site. |
 | `enablement-gtm` | Sales pipeline, ghostwriter, ICP updater, lead magnets | Produces LinkedIn posts via the Ghostwriter. Those posts feed into briefs in this repo. |
 | `claude-skills` (`enablement-ch/claude-skills`) | Reusable Claude Code skills + global reference docs | Hosts `linkedin-visual-brief` and `minimalist-visual`. The former follows this repo's editorial infographic system. |
 
 ## Asking Claude Code questions about the brand
 
-Once you've cloned this repo and `cd`'d in, fire up Claude Code and ask things like:
+From the LinkedIn design checkout, fire up Claude Code and ask things like:
 
 - "Summarise the active brief"
 - "What does DESIGN_SOCIAL.md say about editorial panel structure?"

@@ -6,8 +6,8 @@ import { fileURLToPath } from 'node:url';
 import sharp from '/Users/gilbert/Claude Code/enablement-site/node_modules/sharp/lib/index.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(here, '../../..');
-const exportDir = path.join(root, 'Content/Graphic Exports');
+const root = path.resolve(here, '../../../..');
+const exportDir = path.join(root, 'Social Content Guidelines/Graphic Exports');
 const name = 'how-to-diagnose-outbound';
 const W = 1080;
 const H = 1350;
@@ -18,7 +18,7 @@ const pale = '#D1E5FF';
 const white = '#FFFFFF';
 const serifPath = '/Users/gilbert/Claude Code/enablement-gtm/exports/content/DMSerifDisplay-Italic.ttf';
 const headlinePaths = execFileSync('python3', [path.join(here, 'font-to-svg-path.py'), serifPath, 'diagnose', '69'], {encoding:'utf8'});
-const logo = fs.readFileSync(path.resolve(root, 'Design/logos/enablement-black.svg')).toString('base64');
+const logo = fs.readFileSync(path.resolve(root, 'Branding and Design Guidelines/logos/enablement-black.svg')).toString('base64');
 
 const stages = [
   { title: 'SETUP', question: 'Delivered?', failure: 'Lands in spam', check: 'Check inbox placement, domains, and mailboxes.' },

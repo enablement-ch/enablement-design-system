@@ -4,11 +4,11 @@ import { fileURLToPath } from 'node:url';
 import sharp from '/Users/gilbert/Claude Code/enablement-site/node_modules/sharp/lib/index.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const brain = path.resolve(here, '../../..');
-const exportDir = path.join(brain, 'Content/Graphic Exports');
+const brain = path.resolve(here, '../../../..');
+const exportDir = path.join(brain, 'Social Content Guidelines/Graphic Exports');
 const slug = 'rep-ready-account-example';
 const c = { bg:'#0F1217', panel:'#181C23', raised:'#232830', border:'#404754', heading:'#E5E9F0', body:'#A0A8B5', muted:'#6B7280', red:'#E11E48', blue:'#6FA8DC', white:'#FFFFFF' };
-const logo = fs.readFileSync(path.join(brain,'Design/logos/enablement-white.svg')).toString('base64');
+const logo = fs.readFileSync(path.join(brain,'Branding and Design Guidelines/logos/enablement-white.svg')).toString('base64');
 const fields = [
   { label:'FIT', line1:'B2B software · 50–200 employees', line2:'Sales team in target market' },
   { label:'SIGNAL', line1:'Two SDR roles posted this week', line2:'Source: public job listings' },

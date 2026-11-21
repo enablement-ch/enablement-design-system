@@ -5,12 +5,12 @@ import { fileURLToPath } from 'node:url';
 import sharp from '/Users/gilbert/Claude Code/enablement-site/node_modules/sharp/lib/index.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const brain = path.resolve(here, '../../..');
-const exports = path.join(brain, 'Content/Graphic Exports');
+const brain = path.resolve(here, '../../../..');
+const exports = path.join(brain, 'Social Content Guidelines/Graphic Exports');
 const frames = path.join(os.tmpdir(), 'enablement-rep-ready-queue-frames');
 const slug = 'rep-ready-account-queue';
 const c = {canvas:'#0F1217',surface:'#181C23',raised:'#232830',border:'#2E343F',strong:'#404754',heading:'#E5E9F0',body:'#A0A8B5',muted:'#6B7280',red:'#E11E48',blue:'#6FA8DC',white:'#FFFFFF'};
-const logo = fs.readFileSync(path.join(brain,'Design/logos/enablement-white.svg')).toString('base64');
+const logo = fs.readFileSync(path.join(brain,'Branding and Design Guidelines/logos/enablement-white.svg')).toString('base64');
 const steps = [
   ['Audit list-building hours','Count research, enrichment, and CRM cleanup time.'],
   ['Define a qualified account','Set fit, signal, and contact rules before routing.'],
