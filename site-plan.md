@@ -1,6 +1,6 @@
 # Enablement.ch - Website design and page plan
 
-Updated 2026-10-07 from the current `enablement-site` Astro pages. This document records the shipped site and guides new pages. The live implementation in `src/styles/global.css`, page components, and content collections is the technical source for exact tokens and copy. Use `index.html` as a styleguide reference only where it agrees with the current dark site.
+Use this guide when designing a page for [Enablement.ch](https://www.enablement.ch/). The dark website in `enablement-site` is authoritative. Read its [production CSS](https://github.com/enablement-ch/enablement-site/blob/main/src/styles/global.css) for exact tokens, its [components](https://github.com/enablement-ch/enablement-site/tree/main/src/components) for interactions and its [pages](https://github.com/enablement-ch/enablement-site/tree/main/src/pages) for current layouts and copy. The [HTML preview](index.html) illustrates those rules.
 
 ## Site architecture
 

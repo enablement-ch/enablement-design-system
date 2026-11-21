@@ -62,8 +62,8 @@ The supporting colors below are for document rendering. Website and LinkedIn gra
 
 ## Logos
 
-- Dark backgrounds: `~/Claude Code/enablement-brain/Design/logos/enablement-white.svg`
-- Light backgrounds: `~/Claude Code/enablement-brain/Design/logos/enablement-black.svg`
+- Dark backgrounds: `~/Claude Code/enablement-brain/Branding and Design Guidelines/logos/enablement-white.svg`
+- Light backgrounds: `~/Claude Code/enablement-brain/Branding and Design Guidelines/logos/enablement-black.svg`
 
 The renderer takes a `logo` key (absolute path) and places it above the cover banner. SVG works; if a raster is needed, export at 2x.
 
@@ -83,7 +83,7 @@ The shared PDF module lives at `~/.claude/skills/allbound-deep-research/scripts/
 ```bash
 # 1. Extract the token block from this file into a theme JSON
 python3 ~/.claude/skills/allbound-deep-research/scripts/design_to_theme.py \
-  "$HOME/Claude Code/enablement-brain/Design/enablement-design.md" /tmp/theme.json
+  "$HOME/Claude Code/enablement-brain/Branding and Design Guidelines/enablement-design.md" /tmp/theme.json
 
 # 2. Render
 python3 ~/.claude/skills/allbound-deep-research/scripts/render_pdf.py \

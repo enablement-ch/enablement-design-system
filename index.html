@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Enablement.ch — Design System v0.4</title>
+<title>Enablement.ch - Website design preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -11,18 +11,19 @@
 <style>
 /* ============ TOKENS ============ */
 :root {
-  /* Semantic surface tokens — swap on theme */
-  --color-canvas: #F2F4F8;
-  --color-surface: #FFFFFF;
-  --color-surface-raised: #FAFBFD;
-  --color-border: #E1E5EC;
-  --color-border-strong: #C9CFD9;
-  --color-heading: #0F1217;
-  --color-body: #4A5360;
-  --color-muted: #7C8390;
-  --color-inverse: #FFFFFF;
+  color-scheme: dark;
+  /* Dark is the only site theme. */
+  --color-canvas: #0F1217;
+  --color-surface: #181C23;
+  --color-surface-raised: #232830;
+  --color-border: #2E343F;
+  --color-border-strong: #404754;
+  --color-heading: #E5E9F0;
+  --color-body: #A0A8B5;
+  --color-muted: #6B7280;
+  --color-inverse: #0F1217;
 
-  /* Accent (constant across themes) */
+  /* Website accent */
   --color-accent: #E11E48;
   --color-accent-hover: #BE123C;
   --color-accent-on: #FFFFFF;
@@ -35,6 +36,15 @@
   --color-positive: #2E8F54;
   --color-warning: #C77B0E;
   --color-critical: #B43A2A;
+  --color-nav: #CAD1DC;
+  --color-nav-highlight: #3B2028;
+
+  /* Subtle section textures for the dark website palette */
+  --texture-grid-line: #FFFFFF09;
+  --texture-hover: #E11E481A;
+  --texture-warm: #E11E4814;
+  --texture-warm-soft: #E11E480A;
+  --texture-cool: #5C78B010;
 
   /* Type families */
   --font-sans: "Sofia Sans", system-ui, -apple-system, sans-serif;
@@ -51,7 +61,7 @@
   --font-size-h3: 2.4375rem;
   --font-size-h2: 3.0625rem;
   --font-size-h1: 3.8125rem;
-  --font-size-display: clamp(3.5rem, 8vw, 6rem);
+  --font-size-display: clamp(2.75rem, 6vw, 5rem);
 
   /* Spacing (8pt linear) */
   --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
@@ -66,11 +76,11 @@
   --radius-lg: 20px;
   --radius-pill: 999px;
 
-  /* Shadow (light theme) */
-  --shadow-xs: 0 1px 2px rgba(15, 18, 23, 0.04);
-  --shadow-sm: 0 4px 12px rgba(15, 18, 23, 0.06);
-  --shadow-md: 0 12px 32px rgba(15, 18, 23, 0.08);
-  --shadow-lg: 0 24px 64px rgba(15, 18, 23, 0.10);
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.6);
 
   /* Motion */
   --motion-duration-instant: 100ms;
@@ -85,23 +95,6 @@
   --container-content: 1120px;
   --container-wide: 1280px;
   --container-prose: 720px;
-}
-
-[data-theme="dark"] {
-  --color-canvas: #0F1217;
-  --color-surface: #181C23;
-  --color-surface-raised: #232830;
-  --color-border: #2E343F;
-  --color-border-strong: #404754;
-  --color-heading: #E5E9F0;
-  --color-body: #A0A8B5;
-  --color-muted: #6B7280;
-  --color-inverse: #0F1217;
-
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.6);
 }
 
 /* ============ BASE ============ */
@@ -264,26 +257,6 @@ p { margin: 0; max-width: 64ch; }
 }
 .nav-actions { display: flex; align-items: center; gap: var(--space-3); }
 
-.theme-toggle {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-heading);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color var(--motion-duration-fast) var(--motion-ease-standard),
-              background var(--motion-duration-fast) var(--motion-ease-standard);
-}
-.theme-toggle:hover { border-color: var(--color-border-strong); }
-.theme-toggle svg { width: 18px; height: 18px; }
-[data-theme="light"] .theme-toggle .icon-moon { display: block; }
-[data-theme="light"] .theme-toggle .icon-sun { display: none; }
-[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 
 /* ============ BUTTONS ============ */
 .btn {
@@ -1163,10 +1136,6 @@ p { margin: 0; max-width: 64ch; }
       <a href="#tokens">Tokens</a>
     </div>
     <div class="nav-actions">
-      <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-      </button>
       <a href="#" class="btn btn-accent">Book a call</a>
     </div>
   </div>
@@ -1178,15 +1147,15 @@ p { margin: 0; max-width: 64ch; }
     <div class="hero-inner">
       <nav style="display:flex; gap:24px; margin-bottom:32px; font-family:var(--font-mono); font-size:0.8125rem;">
         <span style="color:var(--color-heading);">Website styleguide</span>
-        <a href="social.html" style="color:var(--color-muted); text-decoration:none;">Social design system →</a>
+        <a id="social-preview-link" href="social.html" style="color:var(--color-muted); text-decoration:none;">Social design system →</a>
         <a href="https://github.com/enablement-ch/enablement-design-system" style="color:var(--color-muted); text-decoration:none;">GitHub</a>
       </nav>
-      <span class="eyebrow"><span class="num">v0.4</span><span class="sep">/</span> Design system</span>
+      <span class="eyebrow"><span class="num">Web</span><span class="sep">/</span> Design system</span>
       <h1 class="display">
-        Turn your tools into<br>
-        <span class="italic-accent">a GTM System.</span>
+        Enablement website<br>
+        <span class="italic-accent">design guidelines.</span>
       </h1>
-      <p class="lead hero-lead">Your fractional GTM engineering team. We turn your tools into outbound, inbound, and RevOps systems that work as one.</p>
+      <p class="lead hero-lead">Component examples for the dark website. Use the <a href="https://www.enablement.ch/">current website</a> and its implementation in <code>enablement-site/src/styles/global.css</code> for production work. Example copy and figures illustrate layout.</p>
       <div class="hero-actions">
         <a href="https://enablement.ch/book" class="btn btn-accent btn-md">Schedule meeting</a>
       </div>
@@ -1266,10 +1235,10 @@ p { margin: 0; max-width: 64ch; }
 <section class="section" id="foundations">
   <div class="container stack-6">
     <span class="eyebrow"><span class="num">03</span><span class="sep">/</span> Foundations &mdash; Color</span>
-    <h2>Cool canvas. <span class="italic-accent">Warm accent.</span></h2>
-    <p>The palette is built on cool semantic tokens that swap between light and dark. The amber accent is constant across both modes &mdash; warmth-on-cool is the deliberate temperature tension. No pure white, no pure black.</p>
+    <h2>Dark canvas. <span class="italic-accent">Crimson accent.</span></h2>
+    <p>Use the dark canvas, raised charcoal surfaces, and crimson accent from the production stylesheet.</p>
 
-    <h5 style="margin-top:32px">Surface (semantic — flips on theme)</h5>
+    <h5 style="margin-top:32px">Surface</h5>
     <div class="swatch-grid">
       <div class="swatch"><div class="swatch-color" style="background:var(--color-canvas)"></div><div class="swatch-meta"><div class="swatch-name">color.canvas</div><div class="swatch-hex">page background</div></div></div>
       <div class="swatch"><div class="swatch-color" style="background:var(--color-surface)"></div><div class="swatch-meta"><div class="swatch-name">color.surface</div><div class="swatch-hex">cards, panels</div></div></div>
@@ -1277,14 +1246,14 @@ p { margin: 0; max-width: 64ch; }
       <div class="swatch"><div class="swatch-color" style="background:var(--color-border)"></div><div class="swatch-meta"><div class="swatch-name">color.border</div><div class="swatch-hex">hairlines</div></div></div>
     </div>
 
-    <h5 style="margin-top:32px">Text (semantic — flips on theme)</h5>
+    <h5 style="margin-top:32px">Text</h5>
     <div class="swatch-grid">
       <div class="swatch"><div class="swatch-color" style="background:var(--color-heading)"></div><div class="swatch-meta"><div class="swatch-name">color.heading</div><div class="swatch-hex">H1–H6, primary</div></div></div>
       <div class="swatch"><div class="swatch-color" style="background:var(--color-body)"></div><div class="swatch-meta"><div class="swatch-name">color.body</div><div class="swatch-hex">paragraph text</div></div></div>
       <div class="swatch"><div class="swatch-color" style="background:var(--color-muted)"></div><div class="swatch-meta"><div class="swatch-name">color.muted</div><div class="swatch-hex">eyebrows, captions</div></div></div>
     </div>
 
-    <h5 style="margin-top:32px">Accent (constant across themes)</h5>
+    <h5 style="margin-top:32px">Accent</h5>
     <div class="swatch-grid">
       <div class="swatch"><div class="swatch-color" style="background:#E11E48"></div><div class="swatch-meta"><div class="swatch-name">color.accent</div><div class="swatch-hex">#E11E48 &middot; primary accent</div></div></div>
       <div class="swatch"><div class="swatch-color" style="background:#BE123C"></div><div class="swatch-meta"><div class="swatch-name">color.accent.hover</div><div class="swatch-hex">#BE123C &middot; hover state</div></div></div>
@@ -1314,7 +1283,7 @@ p { margin: 0; max-width: 64ch; }
     <p>Two families, three roles. Sofia Sans 600 for headings, 400 for body, 400 italic for emphasis. JetBrains Mono 500 for eyebrows, labels, and tabular numerals only. Modular ratio 1.25 on a 16&nbsp;px base.</p>
 
     <div style="margin-top:32px">
-      <div class="type-row"><span class="meta">display</span><span class="meta">96px</span><span class="sample" style="font-size:var(--font-size-display); line-height:1.05; font-weight:600">Tomorrow's GTM, <span class="italic-accent">built today.</span></span></div>
+      <div class="type-row"><span class="meta">display</span><span class="meta">44-80px</span><span class="sample" style="font-size:var(--font-size-display); line-height:1.05; font-weight:600">Tomorrow's GTM, <span class="italic-accent">built today.</span></span></div>
       <div class="type-row"><span class="meta">h1</span><span class="meta">61px</span><span class="sample" style="font-size:var(--font-size-h1); font-weight:600">Pages that <span class="italic-accent">read themselves.</span></span></div>
       <div class="type-row"><span class="meta">h2</span><span class="meta">49px</span><span class="sample" style="font-size:var(--font-size-h2); font-weight:600">Section headline</span></div>
       <div class="type-row"><span class="meta">h3</span><span class="meta">39px</span><span class="sample" style="font-size:var(--font-size-h3); font-weight:600">Subsection</span></div>
@@ -1481,7 +1450,7 @@ p { margin: 0; max-width: 64ch; }
   <div class="container stack-6">
     <span class="eyebrow"><span class="num">07</span><span class="sep">/</span> Foundations &mdash; Radius &amp; depth</span>
     <h2>Soft corners. <span class="italic-accent">Quiet shadows.</span></h2>
-    <p>Default component radius is md (12&nbsp;px). Buttons are pill. On a light canvas, depth is subtle — shadows never exceed shadow.md unless lifting a modal.</p>
+    <p>Default component radius is md (12&nbsp;px). Use the button shape from the corresponding production component. Use dark surfaces and thin borders to separate panels.</p>
 
     <h5 style="margin-top:32px">Radius</h5>
     <div class="demo-grid">
@@ -1507,7 +1476,7 @@ p { margin: 0; max-width: 64ch; }
   <div class="container stack-6">
     <span class="eyebrow"><span class="num">08</span><span class="sep">/</span> Components</span>
     <h2>Buttons. Cards. <span class="italic-accent">Forms.</span></h2>
-    <p>Every component below renders with the same tokens. Tab through to see focus states. Toggle the theme to see the system flip.</p>
+    <p>Every component below renders with the same tokens. Tab through to see focus states.</p>
 
     <h5 style="margin-top:32px">Buttons</h5>
     <div class="gap-4">
@@ -1693,9 +1662,9 @@ p { margin: 0; max-width: 64ch; }
 <!-- DARK INVERTED SECTION -->
 <section class="section inverted">
   <div class="container stack-6">
-    <span class="eyebrow"><span class="num">11</span><span class="sep">/</span> Patterns &mdash; Inverted section</span>
-    <h2>Dark sections invert. <span class="italic-accent">Same system.</span></h2>
-    <p>Inverted sections are reserved for case-study deep dives, hero overlays, or quote pulls. Every other rule still holds — same type, same rhythm, same accent.</p>
+    <span class="eyebrow"><span class="num">11</span><span class="sep">/</span> Patterns - Dark section</span>
+    <h2>Dark section <span class="italic-accent">examples.</span></h2>
+    <p>Use dark surfaces, borders and labels to group related customer results.</p>
 
     <div class="demo-grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); margin-top:32px">
       <div class="card numbered-card">
@@ -1776,7 +1745,7 @@ p { margin: 0; max-width: 64ch; }
           <a href="#" class="btn btn-accent">Book a call</a>
           <a href="#" class="btn btn-tertiary">See case studies <span class="arrow">→</span></a>
         </div>
-        <div class="dd-note">One amber CTA per viewport. Secondary action is a quiet text-link with arrow.</div>
+        <div class="dd-note">One crimson CTA per viewport. Secondary action is a quiet text-link with arrow.</div>
       </div>
       <div class="dd">
         <span class="dd-tag dd-dont">✗ DON'T</span>
@@ -1807,7 +1776,7 @@ p { margin: 0; max-width: 64ch; }
         <span class="dd-tag dd-dont">✗ DON'T</span>
         <div class="dd-sample" style="text-align:center">
           <div style="display:inline-block; padding:24px; background:linear-gradient(135deg,#ff6b6b,#feca57,#48dbfb); border-radius:32px; transform:perspective(800px) rotateY(-15deg) rotateX(5deg); box-shadow:0 30px 60px rgba(0,0,0,0.4)">
-            <div style="background:#fff; padding:16px; border-radius:12px; color:var(--color-heading); font-family:var(--font-mono); font-size:13px">Reply rate: 11.4%</div>
+            <div style="background:var(--color-surface); padding:16px; border-radius:12px; color:var(--color-heading); font-family:var(--font-mono); font-size:13px">Reply rate: 11.4%</div>
           </div>
         </div>
         <div class="dd-note">Tilt mockups, layer gradients, or wrap fragments in fake laptop frames. Reads as agency stock.</div>
@@ -1870,7 +1839,7 @@ p { margin: 0; max-width: 64ch; }
     <span class="eyebrow"><span class="num">14</span><span class="sep">/</span> Accessibility</span>
     <h2>WCAG 2.2 AA. <span class="italic-accent">No exceptions.</span></h2>
     <div class="demo-grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); margin-top:32px">
-      <div class="card card-stack"><span class="eyebrow"><span class="num">A</span><span class="sep">/</span> Contrast</span><h5>4.5:1 body / 3:1 UI</h5><p style="font-size:var(--font-size-caption)">All semantic pairs verified in light + dark. Body text never carries the accent color.</p></div>
+      <div class="card card-stack"><span class="eyebrow"><span class="num">A</span><span class="sep">/</span> Contrast</span><h5>4.5:1 body / 3:1 UI</h5><p style="font-size:var(--font-size-caption)">Check contrast on the dark surface where the element appears. Body text never carries the accent color.</p></div>
       <div class="card card-stack"><span class="eyebrow"><span class="num">B</span><span class="sep">/</span> Focus</span><h5>2px ring at 2px offset</h5><p style="font-size:var(--font-size-caption)">Outline never removed without replacement. Tab through this page.</p></div>
       <div class="card card-stack"><span class="eyebrow"><span class="num">C</span><span class="sep">/</span> Reduced motion</span><h5>Cut, don't slow</h5><p style="font-size:var(--font-size-caption)">prefers-reduced-motion is honored globally. Animations disable; they do not lengthen.</p></div>
       <div class="card card-stack"><span class="eyebrow"><span class="num">D</span><span class="sep">/</span> Touch</span><h5>44px minimum</h5><p style="font-size:var(--font-size-caption)">All interactive surfaces meet the AA touch target on mobile.</p></div>
@@ -1883,48 +1852,96 @@ p { margin: 0; max-width: 64ch; }
   <div class="container stack-6">
     <span class="eyebrow"><span class="num">15</span><span class="sep">/</span> Tokens</span>
     <h2>Same system. <span class="italic-accent">Two formats.</span></h2>
-    <p>CSS custom properties for the implementation. JSON for the design pipeline. Names are identical across both. Surface and text tokens are semantic — they swap on theme.</p>
+    <p>CSS custom properties for the implementation. JSON for the design pipeline. Names are identical across both. Both examples show the production dark palette.</p>
 
     <div style="display:grid; grid-template-columns:1fr; gap:24px; margin-top:32px">
       <div class="token-block">
         <div class="token-block-head">tokens.css</div>
 <pre>:root {
-  /* Surface (light) */
-  --color-canvas: #F2F4F8;
-  --color-surface: #FFFFFF;
-  --color-surface-raised: #FAFBFD;
-  --color-border: #E1E5EC;
-  --color-heading: #0F1217;
-  --color-body: #4A5360;
-  --color-muted: #7C8390;
-
-  /* Accent — constant */
-  --color-accent: #E11E48;
-  --color-accent-hover: #BE123C;
-
-  /* Workflow-only (not a brand color) */
-  --color-flow: #6FA8DC;
-  --color-flow-strong: #4A89C7;
-
-  /* Type */
-  --font-sans: "Sofia Sans", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
-
-  /* Scale */
-  --space-4: 16px; --space-6: 32px; --space-10: 128px;
-  --radius-md: 12px; --radius-pill: 999px;
-  --motion-duration-base: 320ms;
-  --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
-}
-
-[data-theme="dark"] {
+  color-scheme: dark;
+  /* Dark is the only site theme. */
   --color-canvas: #0F1217;
   --color-surface: #181C23;
   --color-surface-raised: #232830;
   --color-border: #2E343F;
+  --color-border-strong: #404754;
   --color-heading: #E5E9F0;
   --color-body: #A0A8B5;
   --color-muted: #6B7280;
+  --color-inverse: #0F1217;
+
+  /* Accent */
+  --color-accent: #E11E48;
+  --color-accent-hover: #BE123C;
+  --color-accent-on: #FFFFFF;
+
+  /* Workflow-only flow color (not a brand color) */
+  --color-flow: #6FA8DC;
+  --color-flow-strong: #4A89C7;
+
+  /* System signals */
+  --color-positive: #2E8F54;
+  --color-warning: #C77B0E;
+  --color-critical: #B43A2A;
+  --color-nav: #CAD1DC;
+  --color-nav-highlight: #3B2028;
+
+  /* Subtle section textures for the dark website palette */
+  --texture-grid-line: #FFFFFF09;
+  --texture-hover: #E11E481A;
+  --texture-warm: #E11E4814;
+  --texture-warm-soft: #E11E480A;
+  --texture-cool: #5C78B010;
+
+  /* Type families */
+  --font-sans: "Sofia Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  /* Type scale (1.25 modular, 16px base) */
+  --font-size-eyebrow: 0.75rem;
+  --font-size-caption: 0.8125rem;
+  --font-size-body: 1rem;
+  --font-size-lead: 1.25rem;
+  --font-size-h6: 1.25rem;
+  --font-size-h5: 1.5625rem;
+  --font-size-h4: 1.9375rem;
+  --font-size-h3: 2.4375rem;
+  --font-size-h2: 3.0625rem;
+  --font-size-h1: 3.8125rem;
+  --font-size-display: clamp(2.75rem, 6vw, 5rem);
+
+  /* Spacing (8pt linear) */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
+  --space-4: 16px; --space-5: 24px; --space-6: 32px;
+  --space-7: 48px; --space-8: 64px; --space-9: 96px;
+  --space-10: 128px; --space-11: 192px;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.6);
+
+  /* Motion */
+  --motion-duration-instant: 100ms;
+  --motion-duration-fast: 200ms;
+  --motion-duration-base: 320ms;
+  --motion-duration-slow: 600ms;
+  --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --motion-ease-entrance: cubic-bezier(0, 0, 0.2, 1);
+  --motion-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Layout */
+  --container-content: 1120px;
+  --container-wide: 1280px;
+  --container-prose: 720px;
 }</pre>
       </div>
 
@@ -1932,30 +1949,67 @@ p { margin: 0; max-width: 64ch; }
         <div class="token-block-head">tokens.json</div>
 <pre>{
   "color": {
-    "canvas":         { "light": "#F2F4F8", "dark": "#0F1217" },
-    "surface":        { "light": "#FFFFFF", "dark": "#181C23" },
-    "surface-raised": { "light": "#FAFBFD", "dark": "#232830" },
-    "border":         { "light": "#E1E5EC", "dark": "#2E343F" },
-    "heading":        { "light": "#0F1217", "dark": "#E5E9F0" },
-    "body":           { "light": "#4A5360", "dark": "#A0A8B5" },
-    "muted":          { "light": "#7C8390", "dark": "#6B7280" },
-    "accent":         { "value": "#E11E48" },
-    "accent-hover":   { "value": "#BE123C" },
+    "canvas": {
+      "value": "#0F1217"
+    },
+    "surface": {
+      "value": "#181C23"
+    },
+    "surface-raised": {
+      "value": "#232830"
+    },
+    "border": {
+      "value": "#2E343F"
+    },
+    "heading": {
+      "value": "#E5E9F0"
+    },
+    "body": {
+      "value": "#A0A8B5"
+    },
+    "muted": {
+      "value": "#6B7280"
+    },
+    "accent": {
+      "value": "#E11E48"
+    },
+    "accent-hover": {
+      "value": "#BE123C"
+    },
     "_workflow-only": "below tokens are scoped to workflow diagrams, not brand",
-    "flow":           { "value": "#6FA8DC" },
-    "flow-strong":    { "value": "#4A89C7" }
+    "flow": {
+      "value": "#6FA8DC"
+    },
+    "flow-strong": {
+      "value": "#4A89C7"
+    }
   },
   "font": {
     "family": {
-      "sans": { "value": "Sofia Sans, system-ui, sans-serif" },
-      "mono": { "value": "JetBrains Mono, ui-monospace, monospace" }
+      "sans": {
+        "value": "\"Sofia Sans\", system-ui, -apple-system, sans-serif"
+      },
+      "mono": {
+        "value": "\"JetBrains Mono\", ui-monospace, \"SF Mono\", monospace"
+      }
     }
   },
-  "space":  { "4": "16px", "6": "32px", "10": "128px" },
-  "radius": { "md": "12px", "pill": "999px" },
+  "space": {
+    "4": "16px",
+    "6": "32px",
+    "10": "128px"
+  },
+  "radius": {
+    "md": "12px",
+    "pill": "999px"
+  },
   "motion": {
-    "duration": { "base": "320ms" },
-    "ease":     { "standard": "cubic-bezier(0.2, 0, 0, 1)" }
+    "duration": {
+      "base": "320ms"
+    },
+    "ease": {
+      "standard": "cubic-bezier(0.2, 0, 0, 1)"
+    }
   }
 }</pre>
       </div>
@@ -1969,7 +2023,7 @@ p { margin: 0; max-width: 64ch; }
     <div class="footer-grid">
       <div>
         <a href="#" class="nav-logo">Enablement<span class="dot">.</span>ch</a>
-        <p class="footer-tagline">Fractional GTM engineering for B2B teams in DACH.</p>
+        <p class="footer-tagline">Fractional GTM engineering for B2B teams.</p>
       </div>
       <div class="footer-group">
         <h6>System</h6>
@@ -1992,24 +2046,20 @@ p { margin: 0; max-width: 64ch; }
     </div>
     <div class="footer-bottom">
       <span>© 2026 Enablement.ch</span>
-      <span>v0.4 &middot; Design system</span>
+      <span>Website design preview</span>
     </div>
   </div>
 </footer>
 
-<script>
-  function toggleTheme() {
-    const root = document.documentElement;
-    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) {}
-  }
-  // Restore saved theme
-  try {
-    const saved = localStorage.getItem('theme');
-    if (saved) document.documentElement.setAttribute('data-theme', saved);
-  } catch (e) {}
-</script>
 
+
+<script>
+  // The Brain also exposes this preview from its website guidelines folder.
+  const folder = decodeURIComponent(location.pathname).split("/").at(-2);
+  if (folder === "Branding and Design Guidelines" || folder === "Website and documents") {
+    const brain = folder === "Website and documents" ? "../.." : "..";
+    document.getElementById("social-preview-link").href = brain + "/Social%20Content%20Guidelines/social.html";
+  }
+</script>
 </body>
 </html>
